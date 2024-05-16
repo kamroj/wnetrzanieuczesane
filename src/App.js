@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+
+import "./App.scss";
+import logo from "./assets/images/strona_w_budowie.png";
+import useWindowDimensions from "./hooks/useWindowDimensionsHook";
+// import sanityClient from "./clilent.jsx"
+
+export const IsMobileContext = React.createContext();
 
 function App() {
+  const { windowWidth } = useWindowDimensions();
+  const isMobile = (mobileWidth = 750) => windowWidth < mobileWidth;
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <IsMobileContext.Provider value={isMobile}>
+      <div className="app-container">
+        <img src={logo} alt="dimensions" className="logo" />
+      </div>
+    </IsMobileContext.Provider>
   );
 }
 

@@ -1,0 +1,19 @@
+html, 
+body, 
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  background-color: rgba(241,235,235,255);
+  font-family: "JetBrains Mono", monospace;
+  margin: 0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
