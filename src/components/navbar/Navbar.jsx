@@ -1,9 +1,12 @@
-import React from "react";
+import { React, useContext } from "react";
 import {Link} from 'react-router-dom';
 import logo from "../../assets/images/logo.png";
+import { IsMobileContext } from "../../App";
 import "./Navbar.scss";
 
 export default function Navbar() {
+  const isMobile = useContext(IsMobileContext);
+
   return (
     <div className="navbar-container">
       <div className="navbar-side-container">
