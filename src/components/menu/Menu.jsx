@@ -6,9 +6,10 @@ import {
   IoNavigateOutline,
 } from "react-icons/io5";
 import { IoIosClose } from "react-icons/io";
+import { Link, useNavigate } from "react-router-dom";
 import "./Menu.scss";
 import MenuButton from "./MenuButton";
-import { useNavigate } from "react-router-dom";
+import { PagesData } from "../../pages/PagesData"; // Assuming PagesData is exported from a file named PagesData.js
 
 export default function Menu() {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -41,7 +42,16 @@ export default function Menu() {
             <IoIosClose />
           </button>
           <div className="menu-pages-container">
-            PAGES
+            {PagesData.map((page, index) => (
+              <Link
+                key={index}
+                to={page.path || page.element}
+                className="menu-pages-container__page"
+                onClick={toggleMenu}
+              >
+                {page.title}
+              </Link>
+            ))}
           </div>
           <div className="menu-buttons-container">
             <MenuButton
