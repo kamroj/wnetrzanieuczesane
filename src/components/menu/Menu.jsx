@@ -10,7 +10,7 @@ import { IoIosClose } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 import "./Menu.scss";
 import MenuButton from "./MenuButton";
-import { PagesData } from "../../pages/PagesData"; // Assuming PagesData is exported from a file named PagesData.js
+import { PagesData } from "../../pages/PagesData";
 
 export default function Menu() {
   const [showMenuButton, setShowMenuButton] = useState(true);
@@ -64,7 +64,7 @@ export default function Menu() {
               <Link
                 key={index}
                 to={page.path || page.element}
-                className="menu-pages-container__page"
+                className="menu-pages-container__link"
                 onClick={() => setShowMenu(false)}
               >
                 {page.title}
