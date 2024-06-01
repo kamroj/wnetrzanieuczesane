@@ -1,13 +1,13 @@
 $min-nav-height: 50px;
 $edge-items-margin: 20px;
-$background-color: #01210059;
+$background-color: rgba(241,235,235,255);
 
 .navbar-container {
   height: $min-nav-height;
   transform: translate3d(0, 0, 0);
   top: 0;
   align-items: center;
-  // background-color: $background-color;
+  background-color: $background-color;
   display: flex;
   height: 60px;
   justify-content: center;

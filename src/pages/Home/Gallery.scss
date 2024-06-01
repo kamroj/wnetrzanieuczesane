@@ -1,0 +1,24 @@
+@import "~react-image-gallery/styles/scss/image-gallery.scss";
+
+.gallery-container {
+  position: relative;
+  background: rgba(0, 0, 0, 0.4);
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gallery-container_gallery {
+  filter: brightness(40%); /* Przyciemnienie obrazu o 40% */
+}
+
+.gallery-container__logo {
+  position: absolute;
+  top: 50%; /* Umieść logo w pionowym środku */
+  left: 50%; /* Umieść logo w poziomym środku */
+  transform: translate(-50%, -50%); /* Wyśrodkuj logo */
+  width: 50%; /* Logo zajmuje 50% szerokości galerii */
+  z-index: 10; /* Upewnij się, że logo jest na wierzchu */
+  pointer-events: none; /* Zapobiega interakcji z logo */
+}

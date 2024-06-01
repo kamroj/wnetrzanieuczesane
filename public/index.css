@@ -1,5 +1,5 @@
 .loading-container {
-  background-color: black;
+  background-color: rgba(241,235,235,255);
   position: absolute;
   top: 0;
   right: 0;
@@ -14,7 +14,7 @@
   height: 50px;
   border: 2px solid rgb(255 255 255 / 20%);
   border-radius: 50%;
-  border-top-color: rgb(0 255 31);
+  border-top-color: rgba(129, 1, 126, 0.989);
   animation: spin 1s ease-in-out infinite;
   -webkit-animation: spin 1s ease-in-out infinite;
   left: calc(50%);
