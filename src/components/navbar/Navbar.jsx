@@ -1,10 +1,26 @@
-import { React, useContext } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import { PagesData } from "../../pages/PagesData";
 import "./Navbar.scss";
 
 export default function Navbar() {
+  useEffect(() => {
+    const handleScroll = () => {
+      const navbar = document.querySelector('.navbar-container');
+      if (window.scrollY > 0) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div className="navbar-container">
       <div className="navbar-side-container">

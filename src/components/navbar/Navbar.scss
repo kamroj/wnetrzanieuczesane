@@ -1,19 +1,33 @@
 $min-nav-height: 50px;
 $edge-items-margin: 20px;
-$background-color: rgba(241,235,235,255);
+$background-color: rgba(241, 235, 235, 255);
+$transparent-bg-color: transparent;
+$font-color: #ffffff;
 
 .navbar-container {
   height: $min-nav-height;
   transform: translate3d(0, 0, 0);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.192);
   top: 0;
+  left: 0;
+  right: 0;
   align-items: center;
-  background-color: $background-color;
+  background-color: $transparent-bg-color;
+  color: $font-color;
   display: flex;
   height: 60px;
   justify-content: center;
-  position: sticky;
+  position: absolute;
   width: 100%;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.592);
+  z-index: 10;
+  transition: background-color 0.3s ease, color 0.3s ease, position 0.3s ease;
+
+  &.scrolled {
+    background-color: $background-color;
+    color: #000; // Zmiana koloru tekstu po przewinięciu
+    position: fixed;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.592);
+  }
 }
 
 .navbar-side-container {
@@ -38,7 +52,7 @@ $background-color: rgba(241,235,235,255);
 
 .navbar-center-container__link {
   display: flex;
-  color: #000000d4;
+  color: inherit; // Dostosowuje kolor do obecnego koloru tekstu
   padding: 0px 20px;
   font-family: Gilroy, sans-serif;
   font-weight: 100;
