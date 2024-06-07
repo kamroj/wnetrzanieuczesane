@@ -1,18 +1,18 @@
 .home-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-  }
-  
-  p {
-    margin-bottom: 0;
-  }
-  
-  .logo {
-    max-width: 90%;  // Allows the image to scale down when the window size is reduced
-    max-height: 90vh; // Ensures the image doesn't exceed the viewport height
-    min-width: 200px; // Minimum width for the image
-    min-height: 200px; // Minimum height for the image
-    object-fit: contain; // Ensures the image retains its aspect ratio
-  }
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+.logo {
+  max-width: 90%; // Allows the image to scale down when the window size is reduced
+  max-height: 90vh; // Ensures the image doesn't exceed the viewport height
+  min-width: 200px; // Minimum width for the image
+  min-height: 200px; // Minimum height for the image
+  object-fit: contain; // Ensures the image retains its aspect ratio
+}

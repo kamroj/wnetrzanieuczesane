@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   padding: 90px 0px;
-  background-image: url(http://wpdemo.archiwp.com/theratio/wp-content/uploads/sites/5/2020/05/bg1-home1.jpg);
+  background-image: url(../../assets/images/quote-background.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -75,7 +75,7 @@
 
 @media (max-width: 550px) {
   .quotation-container {
-    font-size: 12px;
+    font-size: 0.75rem;
     width: 100%;
   }
 

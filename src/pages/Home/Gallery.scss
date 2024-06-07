@@ -1,7 +1,7 @@
 @import "~react-image-gallery/styles/scss/image-gallery.scss";
 
 $container-height: 100vh;
-$container-width: 100vw;
+$container-width: 100%;
 
 .gallery-container {
   position: relative;
@@ -33,4 +33,11 @@ $container-width: 100vw;
   width: calc(#{$container-width} * 0.5);
   object-fit: contain;
   pointer-events: none;
+}
+
+@media (max-width: 750px) {
+  .gallery-container__logo {
+    height: calc(100vh * 0.6);
+    width: calc(100% * 0.6);
+  }
 }
