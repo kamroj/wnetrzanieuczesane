@@ -1,0 +1,93 @@
+.quote-container {
+  display: flex;
+  justify-content: center;
+  padding: 90px 0px;
+  background-image: url(http://wpdemo.archiwp.com/theratio/wp-content/uploads/sites/5/2020/05/bg1-home1.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  min-height: 150px;
+  height: 100%;
+  width: 100%;
+}
+
+.quote-image-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.quote-image-container__quote-img {
+  width: 40px;
+}
+
+.quote-image-container__quote-img--left {
+  justify-content: right;
+  position: absolute;
+  bottom: -15px;
+  right: 10px;
+}
+
+.quote-image-container__quote-img--right {
+  justify-content: left;
+  position: absolute;
+  top: -15px;
+  left: 10px;
+  transform: rotate(180deg);
+}
+
+.quotation-container {
+  color: #ffffffcf;
+  display: flex;
+  justify-content: space-around;
+  width: 800px;
+  flex-direction: column;
+}
+
+.quotation-container__sentence {
+  width: 100%;
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quotation-container__author {
+  display: flex;
+  justify-content: flex-end;
+  font-weight: 600;
+}
+
+@media (max-width: 1000px) {
+  .quote-container {
+    padding: 45px 0px;
+  }
+
+  .quotation-container {
+    width: 400px;
+  }
+
+  .quote-image-container__quote-img {
+    width: 30px;
+  }
+}
+
+@media (max-width: 550px) {
+  .quotation-container {
+    font-size: 12px;
+    width: 100%;
+  }
+
+  .quotation-container__sentence {
+    text-align: center;
+  }
+
+  .quote-image-container {
+    min-width: 45px;
+  }
+
+  .quote-image-container__quote-img {
+    width: 25px;
+  }
+}

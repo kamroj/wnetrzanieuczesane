@@ -1,21 +1,15 @@
 @import "~react-image-gallery/styles/scss/image-gallery.scss";
 
-$fade-transition-time: 200ms;
-$menu-background-color: #f3f3f3;
 $box-shadow-color: rgba(0, 0, 0, 0.2);
 $font-color: #000;
 $border-radius: 10px;
 $menu-button-padding: 5px 20px;
-$close-button-font-size: 34px;
-$link-font-size: 18px;
-$item-font-size: 16px;
 $icon-color: #6c63ff;
-$icon-font-size: 24px;
 
 .menu-button-container {
   z-index: 100;
   align-items: center;
-  background: $menu-background-color;
+  background: #f3f3f366;
   border: none;
   border-radius: $border-radius;
   bottom: 20px;
@@ -33,7 +27,7 @@ $icon-font-size: 24px;
 
 .menu-container {
   align-items: center;
-  background: $menu-background-color;
+  background: #f3f3f3;
   border-top-left-radius: $border-radius;
   border-top-right-radius: $border-radius;
   bottom: 0;
@@ -52,7 +46,7 @@ $icon-font-size: 24px;
   background: none;
   border: none;
   cursor: pointer;
-  font-size: $close-button-font-size;
+  font-size: 34px;
   position: absolute;
   right: 15px;
   top: 10px;
@@ -71,7 +65,7 @@ $icon-font-size: 24px;
 
 .menu-pages-container__link {
   color: $font-color;
-  font-size: $link-font-size;
+  font-size: 18px;
   text-decoration: none;
 }
 
@@ -98,7 +92,7 @@ $icon-font-size: 24px;
   color: $font-color;
   display: flex;
   font-family: Arial, sans-serif;
-  font-size: $item-font-size;
+  font-size: 16px;
   justify-content: center;
   margin: 10px 0;
   max-width: 200px;
@@ -109,7 +103,7 @@ $icon-font-size: 24px;
 
 .menu-item__icon {
   color: $icon-color;
-  font-size: $icon-font-size;
+  font-size: 24px;
   margin-right: 10px;
 }
 
@@ -119,7 +113,7 @@ $icon-font-size: 24px;
 
 .fade-enter-active {
   opacity: 1;
-  transition: opacity $fade-transition-time;
+  transition: opacity 200ms;
 }
 
 .fade-exit {
@@ -128,5 +122,5 @@ $icon-font-size: 24px;
 
 .fade-exit-active {
   opacity: 0;
-  transition: opacity $fade-transition-time;
+  transition: opacity 200ms;
 }

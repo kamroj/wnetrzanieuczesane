@@ -1,27 +1,44 @@
+// Home.js
+import React from "react";
+import { useQuery } from "@tanstack/react-query";
 import ReactImageGallery from "react-image-gallery";
+import sanityClient from "../../SanityClient";
 import logo from "../../assets/images/logo-white.png";
+import quote from "../../assets/images/quote.png";
+import Loading from "../Loading/Loading";
+
 import "./Home.scss";
 import "./Gallery.scss";
+import "./Quote.scss";
+
+const fetchSlides = async () => {
+  const data = await sanityClient.fetch(
+    '*[_type == "home"]{slides[]{asset->{url}}}'
+  );
+  return (
+    data[0]?.slides.map((slide) => ({
+      original: slide.asset.url,
+      thumbnail: slide.asset.url,
+    })) || []
+  );
+};
 
 function Home() {
-  const images = [
-    {
-      original: "https://picsum.photos/id/1018/1000/600/",
-      thumbnail: "https://picsum.photos/id/1018/250/150/",
-    },
-    {
-      original: "https://picsum.photos/id/1015/1000/600/",
-      thumbnail: "https://picsum.photos/id/1015/250/150/",
-    },
-    {
-      original: "https://picsum.photos/id/1019/1000/600/",
-      thumbnail: "https://picsum.photos/id/1019/250/150/",
-    },
-  ];
+  const {
+    data: images,
+    error,
+    isLoading,
+  } = useQuery({
+    queryKey: ["slides"],
+    queryFn: fetchSlides,
+  });
+
+  if (isLoading) return <Loading />;
+  if (error) return <div>Error loading images</div>;
 
   return (
     <div className="home-container">
-      <div className="gallery-container">
+      <section className="gallery-container">
         <ReactImageGallery
           autoPlay={true}
           slideInterval={5000}
@@ -35,7 +52,35 @@ function Home() {
           showPlayButton={false}
         />
         <img src={logo} alt="dimensions" className="gallery-container__logo" />
-      </div>
+      </section>
+
+      <section className="quote-container">
+        <div className="quote-image-container">
+          <img
+            src={quote}
+            alt="quote-left"
+            className="quote-image-container__quote-img quote-image-container__quote-img--left"
+          />
+        </div>
+        <div className="quotation-container">
+          <div className="quotation-container__sentence">
+            Siła dobrego projektu tkwi w nas i w naszej zdolności postrzegania
+            świata za pomocą uczucia i rozumu. <br />
+            Dobry projekt architektoniczny jest zmysłowy. <br />
+            Dobry projekt architektoniczny jest mądry.
+          </div>
+          <div className="quotation-container__author">
+            Peter Zumthor, Myślenie architekturą
+          </div>
+        </div>
+        <div className="quote-image-container">
+          <img
+            src={quote}
+            alt="quote-left"
+            className="quote-image-container__quote-img quote-image-container__quote-img--right"
+          />
+        </div>
+      </section>
     </div>
   );
 }

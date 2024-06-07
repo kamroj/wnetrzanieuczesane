@@ -54,8 +54,7 @@ $font-color: #ffffff;
   display: flex;
   color: inherit; // Dostosowuje kolor do obecnego koloru tekstu
   padding: 0px 20px;
-  font-family: Gilroy, sans-serif;
-  font-weight: 100;
+  font-weight: 400;
   font-size: 14px;
   justify-content: center;
   align-items: center;
@@ -71,7 +70,7 @@ $font-color: #ffffff;
   left: 0;
   width: 100%;
   height: 1px;
-  background-color: rgba(129, 1, 126, 0.989);
+  background-color: rgba(170, 4, 168, 0.989);
   transition: transform 250ms ease-in-out;
   transform: scaleX(0);
   transform-origin: 100% 50%;
