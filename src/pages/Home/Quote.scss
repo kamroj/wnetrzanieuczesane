@@ -1,3 +1,5 @@
+@import "../../variables.scss";
+
 .quote-container {
   display: flex;
   justify-content: center;
@@ -59,7 +61,7 @@
   font-weight: 600;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: $screen-widht-phase-3-max-width) {
   .quote-container {
     padding: 45px 0px;
   }
@@ -73,9 +75,9 @@
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: $screen-widht-phase-1-max-width) {
   .quotation-container {
-    font-size: 0.75rem;
+    font-size: $screen-width-phase-1-font-size;
     width: 100%;
   }
 

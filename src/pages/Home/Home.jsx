@@ -47,7 +47,7 @@ function Home() {
   return (
     <div className="home-container">
       <section className="gallery-container">
-        <div className="grid-lines grid-lines-vertical grid-lines-padding-menu">
+        <div className="grid-lines grid-lines-vertical grid-lines-padding-menu line-on-very-top">
           <span className="g-line-vertical line-left"></span>
           <span className="g-line-vertical line-center"></span>
           <span className="g-line-vertical line-right"></span>
