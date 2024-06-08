@@ -5,7 +5,7 @@ import ReactImageGallery from "react-image-gallery";
 import sanityClient from "../../SanityClient";
 import Loading from "../Loading/Loading";
 
-import logo from "../../assets/images/logo-white.png";
+import logo from "../../assets/images/logo-white2.png";
 import quote from "../../assets/images/quote.png";
 import quoteBackground from "../../assets/images/scretch.png";
 
@@ -43,10 +43,10 @@ function Home() {
   return (
     <div className="home-container">
       <section className="gallery-container">
-        <div class="grid-lines grid-lines-vertical grid-lines-padding-menu">
-          <span class="g-line-vertical line-left"></span>
-          <span class="g-line-vertical line-center"></span>
-          <span class="g-line-vertical line-right"></span>
+        <div className="grid-lines grid-lines-vertical grid-lines-padding-menu">
+          <span className="g-line-vertical line-left"></span>
+          <span className="g-line-vertical line-center"></span>
+          <span className="g-line-vertical line-right"></span>
         </div>
         <ReactImageGallery
           autoPlay={true}
@@ -91,6 +91,11 @@ function Home() {
         </div>
       </section>
       <section className="about-company-container">
+        <div className="grid-lines grid-lines-vertical">
+          <span className="g-line-vertical line-left g-line-vertical-black"></span>
+          <span className="g-line-vertical line-center g-line-vertical-black"></span>
+          <span className="g-line-vertical line-right g-line-vertical-black"></span>
+        </div>
         <div className="about-company-content-container">
           <h1>[ O FIRMIE ]</h1>
         </div>

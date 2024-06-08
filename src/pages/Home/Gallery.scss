@@ -15,22 +15,26 @@ $container-width: 100%;
   overflow: hidden;
 }
 
-.gallery-container_gallery .image-gallery-slide img {
+.gallery-container_gallery {
   width: $container-width;
   height: $container-height;
   filter: brightness(40%);
+}
+
+.gallery-container_gallery .image-gallery-slide img {
   min-height: $container-height;
   object-fit: cover;
   background-size: cover;
 }
 
 .gallery-container__logo {
+  opacity: 0.6;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: calc(#{$container-height} * 0.5);
-  width: calc(#{$container-width} * 0.5);
+  height: calc(#{$container-height} * 0.4);
+  width: calc(#{$container-width} * 0.4);
   object-fit: contain;
   pointer-events: none;
 }

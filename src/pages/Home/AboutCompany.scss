@@ -1,24 +1,31 @@
 .about-company-container {
-    display:flex;
-    justify-content: center;
-    color: black;
-    padding: 70px 0px;
-    min-height: 250px;
-    height: 100%;
-    width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  color: black;
+  padding: 70px 0px;
+  min-height: 250px;
+  height: 500px;
+  width: 100%;
 }
 
 .about-company-content-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .about-company-scretch-container {
-    width: 100%;
+  width: 100%;
 }
 
 .about-company-scretch-container__img {
-    width: 100%;
+    top: 0;
+    right: 3%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    overflow-x: visible;
+    width: 50%;
     opacity: 0.95;
 }
