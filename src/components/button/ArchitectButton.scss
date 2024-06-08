@@ -1,0 +1,44 @@
+.architect-button {
+  font-weight: 600;
+  display: inline-block;
+  position: relative;
+  border: 1px solid #000000;
+  padding: 15px 0px;
+  font-size: 0.8rem;
+}
+
+.architect-button::after,
+.architect-button::before {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  transition: 0.5s;
+}
+
+$after-line-thin: 2px;
+
+.architect-button::after {
+  top: -$after-line-thin;
+  left: -$after-line-thin;
+  border-top: $after-line-thin solid transparent;
+  border-left: $after-line-thin solid transparent;
+}
+
+.architect-button::before {
+  bottom: -$after-line-thin;
+  right: -$after-line-thin;
+  border-bottom: $after-line-thin solid transparent;
+  border-right: $after-line-thin solid transparent;
+}
+
+.architect-button:hover {
+  cursor: pointer;
+}
+
+.architect-button:hover::after,
+.architect-button:hover::before {
+  width: calc(105% + 3px);
+  height: calc(105% + 3px);
+  border-color: rgba(170, 4, 167, 0.349);;
+}

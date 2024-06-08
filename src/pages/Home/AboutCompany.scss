@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "architect-font";
+  src: url(../../assets/font/architect-font1.ttf) format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
 .about-company-container {
   display: flex;
   position: relative;
@@ -11,8 +18,27 @@
 
 .about-company-content-container {
   display: flex;
-  justify-content: center;
-  width: 100%;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  width: 70%;
+  margin-left: 5%;
+
+  &.header {
+    font-family: architect-font, sans-serif;
+    justify-content: center;
+    font-size: 2.5rem;
+  }
+
+  &.content {
+    padding: 20px 0;
+    line-height: 1.5;
+  }
+
+  &.button-container {
+    display: flex;
+    width: 180px;
+  }
 }
 
 .about-company-scretch-container {
@@ -20,12 +46,13 @@
 }
 
 .about-company-scretch-container__img {
-    top: 0;
-    right: 3%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    overflow-x: visible;
-    width: 50%;
-    opacity: 0.95;
+  top: 0;
+  right: 3%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  overflow-x: visible;
+  width: 50%;
+  opacity: 0.95;
+  z-index: -1;
 }

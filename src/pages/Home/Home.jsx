@@ -7,13 +7,15 @@ import Loading from "../Loading/Loading";
 
 import logo from "../../assets/images/logo-white2.png";
 import quote from "../../assets/images/quote.png";
-import quoteBackground from "../../assets/images/scretch.png";
+import scretchImage from "../../assets/images/scretch.png";
 
 import "./Home.scss";
 import "./Gallery.scss";
 import "./Quote.scss";
 import "./AboutCompany.scss";
 import "../GridLines.scss";
+import ArchitectButton from "../../components/button/ArchitectButton";
+import { useNavigate } from "react-router-dom";
 
 const fetchSlides = async () => {
   const data = await sanityClient.fetch(
@@ -28,6 +30,8 @@ const fetchSlides = async () => {
 };
 
 function Home() {
+  const navigate = useNavigate();
+
   const {
     data: images,
     error,
@@ -97,11 +101,26 @@ function Home() {
           <span className="g-line-vertical line-right g-line-vertical-black"></span>
         </div>
         <div className="about-company-content-container">
-          <h1>[ O FIRMIE ]</h1>
+          <div className="about-company-content-container header">
+            OD PROJEKTU DO REALIZACJI
+          </div>
+          <div className="about-company-content-container content">
+            Specjalizuję się w dostarczaniu wyjątkowych i spersonalizowanych
+            projektów, które wyróżniają się dzięki mojej innowacyjności i
+            kreatywności. Współpracuję z klientami na każdym etapie – od
+            pomysłu, przez rozwijanie koncepcji, aż po finalną realizację.
+            Dzięki mojemu doświadczeniu i pasji, szybko przekształcam wizje w
+            rzeczywistość, zachowując najwyższe standardy estetyki i
+            funkcjonalności. Zawsze jestem gotowa doradzać i wspierać moich
+            klientów, zapewniając, że końcowy efekt przewyższy ich oczekiwania.
+          </div>
+          <div className="about-company-content-container button-container">
+            <ArchitectButton name="PROJEKTY" onClick={() => navigate('/portfolio')}/>
+          </div>
         </div>
         <div className="about-company-scretch-container">
           <img
-            src={quoteBackground}
+            src={scretchImage}
             alt="quote-background"
             className="about-company-scretch-container__img"
           />
