@@ -33,9 +33,12 @@ $font-color: #ffffff;
 .navbar-side-container {
   display: flex;
   align-items: center;
-  font-size: 1rem;
   height: 100%;
   width: 100px;
+
+  &.right {
+    justify-content: center;
+  }
 }
 
 .navbar-side-container__item {

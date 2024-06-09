@@ -12,7 +12,7 @@ import "./Menu.scss";
 import MenuButton from "./MenuButton";
 import { PagesData } from "../../pages/PagesData";
 
-export default function Menu() {
+export default function Menu({ isScrolled }) {
   const [showMenuButton, setShowMenuButton] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
   const nodeRef = useRef(null);
@@ -40,7 +40,7 @@ export default function Menu() {
           className="menu-button-container"
           onClick={() => setShowMenu(true)}
         >
-          <IoMenuOutline className="menu-button-container__close_button" />
+          <IoMenuOutline className={`menu-icon ${isScrolled ? "scrolled" : ""}`}/>
         </div>
       )}
       <CSSTransition

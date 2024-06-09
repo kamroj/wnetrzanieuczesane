@@ -20,7 +20,7 @@ function App() {
   return (
     <IsMobileContext.Provider value={isMobile}>
       <QueryClientProvider client={queryClient}>
-        {isMobile() ? <Menu /> : <Navbar />}
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Contact" element={<Contact />} />
