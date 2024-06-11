@@ -1,37 +1,66 @@
-import React, { useContext, useEffect, useState } from "react";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import React, { useContext, useState } from "react";
+import { IoMenuOutline } from "react-icons/io5";
+import { VscClose } from "react-icons/vsc";
 import { Link } from "react-router-dom";
-import logo from "../../assets/images/logo.png";
-import { PagesData } from "../../pages/PagesData";
-import "./Navbar.scss";
 import { IsMobileContext } from "../../App";
-import Menu from "../menu/Menu";
+import logo from "../../assets/images/logo.png";
 import useScroll from "../../hooks/useScroll";
+import { PagesData } from "../../pages/PagesData";
+import Menu from "../menu/Menu";
+import "./Navbar.scss";
 
 export default function Navbar() {
+  const [menuEnabled, setMenuEnabled] = useState(false);
   const isMobile = useContext(IsMobileContext);
   const isScrolled = useScroll();
 
-  return (
-    <div className={`navbar-container ${isScrolled ? "scrolled" : ""}`}>
-      <div className="navbar-side-container">
-        <img src={logo} alt="logo" className="navbar-side-container__item" />
-      </div>
+  function showMenu(enabled) {
+    setMenuEnabled(enabled);
+    enabled ? disableBodyScroll(document) : enableBodyScroll(document);
+  }
 
-      <div className="navbar-center-container">
-        {!isMobile &&
-          PagesData.map((page, index) => (
-            <Link
-              key={index}
-              to={page.path || page.element}
-              className="navbar-center-container__link"
+  return (
+    <div className="navbar-container">
+      <div className={`navbar-container ${isScrolled || menuEnabled ? "scrolled" : ""}`}>
+        <div className="navbar-side-container">
+          <img src={logo} alt="logo" className="navbar-side-container__item" />
+        </div>
+
+        <div className="navbar-center-container">
+          {!isMobile() &&
+            PagesData.map((page, index) => (
+              <Link
+                key={index}
+                to={page.path || page.element}
+                className="navbar-center-container__link"
+              >
+                {page.title}
+              </Link>
+            ))}
+        </div>
+        <div className="navbar-side-container right">
+          {isMobile() && (
+            <div
+              className="menu-button-container"
+              onClick={() => showMenu(!menuEnabled)}
             >
-              {page.title}
-            </Link>
-          ))}
+              {(!menuEnabled && (
+                <IoMenuOutline
+                  className={`menu-icon ${isScrolled || menuEnabled? "scrolled" : ""}`}
+                />
+              )) || (
+                <div>
+                  <VscClose
+                    className={`menu-icon ${isScrolled || menuEnabled ? "scrolled" : ""}`}
+                  />
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       </div>
-      <div className="navbar-side-container right">
-        {isMobile && <Menu isScrolled={isScrolled} />}
-      </div>
+      {isMobile() && menuEnabled && <Menu menuEnabled={menuEnabled} setMenuEnabled={setMenuEnabled} />}
     </div>
   );
 }

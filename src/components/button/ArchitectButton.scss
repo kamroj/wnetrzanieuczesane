@@ -1,3 +1,5 @@
+@import "../../variables.scss";
+
 .architect-button {
   font-weight: 600;
   display: inline-block;
@@ -42,4 +44,11 @@ $after-line-thin: 2px;
   width: calc(105% + 3px);
   height: calc(105% + 3px);
   border-color: rgba(170, 4, 167, 0.349);;
+}
+
+@media (max-width: $screen-widht-phase-1-max-width) {
+  .architect-button {
+    width: calc(105% + 3px);
+    height: calc(105% + 3px);
+  }
 }

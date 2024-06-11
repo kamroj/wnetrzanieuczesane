@@ -10,16 +10,14 @@ $icon-color: #6c63ff;
 .menu-button-container {
   align-items: center;
   border: none;
-  bottom: 20px;
   color: #000;
   cursor: pointer;
   display: flex;
-  font-family: Arial, sans-serif;
   justify-content: center;
 }
 
 .menu-icon {
-  font-size: 2.5rem; 
+  font-size: 2.5rem;
   color: $main-color;
 
   &.scrolled {
@@ -29,29 +27,17 @@ $icon-color: #6c63ff;
 
 .menu-container {
   align-items: center;
-  background: #f3f3f3;
-  border-top-left-radius: $border-radius;
-  border-top-right-radius: $border-radius;
-  bottom: 0;
-  box-shadow: 0px -4px 10px $box-shadow-color;
+  background: $main-color;
+  border-top: 1px solid rgba(0, 0, 0, 0.188);
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: calc(100vh - $navbar-height);
   justify-content: center;
-  left: 0;
-  position: absolute;
+  position: fixed;
+  top: $navbar-height;
   width: 100%;
-  z-index: 10;
-}
-
-.menu-container__close-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 34px;
-  position: absolute;
-  right: 15px;
-  top: 10px;
+  z-index: 999;
+  overflow-y: auto;
 }
 
 .menu-pages-container {
@@ -60,13 +46,13 @@ $icon-color: #6c63ff;
   display: flex;
   flex-direction: column;
   height: 100%;
-  justify-content: space-evenly;
-  margin-top: 40px;
+  justify-content: center;
   width: 90%;
 }
 
 .menu-pages-container__link {
   color: $font-color;
+  padding: 20px;
   font-size: 1.125rem;
   text-decoration: none;
 }
@@ -115,7 +101,7 @@ $icon-color: #6c63ff;
 
 .fade-enter-active {
   opacity: 1;
-  transition: opacity 200ms;
+  transition: opacity 300ms ease-in-out;
 }
 
 .fade-exit {
@@ -124,5 +110,5 @@ $icon-color: #6c63ff;
 
 .fade-exit-active {
   opacity: 0;
-  transition: opacity 200ms;
+  transition: opacity 300ms ease-in-out;
 }

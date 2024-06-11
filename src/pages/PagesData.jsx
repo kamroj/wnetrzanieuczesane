@@ -12,6 +12,10 @@ export const PagesData = [
       element: "/portfolio"
     },
     {
+      title: "PROCES PROJEKTOWANIA",
+      element: "/process"
+    },
+    {
       title: "OFERTA",
       element: "/offer"
     },
