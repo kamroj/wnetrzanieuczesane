@@ -19,7 +19,7 @@
   transition: 0.5s;
 }
 
-$after-line-thin: 2px;
+$after-line-thin: 1px;
 
 .architect-button::after {
   top: -$after-line-thin;
@@ -41,9 +41,9 @@ $after-line-thin: 2px;
 
 .architect-button:hover::after,
 .architect-button:hover::before {
-  width: calc(105% + 3px);
-  height: calc(105% + 3px);
-  border-color: rgba(170, 4, 167, 0.349);;
+  width: calc(100% + 10px);
+  height: calc(100% + 5px);
+  border-color: rgb(126, 2, 124);;
 }
 
 @media (max-width: $screen-widht-phase-1-max-width) {

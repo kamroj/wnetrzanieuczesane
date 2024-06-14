@@ -1,5 +1,5 @@
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef } from "react";
 import { IoMenuOutline } from "react-icons/io5";
 import { VscClose } from "react-icons/vsc";
 import { Link } from "react-router-dom";
@@ -8,12 +8,14 @@ import logo from "../../assets/images/logo.png";
 import useScroll from "../../hooks/useScroll";
 import { PagesData } from "../../pages/PagesData";
 import Menu from "../menu/Menu";
+import { CSSTransition } from "react-transition-group";
 import "./Navbar.scss";
 
 export default function Navbar() {
   const [menuEnabled, setMenuEnabled] = useState(false);
   const isMobile = useContext(IsMobileContext);
   const isScrolled = useScroll();
+  const nodeRef = useRef(null);
 
   function showMenu(enabled) {
     setMenuEnabled(enabled);
@@ -45,11 +47,11 @@ export default function Navbar() {
               className="menu-button-container"
               onClick={() => showMenu(!menuEnabled)}
             >
-              {(!menuEnabled && (
+              {!menuEnabled ? (
                 <IoMenuOutline
-                  className={`menu-icon ${isScrolled || menuEnabled? "scrolled" : ""}`}
+                  className={`menu-icon ${isScrolled || menuEnabled ? "scrolled" : ""}`}
                 />
-              )) || (
+              ) : (
                 <div>
                   <VscClose
                     className={`menu-icon ${isScrolled || menuEnabled ? "scrolled" : ""}`}
@@ -60,7 +62,19 @@ export default function Navbar() {
           )}
         </div>
       </div>
-      {isMobile() && menuEnabled && <Menu menuEnabled={menuEnabled} setMenuEnabled={setMenuEnabled} />}
+      {isMobile() && (
+        <CSSTransition
+          in={menuEnabled}
+          nodeRef={nodeRef}
+          timeout={300}
+          classNames="fade"
+          unmountOnExit
+        >
+          <div className="navbar-menu-ref-container" ref={nodeRef}>
+            <Menu menuEnabled={menuEnabled} setMenuEnabled={setMenuEnabled} />
+          </div>
+        </CSSTransition>
+      )}
     </div>
   );
 }

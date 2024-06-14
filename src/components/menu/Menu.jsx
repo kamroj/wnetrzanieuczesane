@@ -30,13 +30,7 @@ export default function Menu({ menuEnabled, setMenuEnabled }) {
   };
 
   return (
-    // <CSSTransition
-    //   in={menuEnabled}
-    //   nodeRef={nodeRef}
-    //   timeout={300}
-    //   classNames="fade"
-    //   unmountOnExit
-    // >
+
       <div className="menu-container" ref={nodeRef}>
         <div className="menu-pages-container">
           {PagesData.map((page, index) => (
@@ -68,6 +62,5 @@ export default function Menu({ menuEnabled, setMenuEnabled }) {
           />
         </div>
       </div>
-    // </CSSTransition>
   );
 }
