@@ -1,8 +1,8 @@
 @import "../../variables.scss";
 
 @font-face {
-  font-family: "architect-font";
-  src: url(../../assets/font/architect-font1.ttf) format("truetype");
+  font-family: "signature-font";
+  src: url(../../assets/font/signature.otf) format("truetype");
   font-weight: 500;
   font-style: normal;
 }
@@ -11,95 +11,94 @@
   display: flex;
   position: relative;
   justify-content: center;
-  color: black;
+  background-color: black;
   padding: 70px 0px;
-  min-height: 250px;
-  height: 500px;
-  width: 100%;
-}
-
-@media (max-width: $screen-widht-phase-3-max-width) {
-  .about-company-container {
-    padding: 30px 0px;
-    flex-direction: column-reverse;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-.about-company-content-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
   height: 100%;
-  width: 70%;
-  margin-left: 5%;
-
-  &.header {
-    font-family: architect-font, sans-serif;
-    justify-content: center;
-    font-size: 2.5rem;
-  }
-
-  &.content {
-    padding: 20px 0;
-    line-height: 1.5;
-  }
-
-  &.button-container {
-    display: flex;
-    width: 180px;
-  }
-}
-
-@media (max-width: $screen-widht-phase-3-max-width) {
-  .about-company-content-container {
-    text-align: center;
-    margin: 0;
-    align-items: center;
-    width: 90%;
-  }
+  width: 100%;
 }
 
 @media (max-width: $screen-widht-phase-1-max-width) {
-  .about-company-content-container {
-    &.header {
-      font-size: 2rem;
+    .about-company-container {
+        flex-direction: column;
+        height: 100%;
     }
-    &.content {
-      font-size: $screen-width-phase-1-font-size;
-    }
-  }
 }
 
-.about-company-scretch-container {
+
+.about-company-photo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-}
-
-.about-company-scretch-container__img {
-  top: 0;
-  right: 3%;
   height: 100%;
-  object-fit: cover;
-  position: absolute;
-  overflow-x: visible;
-  width: 50%;
-  opacity: 0.95;
-  z-index: -1;
 }
 
-@media (max-width: $screen-widht-phase-5-max-width) {
-  .about-company-scretch-container__img {
-    width: 30%;
-  }
+@media (max-width: $screen-widht-phase-1-max-width) {
+    .about-company-photo-container {
+        position: relative;
+        display: flex;
+    }
+}
+
+.about-company-signature-container {
+  color: rgb(90, 88, 88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 5%;
+  font-size: 5rem;
+  font-family: signature-font, sans-serif;
 }
 
 @media (max-width: $screen-widht-phase-3-max-width) {
-  .about-company-scretch-container__img {
-    padding-bottom: 30px;
-    width: 100%;
-    position: static;
-    overflow-x: hidden;
-  }
+    .about-company-signature-container {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: $screen-widht-phase-1-max-width) {
+    .about-company-signature-container {
+        text-align: center;
+        font-size: 3rem;
+    }
+}
+
+.about-company-photo-container__img {
+  height: 130%;
+}
+
+.about-company-content-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+@media (max-width: $screen-widht-phase-1-max-width) {
+    .about-company-content-container {
+        align-items: center;
+        text-align: center;
+    }
+}
+
+.about-company-content-container__header {
+  box-sizing: border-box;
+  padding: 0px 40px;
+  width: 100%;
+  color: $main-color;
+  font-size: 2rem;
+}
+
+.about-company-content-container__content {
+  box-sizing: border-box;
+  padding: 40px 40px;
+  width: 100%;
+  color: $main-color;
+  font-size: 1rem;
+}
+
+.about-company-content-container__button {
+  box-sizing: border-box;
+  padding: 0px 40px;
 }

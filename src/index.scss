@@ -5,12 +5,19 @@ body,
   margin: 0;
 }
 
+@font-face {
+  font-family: "TitilliumWeb-Light";
+  src: url(assets/font/TitilliumWeb-Light.ttf) format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   background-color: rgba(241,235,235,255);
   margin: 0;
-  font-family: "Titillium Web",sans-serif;
+  font-family: "TitilliumWeb-Light",sans-serif;
 }
 
 code {

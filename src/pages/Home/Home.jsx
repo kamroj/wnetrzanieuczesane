@@ -1,6 +1,6 @@
 // Home.js
-import React from "react";
 import { useQuery } from "@tanstack/react-query";
+import React from "react";
 import ReactImageGallery from "react-image-gallery";
 import sanityClient from "../../SanityClient";
 import Loading from "../Loading/Loading";
@@ -8,14 +8,16 @@ import Loading from "../Loading/Loading";
 import logo from "../../assets/images/logo-white2.png";
 import quote from "../../assets/images/quote.png";
 import scretchImage from "../../assets/images/scretch.png";
+import werkaPhoto from "../../assets/images/werka-photo.png";
 
-import "./Home.scss";
+import { useNavigate } from "react-router-dom";
+import ArchitectButton from "../../components/button/ArchitectButton";
+import "../GridLines.scss";
+import "./AboutProjects.scss";
 import "./Gallery.scss";
+import "./Home.scss";
 import "./Quote.scss";
 import "./AboutCompany.scss";
-import "../GridLines.scss";
-import ArchitectButton from "../../components/button/ArchitectButton";
-import { useNavigate } from "react-router-dom";
 
 const fetchSlides = async () => {
   const data = await sanityClient.fetch(
@@ -94,17 +96,17 @@ function Home() {
           />
         </div>
       </section>
-      <section className="about-company-container">
+      <section className="about-projects-container">
         <div className="grid-lines grid-lines-vertical">
           <span className="g-line-vertical line-left g-line-vertical-black"></span>
           <span className="g-line-vertical line-center g-line-vertical-black"></span>
           <span className="g-line-vertical line-right g-line-vertical-black"></span>
         </div>
-        <div className="about-company-content-container">
-          <div className="about-company-content-container header">
+        <div className="about-projects-content-container">
+          <div className="about-projects-content-container header">
             OD PROJEKTU DO REALIZACJI
           </div>
-          <div className="about-company-content-container content">
+          <div className="about-projects-content-container content">
             Specjalizuję się w dostarczaniu wyjątkowych i spersonalizowanych
             projektów, które wyróżniają się dzięki mojej innowacyjności i
             kreatywności. Współpracuję z klientami na każdym etapie – od
@@ -114,16 +116,54 @@ function Home() {
             funkcjonalności. Zawsze jestem gotowa doradzać i wspierać moich
             klientów, zapewniając, że końcowy efekt przewyższy ich oczekiwania.
           </div>
-          <div className="about-company-content-container button-container">
-            <ArchitectButton name="PROJEKTY" onClick={() => navigate('/portfolio')}/>
+          <div className="about-projects-content-container button-container">
+            <ArchitectButton
+              name="PROJEKTY"
+              onClick={() => navigate("/portfolio")}
+            />
           </div>
         </div>
-        <div className="about-company-scretch-container">
+        <div className="about-projects-scretch-container">
           <img
             src={scretchImage}
             alt="quote-background"
-            className="about-company-scretch-container__img"
+            className="about-projects-scretch-container__img"
           />
+        </div>
+      </section>
+      <section className="about-company-container">
+        <div className="grid-lines grid-lines-vertical">
+          <span className="g-line-vertical line-left g-line-vertical"></span>
+          <span className="g-line-vertical line-center g-line-vertical"></span>
+          <span className="g-line-vertical line-right g-line-vertical"></span>
+        </div>
+        <div className="about-company-photo-container">
+          <img
+            src={werkaPhoto}
+            alt="werka"
+            className="about-company-photo-container__img"
+          />
+          <div className="about-company-signature-container">
+            Weronika Rojek
+          </div>
+        </div>
+        <div className="about-company-content-container">
+          <div className="about-company-content-container__header">
+            Filozofia w prostocie i jakości designu
+          </div>
+          <div className="about-company-content-container__content">
+            Nazywam mój styl "żywym minimalizmem". Żywy minimalizm to nie
+            kwestia wyglądu czy wizualnej estetyki. Odnosi się do wewnętrznych
+            uczuć, do Twojego prawdziwego ja. To miejsce, w którym czujesz się
+            komfortowo i które naprawdę odzwierciedla Ciebie.
+          </div>
+          <div className="about-company-content-container__button">
+            <ArchitectButton
+              isBlack={true}
+              name="O MNIE"
+              onClick={() => navigate("/portfolio")}
+            />
+          </div>
         </div>
       </section>
     </div>
