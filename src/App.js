@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Home from "./pages/Home/Home";
 import Navbar from "./components/navbar/Navbar";
 import Contact from "./pages/Contact/Contact";
+import Footer from "./components/footer/Footer";
 
 export const IsMobileContext = React.createContext();
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Contact" element={<Contact />} />
         </Routes>
+        <Footer />
       </QueryClientProvider>
     </IsMobileContext.Provider>
   );

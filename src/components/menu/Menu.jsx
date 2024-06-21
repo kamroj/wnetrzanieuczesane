@@ -5,7 +5,6 @@ import {
   IoNavigateOutline,
 } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
-import { CSSTransition } from "react-transition-group";
 import { PagesData } from "../../pages/PagesData";
 import "./Menu.scss";
 import MenuButton from "./MenuButton";
