@@ -18,6 +18,7 @@ $transition-duration: 0.5s;
   color: black;
   box-sizing: border-box;
   transition: background-color $transition-duration, color $transition-duration;
+  z-index: 20;
 
   &.black {
     background-color: $hover-bg-color;

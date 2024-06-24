@@ -1,15 +1,22 @@
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import React, { useContext, useState, useRef } from "react";
-import { IoMenuOutline } from "react-icons/io5";
-import { VscClose } from "react-icons/vsc";
-import { Link } from "react-router-dom";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import { CSSTransition } from "react-transition-group";
 import { IsMobileContext } from "../../App";
-import logo from "../../assets/images/logo.png";
 import useScroll from "../../hooks/useScroll";
 import { PagesData } from "../../pages/PagesData";
 import Menu from "../menu/Menu";
-import { CSSTransition } from "react-transition-group";
-import "./Navbar.scss";
+import logo from "../../assets/images/logo.png";
+import {
+  NavbarContainer,
+  NavbarSideContainer,
+  NavbarLogo,
+  NavbarCenterContainer,
+  NavbarLink,
+  MenuButtonContainer,
+  MenuIcon,
+  CloseIcon,
+  NavbarMenuRefContainer
+} from "./Navbar.styles";
 
 export default function Navbar() {
   const [menuEnabled, setMenuEnabled] = useState(false);
@@ -23,45 +30,33 @@ export default function Navbar() {
   }
 
   return (
-    <div className="navbar-container">
-      <div className={`navbar-container ${isScrolled || menuEnabled ? "scrolled" : ""}`}>
-        <div className="navbar-side-container">
-          <img src={logo} alt="logo" className="navbar-side-container__item" />
-        </div>
+    <NavbarContainer $isScrolled={isScrolled} $menuEnabled={menuEnabled}>
+      <NavbarSideContainer>
+        <NavbarLogo src={logo} alt="logo" />
+      </NavbarSideContainer>
 
-        <div className="navbar-center-container">
-          {!isMobile() &&
-            PagesData.map((page, index) => (
-              <Link
-                key={index}
-                to={page.path || page.element}
-                className="navbar-center-container__link"
-              >
-                {page.title}
-              </Link>
-            ))}
-        </div>
-        <div className="navbar-side-container right">
-          {isMobile() && (
-            <div
-              className="menu-button-container"
-              onClick={() => showMenu(!menuEnabled)}
+      <NavbarCenterContainer>
+        {!isMobile() &&
+          PagesData.map((page, index) => (
+            <NavbarLink
+              key={index}
+              to={page.path || page.element}
             >
-              {!menuEnabled ? (
-                <IoMenuOutline
-                  className={`menu-icon ${isScrolled || menuEnabled ? "scrolled" : ""}`}
-                />
-              ) : (
-                <div>
-                  <VscClose
-                    className={`menu-icon ${isScrolled || menuEnabled ? "scrolled" : ""}`}
-                  />
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      </div>
+              {page.title}
+            </NavbarLink>
+          ))}
+      </NavbarCenterContainer>
+      <NavbarSideContainer $right>
+        {isMobile() && (
+          <MenuButtonContainer onClick={() => showMenu(!menuEnabled)}>
+            {!menuEnabled ? (
+              <MenuIcon $isScrolled={isScrolled} $menuEnabled={menuEnabled} />
+            ) : (
+              <CloseIcon $isScrolled={isScrolled} $menuEnabled={menuEnabled} />
+            )}
+          </MenuButtonContainer>
+        )}
+      </NavbarSideContainer>
       {isMobile() && (
         <CSSTransition
           in={menuEnabled}
@@ -70,11 +65,11 @@ export default function Navbar() {
           classNames="fade"
           unmountOnExit
         >
-          <div className="navbar-menu-ref-container" ref={nodeRef}>
+          <NavbarMenuRefContainer ref={nodeRef}>
             <Menu menuEnabled={menuEnabled} setMenuEnabled={setMenuEnabled} />
-          </div>
+          </NavbarMenuRefContainer>
         </CSSTransition>
       )}
-    </div>
+    </NavbarContainer>
   );
 }
