@@ -15,16 +15,19 @@ import {
 } from './Opinions.styles.js';
 import { GridLine, GridLines } from '../GridLines/GridLines.styles.js';
 
-// Przykładowe dane - w rzeczywistości mogłyby być pobierane z API
 const OpinionsExample = [
   {
     id: 1,
     text: "Jestem bardzo zadowolony z usług tej firmy. Profesjonalizm i zaangażowanie zespołu przekroczyły moje oczekiwania. Polecam każdemu, kto szuka niezawodnego partnera w biznesie.",
     author: "Jan Kowalski",
-    title: "Dyrektor Generalny, Firma XYZ",
     image: "/path/to/your/image.jpg"
   },
-  // Dodaj więcej Opinionsi...
+  {
+    id: 2,
+    text: "Usługi tej firmy są na najwyższym poziomie. Zespół zawsze reaguje szybko i skutecznie na nasze potrzeby. Zdecydowanie polecam ich usługi każdemu, kto ceni sobie profesjonalizm i jakość.",
+    author: "Anna Nowak",
+    image: "/path/to/your/image.jpg"
+  }
 ];
 
 function Opinions() {
@@ -43,7 +46,7 @@ function Opinions() {
   return (
     <OpinionsSection>
       <OpinionsContainer>
-        <OpinionsTitle>Co mówią nasi klienci</OpinionsTitle>
+        <OpinionsTitle>Opinie naszych Klientów</OpinionsTitle>
         <OpinionsItem>
           <OpinionsContent>
             <OpinionsText>
@@ -51,7 +54,6 @@ function Opinions() {
             </OpinionsText>
             <OpinionsAuthor>
               <AuthorName>{Opinions.author}</AuthorName>
-              <AuthorTitle>{Opinions.title}</AuthorTitle>
             </OpinionsAuthor>
           </OpinionsContent>
           <OpinionsImage src={Opinions.image} alt={Opinions.author} />
@@ -61,10 +63,8 @@ function Opinions() {
           <NavButton onClick={nextOpinions}>&rarr;</NavButton>
         </OpinionsNav>
       </OpinionsContainer>
-      <GridLines className="grid-lines-vertical line-on-very-top">
-        <GridLine className="g-line-vertical line-left g-line-vertical-black" />
-        <GridLine className="g-line-vertical line-center g-line-vertical-black" />
-        <GridLine className="g-line-vertical line-right g-line-vertical-black" />
+      <GridLines>
+        <GridLine/>
       </GridLines>
     </OpinionsSection>
   );

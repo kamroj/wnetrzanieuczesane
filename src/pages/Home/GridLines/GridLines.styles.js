@@ -1,11 +1,11 @@
 import { styled } from 'styled-components';
 
 const gridLineWidth = '1px';
-const gridLineBackgroundColor = 'rgba(255, 255, 255, 0.132)';
+const gridLineBackgroundColor = '#e0b54f3d';
 
 export const GridLines = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   position: absolute;
   left: 0;
   top: 0;
@@ -25,19 +25,9 @@ export const GridLines = styled.div`
 
 export const GridLine = styled.span`
   width: ${gridLineWidth};
-  background-color: ${gridLineBackgroundColor};
-  left: 0;
-
-  &.line-center {
-    left: 50%;
-  }
-
-  &.line-right {
-    right: 0;
-    left: auto;
-  }
+  background-color: ${({ theme }) => theme.colors.goldenLight};
 
   &.g-line-vertical-black {
-    background-color: #00000014;
+    background-color: ${({ theme }) => theme.colors.goldenLight};
   }
 `;

@@ -5,7 +5,7 @@ import { VscClose } from "react-icons/vsc";
 
 export const NavbarContainer = styled.div`
   transform: translate3d(0, 0, 0);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.192);
+  border-bottom: ${({theme}) => theme.borders.borderGold};
   top: 0;
   left: 0;
   right: 0;
@@ -24,7 +24,7 @@ export const NavbarContainer = styled.div`
   position: fixed;
   width: 100%;
   z-index: 80;
-  transition: background-color ${(props) => props.theme.transitions.default},
+  transition: background-color ${({theme}) => theme.transitions.default},
     color ${(props) => props.theme.transitions.default},
     position ${(props) => props.theme.transitions.default};
   box-sizing: border-box;

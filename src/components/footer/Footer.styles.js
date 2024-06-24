@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const FooterWrapper = styled.footer`
-  border-top: ${props => props.theme.colors.borderGrey};
+  border-top: ${({theme}) => theme.borders.borderGold};
   width: 100%;
   padding: 50px 20px;
   box-sizing: border-box;

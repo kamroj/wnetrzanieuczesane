@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const MenuContainer = styled.div`
   align-items: center;
   background: ${props => props.theme.colors.main};
-  border-top: 1px solid rgba(0, 0, 0, 0.188);
+  border-top: ${({theme}) => theme.borders.borderGold};
   display: flex;
   flex-direction: column;
   height: calc(100vh - ${props => props.theme.sizes.navbarHeight});
@@ -21,7 +21,7 @@ export const MenuContainer = styled.div`
 
 export const MenuPagesContainer = styled.div`
   align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.188);
+  border-bottom: ${({theme}) => theme.borders.borderGold};
   display: flex;
   flex-direction: column;
   height: 100%;

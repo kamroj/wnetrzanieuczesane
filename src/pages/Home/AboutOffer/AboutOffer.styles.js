@@ -4,7 +4,7 @@ import { Parallax } from 'react-parallax';
 
 export const StyledParallax = styled(Parallax)`
   width: 100%;
-`;
+`;  
 
 export const AboutOfferContainer = styled.section`
   display: flex;

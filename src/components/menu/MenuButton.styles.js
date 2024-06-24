@@ -5,7 +5,7 @@ export const StyledMenuButton = styled.button`
   width: 90px;
   background-color: rgb(241 235 235);
   color: ${props => props.theme.colors.black};
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  border: ${({theme}) => theme.borders.borderGold};
   border-radius: 15px;
   cursor: pointer;
   display: flex;

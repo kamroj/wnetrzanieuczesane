@@ -1,15 +1,20 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const OpinionsSection = styled.section`
-  background-color: ${({ theme }) => theme.colors.mainLight};
+  background-color: ${({ theme }) => theme.colors.main};
   padding: 80px 0;
-  margin-bottom: 80px;
+  position: relative;
+  /* margin-bottom: 80px; */
 `;
 
 export const OpinionsContainer = styled.div`
+  position: relative;
+  background-color: ${({ theme }) => theme.colors.mainLight};
+  border: ${({ theme }) => theme.borders.borderGold};
   max-width: ${({ theme }) => theme.breakpoints.phase4};
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 80px 40px;
+  z-index: 30;
 `;
 
 export const OpinionsTitle = styled.h2`

@@ -74,7 +74,7 @@ export const ScretchContainer = styled.div`
 
 export const ScretchImage = styled.img`
   top: 0;
-  right: 3%;
+  right: 1%;
   height: 100%;
   object-fit: cover;
   position: absolute;
@@ -84,6 +84,10 @@ export const ScretchImage = styled.img`
   z-index: -1;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.phase5}) {
+    width: 40%;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase4}) {
     width: 30%;
   }
 

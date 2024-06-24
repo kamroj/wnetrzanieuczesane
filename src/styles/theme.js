@@ -5,13 +5,16 @@ export const theme = {
     main: '#f1ebeb',
     mainLight: '#fbfbfb',
     background: 'rgba(241, 235, 235, 255)',
-    borderGrey: '1px solid rgb(89 86 86 / 19%);',
     golden: 'rgb(218,165,32)',
+    goldenLight: '#e0b54f3d',
     transparent: 'transparent',
     black: '#000000',
     white: '#ffffff',
     purple: 'rgba(170, 4, 168, 0.989)',
     pink: '#f872e1',
+  },
+  borders: {
+    borderGold: '1px solid #e0b54f3d',
   },
   sizes: {
     navbarHeight: '60px', 
