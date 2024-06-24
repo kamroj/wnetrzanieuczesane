@@ -56,7 +56,7 @@ function AboutCompany({ onNavigate }) {
           <ArchitectButton name="O MNIE" onClick={onNavigate} />
         </Fade>
       </ContentContainer>
-      <GridLines className="grid-lines-padding-menu">
+      <GridLines>
         <GridLine/>
       </GridLines>
     </AboutCompanyContainer>

@@ -7,7 +7,7 @@ import {
   QuotationSentence, 
   QuotationAuthor 
 } from './Quote.styles';
-import quoteImage from '../../../assets/images/quote.png';
+import quoteImage from '../../../assets/images/quote-gold.png';
 
 function Quote() {
   return (

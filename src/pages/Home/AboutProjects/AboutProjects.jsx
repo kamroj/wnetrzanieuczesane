@@ -35,7 +35,7 @@ function AboutProjects({ onNavigate }) {
       <ScretchContainer>
         <ScretchImage src={scretchImage} alt="quote-background" />
       </ScretchContainer>
-      <GridLines className="grid-lines-padding-menu">
+      <GridLines>
         <GridLine/>
       </GridLines>
     </AboutProjectsContainer>
