@@ -1,30 +1,33 @@
 // src/components/Home/Gallery/Gallery.jsx
 import React from "react";
 import PropTypes from "prop-types";
-import { GalleryContainer, Logo, StyledGallery } from "./Gallery.styles";
+import { GalleryContainer, Logo, ImageWrapper, FadingImage } from "./Gallery.styles";
 import logo from "../../../assets/images/logo-gold.png";
-
-import "../Gallery.scss";
 import { GridLine, GridLines } from "../GridLines/GridLines.styles";
+import { useImageTransition } from "../../../hooks/useImageTransition";
 
 function Gallery({ images }) {
+  const { currentIndex, nextIndex, isTransitioning } = useImageTransition(images);
+
   return (
     <GalleryContainer>
       <GridLines className="grid-lines-padding-menu line-on-very-top">
-        <GridLine/>
+        <GridLine />
       </GridLines>
-      <StyledGallery
-        items={images}
-        autoPlay
-        slideInterval={5000}
-        showNav={false}
-        showThumbnails={false}
-        additionalClass="gallery-container_gallery"
-        slideDuration={0}
-        disableSwipe
-        showFullscreenButton={false}
-        showPlayButton={false}
-      />
+      <ImageWrapper>
+        <FadingImage 
+          src={images[currentIndex].original} 
+          alt="" 
+          $active={true} 
+          $transitioning={isTransitioning} 
+        />
+        <FadingImage 
+          src={images[nextIndex].original} 
+          alt="" 
+          $active={false} 
+          $transitioning={isTransitioning} 
+        />
+      </ImageWrapper>
       <Logo src={logo} alt="dimensions" />
     </GalleryContainer>
   );
