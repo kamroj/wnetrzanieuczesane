@@ -108,18 +108,20 @@ export const MenuButtonContainer = styled.div`
 
 export const MenuIcon = styled(IoMenuOutline)`
   font-size: 2.5rem;
-  color: ${(props) =>
+  color: rgb(218, 165, 32);
+  /* color: ${(props) =>
     props.$isScrolled || props.$menuEnabled
       ? props.theme.colors.black
-      : props.theme.colors.white};
+      : props.theme.colors.white}; */
 `;
 
 export const CloseIcon = styled(VscClose)`
   font-size: 2.5rem;
-  color: ${(props) =>
+  color: rgb(218, 165, 32);
+  /* color: ${(props) =>
     props.$isScrolled || props.$menuEnabled
       ? props.theme.colors.black
-      : props.theme.colors.white};
+      : props.theme.colors.white}; */
 `;
 
 export const NavbarMenuRefContainer = styled.div`
