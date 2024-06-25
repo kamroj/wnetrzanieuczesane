@@ -1,7 +1,6 @@
+// src/components/Navbar/Navbar.styles.js
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { IoMenuOutline } from "react-icons/io5";
-import { VscClose } from "react-icons/vsc";
 
 export const NavbarContainer = styled.div`
   transform: translate3d(0, 0, 0);
@@ -83,7 +82,7 @@ export const NavbarLink = styled(Link)`
   }
 
   &:hover {
-    color: ${({ theme }) => theme.colors.golden};;
+    color: ${({ theme }) => theme.colors.golden};
 
     &::after {
       transform: scaleX(1);
@@ -99,29 +98,9 @@ export const NavbarLink = styled(Link)`
 export const MenuButtonContainer = styled.div`
   align-items: center;
   border: none;
-  color: ${(props) => props.theme.colors.black};
   cursor: pointer;
   display: flex;
-  font-family: Arial, sans-serif;
   justify-content: center;
-`;
-
-export const MenuIcon = styled(IoMenuOutline)`
-  font-size: 2.5rem;
-  color: rgb(218, 165, 32);
-  /* color: ${(props) =>
-    props.$isScrolled || props.$menuEnabled
-      ? props.theme.colors.black
-      : props.theme.colors.white}; */
-`;
-
-export const CloseIcon = styled(VscClose)`
-  font-size: 2.5rem;
-  color: rgb(218, 165, 32);
-  /* color: ${(props) =>
-    props.$isScrolled || props.$menuEnabled
-      ? props.theme.colors.black
-      : props.theme.colors.white}; */
 `;
 
 export const NavbarMenuRefContainer = styled.div`

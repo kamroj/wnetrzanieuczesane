@@ -1,3 +1,4 @@
+// src/components/Navbar/Navbar.jsx
 import React, { useContext, useState, useRef } from "react";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { CSSTransition } from "react-transition-group";
@@ -6,6 +7,7 @@ import useScroll from "../../hooks/useScroll";
 import { PagesData } from "../../pages/PagesData";
 import Menu from "../menu/Menu";
 import logo from "../../assets/images/logo.png";
+import AnimatedMenuIcon from "./AnimatedMenuIcon";
 import {
   NavbarContainer,
   NavbarSideContainer,
@@ -13,8 +15,6 @@ import {
   NavbarCenterContainer,
   NavbarLink,
   MenuButtonContainer,
-  MenuIcon,
-  CloseIcon,
   NavbarMenuRefContainer
 } from "./Navbar.styles";
 
@@ -48,12 +48,8 @@ export default function Navbar() {
       </NavbarCenterContainer>
       <NavbarSideContainer $right>
         {isMobile() && (
-          <MenuButtonContainer onClick={() => showMenu(!menuEnabled)}>
-            {!menuEnabled ? (
-              <MenuIcon $isScrolled={isScrolled} $menuEnabled={menuEnabled} />
-            ) : (
-              <CloseIcon $isScrolled={isScrolled} $menuEnabled={menuEnabled} />
-            )}
+          <MenuButtonContainer>
+            <AnimatedMenuIcon isOpen={menuEnabled} onClick={() => showMenu(!menuEnabled)} />
           </MenuButtonContainer>
         )}
       </NavbarSideContainer>
