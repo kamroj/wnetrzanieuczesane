@@ -1,3 +1,5 @@
+// src/components/Home/AboutCompany/AboutCompany.styles.js
+import { Fade } from "react-awesome-reveal";
 import styled from "styled-components";
 
 export const AboutCompanyContainer = styled.section`
@@ -6,12 +8,10 @@ export const AboutCompanyContainer = styled.section`
   justify-content: center;
   background-color: #f1ebeb;
   padding: 70px 0;
-  height: 100%;
   width: 100%;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.phase2}) {
     flex-direction: column;
-    height: 100%;
   }
 `;
 
@@ -21,15 +21,21 @@ export const PhotoContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: end;
+  align-items: flex-end;
   width: 50%;
-  position: relative;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.phase2}) {
-    align-items: center;
     width: 100%;
-    padding-right: 0px;
+    align-items: center;
+    padding-right: 0;
+    margin-bottom: 40px;
   }
+`;
+
+export const ImageSignatureWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const CompanyImage = styled.img`
@@ -39,6 +45,17 @@ export const CompanyImage = styled.img`
   border-radius: 50%;
   border: 1px solid ${({ theme }) => theme.colors.golden};
   z-index: 50;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase4}) {
+    width: 350px;
+    height: 350px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
+    width: 300px;
+    height: 300px;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.phase2}) {
     width: 250px;
     height: 250px;
@@ -52,9 +69,16 @@ export const SignatureContainer = styled.div`
   text-align: center;
   margin-top: 20px;
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase4}) {
+    font-size: 3rem;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
-    margin-bottom: 50px;
     font-size: 2.5rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase2}) {
+    font-size: 2rem;
   }
 `;
 
@@ -91,4 +115,8 @@ export const Content = styled.div`
 
 export const HighlightedText = styled.span`
   color: rgb(218, 165, 32);
+`;
+
+export const StyledFade = styled(Fade)`
+  z-index: 10;
 `;

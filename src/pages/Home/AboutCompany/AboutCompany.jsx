@@ -1,33 +1,32 @@
 // src/components/Home/AboutCompany/AboutCompany.jsx
 import PropTypes from "prop-types";
-import { Fade } from "react-awesome-reveal";
 import ArchitectButton from "../../../components/button/ArchitectButton";
 import {
   AboutCompanyContainer,
   PhotoContainer,
+  ImageSignatureWrapper,
   CompanyImage,
   SignatureContainer,
   ContentContainer,
   Header,
   Content,
-  ButtonWrapper,
   HighlightedText,
+  StyledFade,
 } from "./AboutCompany.styles";
-// import werkaPhoto from '../../../assets/images/werka-photo.png';
 import werkaPhoto from "../../../assets/images/aaaa.jpg";
 import { GridLine, GridLines } from "../GridLines/GridLines.styles";
-
-const GOLDEN_COLOR_RGB = "rgb(218,165,32)";
 
 function AboutCompany({ onNavigate }) {
   return (
     <AboutCompanyContainer>
       <PhotoContainer>
-        <CompanyImage src={werkaPhoto} alt="werka" />
-        <SignatureContainer>Weronika Rojek</SignatureContainer>
+        <ImageSignatureWrapper>
+          <CompanyImage src={werkaPhoto} alt="werka" />
+          <SignatureContainer>Weronika Rojek</SignatureContainer>
+        </ImageSignatureWrapper>
       </PhotoContainer>
       <ContentContainer>
-        <Fade delay={200} duration={1500} damping={0.4} cascade triggerOnce>
+        <StyledFade delay={200} duration={1500} damping={0.4} cascade triggerOnce>
           <Header>
             Zakochaj się w swoim kącie - Projektowanie wnętrz z pasją
           </Header>
@@ -54,7 +53,7 @@ function AboutCompany({ onNavigate }) {
             odzwierciedlają unikalną osobowość i styl życia ich mieszkańców.
           </Content>
           <ArchitectButton name="O MNIE" onClick={onNavigate} />
-        </Fade>
+        </StyledFade>
       </ContentContainer>
       <GridLines>
         <GridLine/>
