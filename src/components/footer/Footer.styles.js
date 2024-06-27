@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const FooterWrapper = styled.footer`
   border-top: ${({theme}) => theme.borders.borderGold};
   width: 100%;
-  padding: 50px 20px;
+  padding: 50px 40px;
   box-sizing: border-box;
   background-color: ${({ theme }) => theme.colors.main};
 `;

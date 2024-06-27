@@ -1,71 +1,80 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { 
   OpinionsSection,
   OpinionsContainer,
   OpinionsTitle,
-  OpinionsItem,
-  OpinionsContent,
-  OpinionsText,
-  OpinionsAuthor,
-  AuthorName,
-  AuthorTitle,
-  OpinionsImage,
+  OpinionCard,
+  OpinionText,
+  OpinionAuthor,
   OpinionsNav,
-  NavButton
+  NavButton,
+  QuoteMark,
+  DotIndicator,
+  DotContainer
 } from './Opinions.styles.js';
-import { GridLine, GridLines } from '../GridLines/GridLines.styles.js';
 
 const OpinionsExample = [
   {
     id: 1,
     text: "Jestem bardzo zadowolony z usług tej firmy. Profesjonalizm i zaangażowanie zespołu przekroczyły moje oczekiwania. Polecam każdemu, kto szuka niezawodnego partnera w biznesie.",
-    author: "Jan Kowalski",
-    image: "/path/to/your/image.jpg"
+    author: "Jan Kowalski"
   },
   {
     id: 2,
     text: "Usługi tej firmy są na najwyższym poziomie. Zespół zawsze reaguje szybko i skutecznie na nasze potrzeby. Zdecydowanie polecam ich usługi każdemu, kto ceni sobie profesjonalizm i jakość.",
-    author: "Anna Nowak",
-    image: "/path/to/your/image.jpg"
+    author: "Anna Nowak"
   }
 ];
 
 function Opinions() {
-  const [currentOpinions, setCurrentOpinions] = useState(0);
+  const [currentOpinion, setCurrentOpinion] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
 
-  const nextOpinions = () => {
-    setCurrentOpinions((prev) => (prev + 1) % OpinionsExample.length);
-  };
+  const changeOpinion = useCallback((index) => {
+    setIsAnimating(true);
+    setTimeout(() => {
+      setCurrentOpinion(index);
+      setIsAnimating(false);
+    }, 500);
+  }, []);
 
-  const prevOpinions = () => {
-    setCurrentOpinions((prev) => (prev - 1 + OpinionsExample.length) % OpinionsExample.length);
-  };
+  const nextOpinion = useCallback(() => {
+    changeOpinion((currentOpinion + 1) % OpinionsExample.length);
+  }, [currentOpinion, changeOpinion]);
 
-  const Opinions = OpinionsExample[currentOpinions];
+  const prevOpinion = useCallback(() => {
+    changeOpinion((currentOpinion - 1 + OpinionsExample.length) % OpinionsExample.length);
+  }, [currentOpinion, changeOpinion]);
+
+  useEffect(() => {
+    const interval = setInterval(nextOpinion, 10000);
+    return () => clearInterval(interval);
+  }, [nextOpinion]);
+
+  const opinion = OpinionsExample[currentOpinion];
 
   return (
     <OpinionsSection>
       <OpinionsContainer>
         <OpinionsTitle>Opinie naszych Klientów</OpinionsTitle>
-        <OpinionsItem>
-          <OpinionsContent>
-            <OpinionsText>
-              {Opinions.text}
-            </OpinionsText>
-            <OpinionsAuthor>
-              <AuthorName>{Opinions.author}</AuthorName>
-            </OpinionsAuthor>
-          </OpinionsContent>
-          <OpinionsImage src={Opinions.image} alt={Opinions.author} />
-        </OpinionsItem>
+        <OpinionCard $isAnimating={isAnimating}>
+          <OpinionText>{opinion.text}</OpinionText>
+          <OpinionAuthor>{opinion.author}</OpinionAuthor>
+        </OpinionCard>
         <OpinionsNav>
-          <NavButton onClick={prevOpinions}>&larr;</NavButton>
-          <NavButton onClick={nextOpinions}>&rarr;</NavButton>
+          <NavButton onClick={prevOpinion}>&larr;</NavButton>
+          <NavButton onClick={nextOpinion}>&rarr;</NavButton>
         </OpinionsNav>
+        <DotContainer>
+          {OpinionsExample.map((_, index) => (
+            <DotIndicator 
+              key={index} 
+              active={index === currentOpinion}
+              onClick={() => changeOpinion(index)}
+            />
+          ))}
+        </DotContainer>
       </OpinionsContainer>
-      <GridLines>
-        <GridLine/>
-      </GridLines>
     </OpinionsSection>
   );
 }
