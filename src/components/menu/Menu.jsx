@@ -12,23 +12,23 @@ import {
   MenuAnimation
 } from "./Menu.styles";
 
-export default function Menu({ menuEnabled, setMenuEnabled }) {
+export default function Menu({ menuEnabled, onLinkClick }) {
   const nodeRef = useRef(null);
   const navigate = useNavigate();
 
   const handleCall = () => {
-    window.location.href = "tel:+123456789";
-    setMenuEnabled(false);
+    window.location.href = "tel:+48668108426";
+    onLinkClick();
   };
 
   const handleNavigate = () => {
     window.location.href = "https://maps.google.com/?q=adres";
-    setMenuEnabled(false);
+    onLinkClick();
   };
 
   const handleEmail = () => {
     navigate("/contact");
-    setMenuEnabled(false);
+    onLinkClick();
   };
 
   return (
@@ -47,7 +47,9 @@ export default function Menu({ menuEnabled, setMenuEnabled }) {
               <MenuLink
                 key={index}
                 to={page.path || page.element}
-                onClick={() => setMenuEnabled(false)}
+                onClick={() => {
+                  onLinkClick();
+                }}
               >
                 {page.title}
               </MenuLink>

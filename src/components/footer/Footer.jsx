@@ -24,7 +24,7 @@ export default function Footer() {
               <SocialIcon href="https://facebook.com" target="_blank" rel="noopener noreferrer">
                 <FaFacebookF />
               </SocialIcon>
-              <SocialIcon href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+              <SocialIcon href="https://www.instagram.com/wnetrza_nieuczesane/" target="_blank" rel="noopener noreferrer">
                 <FaInstagram />
               </SocialIcon>
             </SocialIconsContainer>
@@ -35,9 +35,9 @@ export default function Footer() {
             <FooterHeader>Ostatnie projekty</FooterHeader>
             <FooterContent>
               <FooterList>
-                <li>Renowacja Pałacu Kultury</li>
-                <li>Osiedle Zielone Wzgórze</li>
-                <li>Centrum handlowe "Galeria Nowoczesna"</li>
+                <li>Projekt 1 - nazwa projektu</li>
+                <li>Projekt 2 - nazwa projektu</li>
+                <li>Projekt 3 - nazwa projektu"</li>
               </FooterList>
             </FooterContent>
           </FooterItemContent>
@@ -46,8 +46,8 @@ export default function Footer() {
           <FooterItemContent>
             <FooterHeader>Kontakt</FooterHeader>
             <FooterContent>
-              <FooterParagraph>Tel: 880 171 161</FooterParagraph>
-              <FooterParagraph>Email: kontakt@example.com</FooterParagraph>
+              <FooterParagraph>Tel: +48 668 108 426</FooterParagraph>
+              <FooterParagraph>Email: kontakt@wnetrzanieuczesane.pl</FooterParagraph>
               <FooterParagraph>Adres: ul. Kwiatowa 15, 00-001 Warszawa</FooterParagraph>
             </FooterContent>
           </FooterItemContent>

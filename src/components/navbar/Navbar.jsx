@@ -41,6 +41,7 @@ export default function Navbar() {
             <NavbarLink
               key={index}
               to={page.path || page.element}
+              onClick={() => console.log('asdasdasd')}
             >
               {page.title}
             </NavbarLink>
@@ -62,7 +63,7 @@ export default function Navbar() {
           unmountOnExit
         >
           <NavbarMenuRefContainer ref={nodeRef}>
-            <Menu menuEnabled={menuEnabled} setMenuEnabled={setMenuEnabled} />
+            <Menu menuEnabled={menuEnabled} onClick={() => showMenu(!menuEnabled)} />
           </NavbarMenuRefContainer>
         </CSSTransition>
       )}

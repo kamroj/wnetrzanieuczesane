@@ -7,7 +7,7 @@ import {
   AboutOfferContainer,
   ContentText,
 } from './AboutOffer.styles';
-import parImg from '../../../assets/images/home-par.jpg';
+import parImg from '../../../assets/images/home-par2.jpg';
 
 function AboutOffer({ onNavigate }) {
   const isMobile = useIsMobile();
@@ -15,7 +15,7 @@ function AboutOffer({ onNavigate }) {
   return (
     <StyledParallax
       bgImage={parImg}
-      strength={isMobile(750) ? 450 : 600}
+      strength={isMobile(750) ? 300 : 600}
       className="home-about-offer-parallax"
     >
       <AboutOfferContainer>
