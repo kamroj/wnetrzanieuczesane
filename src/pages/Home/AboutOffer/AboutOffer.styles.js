@@ -1,4 +1,3 @@
-// src/components/Home/AboutOffer/AboutOffer.styles.js
 import styled from 'styled-components';
 import { Parallax } from 'react-parallax';
 

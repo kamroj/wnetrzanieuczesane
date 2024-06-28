@@ -1,7 +1,6 @@
-import { styled } from 'styled-components';
+import { styled } from "styled-components";
 
-const gridLineWidth = '1px';
-const gridLineBackgroundColor = '#e0b54f3d';
+const gridLineWidth = "1px";
 
 export const GridLines = styled.div`
   display: flex;

@@ -1,4 +1,3 @@
-// src/components/Home/AboutCompany/AboutCompany.styles.js
 import { Fade } from "react-awesome-reveal";
 import styled from "styled-components";
 

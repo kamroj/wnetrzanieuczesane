@@ -1,4 +1,3 @@
-// src/components/Home/Gallery/Gallery.styles.js
 import styled, { css } from 'styled-components';
 
 export const GalleryContainer = styled.div`

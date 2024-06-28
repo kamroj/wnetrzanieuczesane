@@ -1,4 +1,3 @@
-// Opinions.styles.js
 import Slider from "react-slick";
 import styled, { keyframes } from "styled-components";
 import backgroundImage from "../../../assets/images/living-room.jpg";

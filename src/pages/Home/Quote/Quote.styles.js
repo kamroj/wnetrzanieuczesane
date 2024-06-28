@@ -1,4 +1,3 @@
-// src/components/Home/Quote/Quote.styles.js
 import styled from 'styled-components';
 
 export const QuoteContainer = styled.section`
