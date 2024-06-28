@@ -1,20 +1,35 @@
+// Opinions.styles.js
 import styled, { keyframes } from "styled-components";
-import backgroundImage from '../../../assets/images/home-par.jpg'; // Dodaj ścieżkę do swojego zdjęcia
+import Slider from "react-slick";
+import backgroundImage from '../../../assets/images/home-par.jpg';
 
-const fadeIn = keyframes`
-  from { opacity: 0; }
-  to { opacity: 1; }
+const fadeInUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 `;
 
-const fadeOut = keyframes`
-  from { opacity: 1; }
-  to { opacity: 0; }
+const fadeOutDown = keyframes`
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 `;
 
 export const OpinionsSection = styled.section`
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${backgroundImage});
   background-size: cover;
   background-position: center;
+  height: 70vh;
   width: 100%;
   padding: 20px 0;
   display: flex;
@@ -30,9 +45,13 @@ export const OpinionsContainer = styled.div`
   width: 100%;
   padding: 40px;
   z-index: 30;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase1}) {
+    padding: 40px 15px;
+  }
 `;
 
-export const OpinionsTitle = styled.h2`
+export const OpinionsTitle = styled.div`
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 50px;
@@ -45,38 +64,61 @@ export const OpinionsTitle = styled.h2`
 `;
 
 export const OpinionCard = styled.div`
-  background-color: ${({ theme }) => `${theme.colors.mainLight}CC`}; // CC na końcu dodaje 80% przezroczystości
+  background-color: ${({ theme }) => `${theme.colors.mainLight}CC`};
   border-radius: 20px;
   padding: 40px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  animation: ${({ isAnimating }) => isAnimating ? fadeOut : fadeIn} 0.5s ease-in-out;
   border: 2px solid rgb(218,165,32);
+  position: relative;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase1}) {
+    padding: 20px;
+  }
 `;
 
-export const QuoteMark = styled.span`
-  font-size: 6rem;
-  color: ${({ theme }) => theme.colors.golden};
-  position: absolute;
-  top: -20px;
-  left: 20px;
-  opacity: 0.2;
+export const OpinionContent = styled.div`
+  position: relative;
+  width: 100%;
+  animation: ${fadeInUp} 0.5s ease-in-out;
+
+  .slick-active & {
+    animation: ${fadeInUp} 0.5s ease-in-out;
+  }
+
+  .slick-slide:not(.slick-active) & {
+    animation: ${fadeOutDown} 0.5s ease-in-out;
+  }
 `;
 
-export const OpinionText = styled.p`
+export const OpinionText = styled.div`
   font-size: 1.2rem;
-  line-height: 1.8;
+  line-height: 1.4;
   color: ${({ theme }) => theme.colors.darkMain};
   margin-bottom: 20px;
   position: relative;
   z-index: 1;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase1}) {
+    font-size: 1rem;
+  }
 `;
 
-export const OpinionAuthor = styled.p`
+export const OpinionAuthor = styled.div`
   font-size: 1.1rem;
   color: ${({ theme }) => theme.colors.mediumMain};
   text-align: right;
   font-weight: bold;
+`;
+
+export const StyledSlider = styled(Slider)`
+  .slick-dots {
+    display: none !important;
+  }
 `;
 
 export const OpinionsNav = styled.div`
@@ -106,13 +148,13 @@ export const DotContainer = styled.div`
   margin-top: 20px;
 `;
 
-export const DotIndicator = styled.button`
-  width: 5px;
-  height: 5px;
+export const CustomDot = styled.button`
+  width: 3px;
+  height: 3px;
   border-radius: 50%;
-  background-color: ${({ active, theme }) => active ? theme.colors.golden : theme.colors.goldenLight};
+  background-color: ${({ $active, theme }) => $active ? theme.colors.golden : theme.colors.goldenLight};
   border: none;
-  margin: 0 3px;
+  margin: 0 5px;
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 0;
@@ -124,6 +166,6 @@ export const DotIndicator = styled.button`
   &::after {
     content: '';
     display: block;
-    padding-bottom: 100%; 
+    padding-bottom: 100%;
   }
 `;

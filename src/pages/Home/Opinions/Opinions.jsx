@@ -1,76 +1,80 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { 
+// Opinions.jsx
+import React, { useState, useEffect } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import {
   OpinionsSection,
   OpinionsContainer,
   OpinionsTitle,
   OpinionCard,
   OpinionText,
   OpinionAuthor,
-  OpinionsNav,
+  StyledSlider,
+  CustomDot,
   NavButton,
-  QuoteMark,
-  DotIndicator,
+  OpinionContent,
+  OpinionsNav,
   DotContainer
-} from './Opinions.styles.js';
+} from "./Opinions.styles.js";
 
 const OpinionsExample = [
   {
     id: 1,
     text: "Jestem bardzo zadowolony z usług tej firmy. Profesjonalizm i zaangażowanie zespołu przekroczyły moje oczekiwania. Polecam każdemu, kto szuka niezawodnego partnera w biznesie.",
-    author: "Jan Kowalski"
+    author: "Jan Kowalski",
   },
   {
     id: 2,
     text: "Usługi tej firmy są na najwyższym poziomie. Zespół zawsze reaguje szybko i skutecznie na nasze potrzeby. Zdecydowanie polecam ich usługi każdemu, kto ceni sobie profesjonalizm i jakość.",
-    author: "Anna Nowak"
-  }
+    author: "Anna Nowak",
+  },
 ];
 
 function Opinions() {
-  const [currentOpinion, setCurrentOpinion] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const sliderRef = React.useRef(null);
 
-  const changeOpinion = useCallback((index) => {
-    setIsAnimating(true);
-    setTimeout(() => {
-      setCurrentOpinion(index);
-      setIsAnimating(false);
-    }, 500);
-  }, []);
-
-  const nextOpinion = useCallback(() => {
-    changeOpinion((currentOpinion + 1) % OpinionsExample.length);
-  }, [currentOpinion, changeOpinion]);
-
-  const prevOpinion = useCallback(() => {
-    changeOpinion((currentOpinion - 1 + OpinionsExample.length) % OpinionsExample.length);
-  }, [currentOpinion, changeOpinion]);
-
-  useEffect(() => {
-    const interval = setInterval(nextOpinion, 10000);
-    return () => clearInterval(interval);
-  }, [nextOpinion]);
-
-  const opinion = OpinionsExample[currentOpinion];
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: false,
+    autoplaySpeed: 5000,
+    fade: true,
+    cssEase: "linear",
+    arrows: false,
+    beforeChange: (oldIndex, newIndex) => setCurrentSlide(newIndex),
+  };
 
   return (
     <OpinionsSection>
       <OpinionsContainer>
         <OpinionsTitle>Opinie naszych Klientów</OpinionsTitle>
-        <OpinionCard $isAnimating={isAnimating}>
-          <OpinionText>{opinion.text}</OpinionText>
-          <OpinionAuthor>{opinion.author}</OpinionAuthor>
-        </OpinionCard>
+        <StyledSlider ref={sliderRef} {...settings}>
+          {OpinionsExample.map((opinion) => (
+            <div key={opinion.id}>
+              <OpinionCard>
+                <OpinionContent>
+                  <OpinionText>{opinion.text}</OpinionText>
+                  <OpinionAuthor>{opinion.author}</OpinionAuthor>
+                </OpinionContent>
+              </OpinionCard>
+            </div>
+          ))}
+        </StyledSlider>
         <OpinionsNav>
-          <NavButton onClick={prevOpinion}>&larr;</NavButton>
-          <NavButton onClick={nextOpinion}>&rarr;</NavButton>
+          <NavButton onClick={() => sliderRef.current.slickPrev()}>&larr;</NavButton>
+          <NavButton onClick={() => sliderRef.current.slickNext()}>&rarr;</NavButton>
         </OpinionsNav>
         <DotContainer>
           {OpinionsExample.map((_, index) => (
-            <DotIndicator 
+            <CustomDot 
               key={index} 
-              active={index === currentOpinion}
-              onClick={() => changeOpinion(index)}
+              $active={index === currentSlide}
+              onClick={() => sliderRef.current.slickGoTo(index)}
             />
           ))}
         </DotContainer>
