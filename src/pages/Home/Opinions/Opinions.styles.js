@@ -1,7 +1,7 @@
 // Opinions.styles.js
-import styled, { keyframes } from "styled-components";
 import Slider from "react-slick";
-import backgroundImage from '../../../assets/images/home-par.jpg';
+import styled, { keyframes } from "styled-components";
+import backgroundImage from "../../../assets/images/living-room.jpg";
 
 const fadeInUp = keyframes`
   from {
@@ -26,7 +26,8 @@ const fadeOutDown = keyframes`
 `;
 
 export const OpinionsSection = styled.section`
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${backgroundImage});
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)),
+    url(${backgroundImage});
   background-size: cover;
   background-position: center;
   height: 70vh;
@@ -56,7 +57,7 @@ export const OpinionsTitle = styled.div`
   text-align: center;
   margin-bottom: 50px;
   color: ${({ theme }) => theme.colors.mainLight};
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.phase1}) {
     font-size: 2rem;
@@ -69,7 +70,7 @@ export const OpinionCard = styled.div`
   padding: 40px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  border: 2px solid rgb(218,165,32);
+  border: 2px solid rgb(218, 165, 32);
   position: relative;
   min-height: 200px;
   display: flex;
@@ -119,6 +120,10 @@ export const StyledSlider = styled(Slider)`
   .slick-dots {
     display: none !important;
   }
+
+  &.slick-slider {
+    padding: 10px;
+  }
 `;
 
 export const OpinionsNav = styled.div`
@@ -152,7 +157,8 @@ export const CustomDot = styled.button`
   width: 3px;
   height: 3px;
   border-radius: 50%;
-  background-color: ${({ $active, theme }) => $active ? theme.colors.golden : theme.colors.goldenLight};
+  background-color: ${({ $active, theme }) =>
+    $active ? theme.colors.golden : theme.colors.goldenLight};
   border: none;
   margin: 0 5px;
   cursor: pointer;
@@ -164,7 +170,7 @@ export const CustomDot = styled.button`
   }
 
   &::after {
-    content: '';
+    content: "";
     display: block;
     padding-bottom: 100%;
   }

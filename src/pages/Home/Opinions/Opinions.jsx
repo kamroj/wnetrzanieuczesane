@@ -1,21 +1,20 @@
 // Opinions.jsx
-import React, { useState, useEffect } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
+import React, { useState } from "react";
 import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 import {
-  OpinionsSection,
-  OpinionsContainer,
-  OpinionsTitle,
-  OpinionCard,
-  OpinionText,
-  OpinionAuthor,
-  StyledSlider,
   CustomDot,
+  DotContainer,
   NavButton,
+  OpinionAuthor,
+  OpinionCard,
   OpinionContent,
+  OpinionText,
+  OpinionsContainer,
   OpinionsNav,
-  DotContainer
+  OpinionsSection,
+  OpinionsTitle,
+  StyledSlider,
 } from "./Opinions.styles.js";
 
 const OpinionsExample = [
@@ -41,7 +40,7 @@ function Opinions() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 5000,
     fade: true,
     cssEase: "linear",
@@ -66,13 +65,17 @@ function Opinions() {
           ))}
         </StyledSlider>
         <OpinionsNav>
-          <NavButton onClick={() => sliderRef.current.slickPrev()}>&larr;</NavButton>
-          <NavButton onClick={() => sliderRef.current.slickNext()}>&rarr;</NavButton>
+          <NavButton onClick={() => sliderRef.current.slickPrev()}>
+            &larr;
+          </NavButton>
+          <NavButton onClick={() => sliderRef.current.slickNext()}>
+            &rarr;
+          </NavButton>
         </OpinionsNav>
         <DotContainer>
           {OpinionsExample.map((_, index) => (
-            <CustomDot 
-              key={index} 
+            <CustomDot
+              key={index}
               $active={index === currentSlide}
               onClick={() => sliderRef.current.slickGoTo(index)}
             />
