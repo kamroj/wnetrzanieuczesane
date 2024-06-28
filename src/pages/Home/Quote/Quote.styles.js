@@ -63,7 +63,7 @@ export const QuotationSentence = styled.div`
   justify-content: center;
 
   @media (max-width: ${props => props.theme.breakpoints.phase1}) {
-    text-align: center;
+    /* text-align: center; */
   }
 `;
 
@@ -74,6 +74,7 @@ export const QuotationAuthor = styled.div`
   
   @media (max-width: ${props => props.theme.breakpoints.phase1}) {
     padding-top: 20px;
+    text-align: end;
     font-size: ${props => props.theme.fontSizes.phase1};
   }
 `;

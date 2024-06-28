@@ -23,7 +23,8 @@ function Quote() {
           Dobry projekt architektoniczny jest mądry.
         </QuotationSentence>
         <QuotationAuthor>
-          Peter Zumthor, Myślenie architekturą
+          Peter Zumthor <br /> 
+          Myślenie architekturą
         </QuotationAuthor>
       </QuotationContainer>
       <QuoteImageContainer>
