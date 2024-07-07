@@ -40,12 +40,12 @@ export const Header = styled.div`
   font-size: 4rem;
   font-weight: 100;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.phase1}) {
-    font-size: 2rem;
-  }
-
   @media (max-width: ${({ theme }) => theme.breakpoints.phase5}) {
     font-size: 3rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase2}) {
+    font-size: 2.5rem;
   }
 `;
 

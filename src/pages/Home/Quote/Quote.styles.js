@@ -61,10 +61,6 @@ export const QuotationSentence = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  @media (max-width: ${props => props.theme.breakpoints.phase1}) {
-    /* text-align: center; */
-  }
 `;
 
 export const QuotationAuthor = styled.div`
