@@ -9,7 +9,7 @@ export const ProjectContainer = styled.div`
 export const HeaderImage = styled.div`
   width: 100%;
   height: 40vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url(${props => props.backgroundImage}); 
+  background-image: ${props => `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url(${props.$backgroundimage})`};
   background-size: cover;
   background-position: center;
   display: flex;

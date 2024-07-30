@@ -21,13 +21,26 @@ export const HeaderImage = styled.div`
 export const HeaderTitle = styled.div`
   font-size: 3rem;
   color: ${({ theme }) => theme.colors.golden};
+  text-align: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase4}) {
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase2}) {
+    font-size: 1.5rem;
+  }
 `;
 
 export const ProjectsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  padding: 3rem 2rem;
 `;
 
 export const ProjectItem = styled.div`
@@ -37,6 +50,7 @@ export const ProjectItem = styled.div`
   margin-bottom: 2rem;
   border: 1px solid ${({ theme }) => theme.colors.golden};
   transition: transform 0.3s ease;
+  overflow: hidden;
 
   &:hover {
     transform: scale(1.02);
@@ -68,6 +82,9 @@ export const ProjectImage = styled.img`
 export const ProjectDetails = styled.div`
   padding: 1rem;
   width: 60%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
     width: 100%;
@@ -76,18 +93,49 @@ export const ProjectDetails = styled.div`
 
 export const ProjectTitle = styled.h2`
   color: ${({ theme }) => theme.colors.black};
-  margin-bottom: 0.5rem;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase4}) {
+    font-size: 1.3rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase2}) {
+    font-size: 1.1rem;
+  }
 `;
 
 export const ProjectDescription = styled.p`
   color: ${({ theme }) => theme.colors.black};
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase4}) {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase2}) {
+    font-size: 0.8rem;
+  }
 `;
 
 export const PaginationContainer = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
 `;
 
 export const PaginationButton = styled.button`
