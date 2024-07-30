@@ -9,6 +9,7 @@ import Contact from "./pages/Contact/Contact";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import Portfolio from "./pages/Portfolio/Portfolio";
+import Project from "./pages/Portfolio/Project";
 
 export const IsMobileContext = React.createContext();
 
@@ -19,18 +20,19 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <IsMobileContext.Provider value={isMobile}>
-        <QueryClientProvider client={queryClient}>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/Contact" element={<Contact />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-          </Routes>
-          <Footer />
-        </QueryClientProvider>
-      </IsMobileContext.Provider>
-    </ThemeProvider>
+    <IsMobileContext.Provider value={isMobile}>
+      <QueryClientProvider client={queryClient}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/portfolio/:slug" element={<Project />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+        <Footer />
+      </QueryClientProvider>
+    </IsMobileContext.Provider>
+  </ThemeProvider>
   );
 }
 

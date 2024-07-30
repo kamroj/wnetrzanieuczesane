@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const FooterWrapper = styled.footer`
@@ -83,4 +84,14 @@ export const FooterList = styled.ul`
 
 export const FooterParagraph = styled.p`
   margin: 0 0 10px 0;
+`;
+
+export const LatestProjectLink = styled(Link)`
+  color: ${({ theme }) => theme.colors.black};
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.golden};
+  }
 `;

@@ -1,5 +1,9 @@
+// src/components/footer/Footer.jsx
 import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import sanityClient from '../../SanityClient';
 import {
   FooterWrapper,
   FooterContainer,
@@ -10,10 +14,22 @@ import {
   SocialIconsContainer,
   SocialIcon,
   FooterList,
-  FooterParagraph
+  FooterParagraph,
+  LatestProjectLink
 } from "./Footer.styles";
 
-export default function Footer() {
+function Footer() {
+  const { data: latestProjects } = useQuery({
+    queryKey: ["latestProjects"],
+    queryFn: () => sanityClient.fetch(`
+      *[_type == "portfolio"] | order(createdAt desc)[0...3] {
+        title,
+        slug,
+        createdAt
+      }
+    `),
+  });
+
   return (
     <FooterWrapper>
       <FooterContainer>
@@ -35,9 +51,13 @@ export default function Footer() {
             <FooterHeader>Ostatnie projekty</FooterHeader>
             <FooterContent>
               <FooterList>
-                <li>Projekt 1 - nazwa projektu</li>
-                <li>Projekt 2 - nazwa projektu</li>
-                <li>Projekt 3 - nazwa projektu"</li>
+                {latestProjects && latestProjects.map((project) => (
+                  <li key={project.slug.current}>
+                    <LatestProjectLink to={`/portfolio/${project.slug.current}`}>
+                      {project.title}
+                    </LatestProjectLink>
+                  </li>
+                ))}
               </FooterList>
             </FooterContent>
           </FooterItemContent>
@@ -56,3 +76,5 @@ export default function Footer() {
     </FooterWrapper>
   );
 }
+
+export default Footer;
