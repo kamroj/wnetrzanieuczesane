@@ -41,7 +41,6 @@ export default function Navbar() {
             <NavbarLink
               key={index}
               to={page.path || page.element}
-              onClick={() => console.log('asdasdasd')}
             >
               {page.title}
             </NavbarLink>
