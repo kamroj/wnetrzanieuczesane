@@ -3,7 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { GalleryContainer, Logo, ImageWrapper, FadingImage } from "./Gallery.styles";
 import logo from "../../../assets/images/logo-gold.png";
-import { GridLine, GridLines } from "../GridLines/GridLines.styles";
+import { GridLine, GridLines } from "../../../components/GridLines/GridLines.styles";
 import { useImageTransition } from "../../../hooks/useImageTransition";
 
 function Gallery({ images }) {

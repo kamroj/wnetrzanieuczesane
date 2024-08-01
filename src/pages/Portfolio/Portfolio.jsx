@@ -18,7 +18,7 @@ import {
   PaginationEllipsis
 } from './Portfolio.styles';
 import Loading from '../Loading/Loading';
-import { GridLine, GridLines } from '../Home/GridLines/GridLines.styles';
+import { GridLine, GridLines } from '../../components/GridLines/GridLines.styles';
 
 const PROJECTS_PER_PAGE = 5;
 const MIN_PAGE_NUMBER = 1;

@@ -11,7 +11,7 @@ import {
 } from "./AboutProjects.styles";
 import ArchitectButton from "../../../components/button/ArchitectButton";
 import scretchImage from "../../../assets/images/scretch.png";
-import { GridLine, GridLines } from "../GridLines/GridLines.styles";
+import { GridLine, GridLines } from "../../../components/GridLines/GridLines.styles";
 
 function AboutProjects({ onNavigate }) {
   return (

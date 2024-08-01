@@ -14,7 +14,7 @@ import {
   StyledFade,
 } from "./AboutCompany.styles";
 import werkaPhoto from "../../../assets/images/aaaa.jpg";
-import { GridLine, GridLines } from "../GridLines/GridLines.styles";
+import { GridLine, GridLines } from "../../../components/GridLines/GridLines.styles";
 
 function AboutCompany({ onNavigate }) {
   return (
