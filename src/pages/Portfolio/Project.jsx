@@ -14,7 +14,8 @@ import {
     ProjectDescription,
     GalleryContainer
 } from './Project.styles';
-import defaultImage from '../../assets/images/portfolio/top-img.jpg';
+import defaultImage from '../../assets/images/portfolio/portfolio-header-img.jpg';
+import { useIsMobile } from '../../hooks/useIsMobile';
 
 const fetchProject = async ({ queryKey }) => {
     // eslint-disable-next-line no-unused-vars
@@ -37,6 +38,7 @@ const getGalleryItems = (images) =>
 
 function Project() {
     const { slug } = useParams();
+    const isMobile = useIsMobile();
     const { data: project, error, isLoading } = useQuery({
         queryKey: ["project", slug],
         queryFn: fetchProject
@@ -63,7 +65,7 @@ function Project() {
                             showPlayButton={false}
                             showFullscreenButton={true}
                             showNav={true}
-                            slideDuration={800}
+                            slideDuration={isMobile(750) ? 300 : 800}
                             slideInterval={5000}
                         />
                     </GalleryContainer>

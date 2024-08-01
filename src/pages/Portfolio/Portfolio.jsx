@@ -5,8 +5,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import sanityClient from '../../SanityClient';
 import {
   PortfolioContainer,
-  HeaderImage,
-  HeaderTitle,
   ProjectsContainer,
   ProjectItem,
   ProjectImage,
@@ -19,6 +17,8 @@ import {
 } from './Portfolio.styles';
 import Loading from '../Loading/Loading';
 import { GridLine, GridLines } from '../../components/GridLines/GridLines.styles';
+import PageHeader from '../../components/PageHeader/PageHeader';
+import topImg from "../../assets/images/portfolio/portfolio-header-img.jpg";
 
 const PROJECTS_PER_PAGE = 5;
 const MIN_PAGE_NUMBER = 1;
@@ -44,9 +44,7 @@ function Portfolio() {
 
   return (
     <PortfolioContainer>
-      <HeaderImage>
-        <HeaderTitle>PROJEKTY</HeaderTitle>
-      </HeaderImage>
+      <PageHeader title="PROJEKTY" backgroundImage={topImg} />
       <ProjectsContainer>
         <GridLines className="line-on-very-bottom">
           <GridLine />

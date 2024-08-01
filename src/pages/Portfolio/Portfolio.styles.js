@@ -1,39 +1,8 @@
 // src/pages/Portfolio/Portfolio.styles.js
 import styled from 'styled-components';
-import topImg from "../../assets/images/portfolio/top-img.jpg";
 
 export const PortfolioContainer = styled.div`
   width: 100%;
-`;
-
-export const HeaderImage = styled.div`
-  width: 100%;
-  height: 30vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url(${topImg}); 
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: ${({ theme }) => theme.borders.borderGold};
-`;
-
-export const HeaderTitle = styled.div`
-  font-size: 3rem;
-  color: ${({ theme }) => theme.colors.golden};
-  text-align: center;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.phase4}) {
-    font-size: 2.5rem;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
-    font-size: 2rem;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.phase2}) {
-    font-size: 1.5rem;
-  }
 `;
 
 export const ProjectsContainer = styled.div`
