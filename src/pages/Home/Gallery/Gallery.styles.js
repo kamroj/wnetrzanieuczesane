@@ -37,8 +37,7 @@ export const Logo = styled.img`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 40vh;
-  width: 40%;
+  height: 30vh;
   object-fit: contain;
   pointer-events: none;
   z-index: 4;

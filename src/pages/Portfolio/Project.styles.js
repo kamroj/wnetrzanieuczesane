@@ -49,6 +49,10 @@ export const GalleryContainer = styled.div`
     object-fit: cover;
   }
 
+  .fullscreen .image-gallery-slide img {
+    height: 100vh;
+}
+
   .image-gallery-thumbnail {
     width: 80px;
     height: 60px;
