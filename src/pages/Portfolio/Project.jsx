@@ -63,7 +63,6 @@ function Project() {
                             showPlayButton={false}
                             showFullscreenButton={true}
                             showNav={true}
-                            autoPlay={true}
                             slideDuration={800}
                             slideInterval={5000}
                         />
