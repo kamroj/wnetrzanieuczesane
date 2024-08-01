@@ -1,7 +1,6 @@
 // src/components/footer/Footer.jsx
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router-dom";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import sanityClient from '../../SanityClient';
 import {

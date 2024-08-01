@@ -18,6 +18,7 @@ import {
   PaginationEllipsis
 } from './Portfolio.styles';
 import Loading from '../Loading/Loading';
+import { GridLine, GridLines } from '../Home/GridLines/GridLines.styles';
 
 const PROJECTS_PER_PAGE = 5;
 const MIN_PAGE_NUMBER = 1;
@@ -47,6 +48,9 @@ function Portfolio() {
         <HeaderTitle>PROJEKTY</HeaderTitle>
       </HeaderImage>
       <ProjectsContainer>
+        <GridLines className="line-on-very-bottom">
+          <GridLine />
+        </GridLines>
         {renderProjects(currentProjects)}
       </ProjectsContainer>
       <PaginationContainer aria-label="Pagination">

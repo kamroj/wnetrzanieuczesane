@@ -37,6 +37,7 @@ export const HeaderTitle = styled.div`
 `;
 
 export const ProjectsContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;

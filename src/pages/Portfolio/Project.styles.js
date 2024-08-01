@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import 'react-image-gallery/styles/css/image-gallery.css';
-import { Link } from 'react-router-dom';
 
 export const ProjectContainer = styled.div`
   width: 100%;

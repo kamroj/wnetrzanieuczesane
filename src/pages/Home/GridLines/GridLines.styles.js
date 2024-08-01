@@ -20,6 +20,10 @@ export const GridLines = styled.div`
   &.line-on-very-top {
     z-index: 10;
   }
+
+  &.line-on-very-bottom {
+    z-index: -1;
+  }
 `;
 
 export const GridLine = styled.span`
