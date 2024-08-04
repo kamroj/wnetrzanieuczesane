@@ -10,6 +10,7 @@ import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import Portfolio from "./pages/Portfolio/Portfolio";
 import Project from "./pages/Portfolio/Project";
+import ProcessDesign from "./pages/ProcessDesign/ProcessDesign";
 
 export const IsMobileContext = React.createContext();
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/portfolio/:slug" element={<Project />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/process" element={<ProcessDesign />} />
         </Routes>
         <Footer />
       </QueryClientProvider>
