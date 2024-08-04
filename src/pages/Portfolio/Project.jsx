@@ -7,14 +7,12 @@ import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
 import {
     ProjectContainer,
-    HeaderImage,
-    HeaderTitle,
     ProjectContent,
     ProjectTitle,
     ProjectDescription,
     GalleryContainer
 } from './Project.styles';
-import defaultImage from '../../assets/images/portfolio/portfolio-header-img.jpg';
+import PageHeader from '../../components/PageHeader/PageHeader';
 import { useIsMobile } from '../../hooks/useIsMobile';
 
 const fetchProject = async ({ queryKey }) => {
@@ -47,14 +45,12 @@ function Project() {
     if (isLoading) return <Loading />;
     if (error) return <div>Error loading project: {error.message}</div>;
 
-    const mainImage = project.galleryImages?.[0]?.url ?? defaultImage;
+    const mainImage = project.galleryImages?.[0]?.url;
     const galleryItems = getGalleryItems(project.galleryImages);
 
     return (
         <ProjectContainer>
-            <HeaderImage $backgroundimage={mainImage}>
-                <HeaderTitle>{project.title.toUpperCase()}</HeaderTitle>
-            </HeaderImage>
+            <PageHeader title={project.title.toUpperCase()} backgroundImage={mainImage} />
             <ProjectContent>
                 <ProjectTitle>{project.title}</ProjectTitle>
                 <ProjectDescription>{project.fullDescription}</ProjectDescription>

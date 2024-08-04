@@ -2,8 +2,6 @@ import React from 'react';
 import { Fade } from "react-awesome-reveal";
 import {
     ProcessContainer,
-    HeaderImage,
-    HeaderTitle,
     ProcessContent,
     ProcessStep,
     StepNumber,
