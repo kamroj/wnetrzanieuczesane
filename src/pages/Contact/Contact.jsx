@@ -15,12 +15,17 @@ import {
   RecaptchaWrapper
 } from './Contact.styles';
 import topImg from '../../assets/images/living-room.jpg';
+import { GridLine, GridLines } from '../../components/GridLines/GridLines.styles';
 
 function Contact() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
+  const [floorPlanLink, setFloorPlanLink] = useState('');
+  const [roomsToDesign, setRoomsToDesign] = useState('');
+  const [investmentStatus, setInvestmentStatus] = useState('');
+  const [projectDeadline, setProjectDeadline] = useState('');
   const [captcha, setCaptcha] = useState(null);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -35,6 +40,11 @@ function Contact() {
     e.preventDefault();
     setError('');
     setSuccess('');
+
+    if (!name) {
+      setError('Proszę wpisać imię i nazwisko.');
+      return;
+    }
 
     if (!email) {
       setError('Proszę wpisać adres email.');
@@ -51,11 +61,22 @@ function Contact() {
       return;
     }
 
+    const templateParams = {
+      name,
+      email,
+      phone,
+      roomsToDesign,
+      investmentStatus,
+      projectDeadline,
+      message,
+      floorPlanLink
+    };
+
     try {
-      const result = await emailjs.sendForm(
+      const result = await emailjs.send(
         'service_4i2pydj',
         'template_ab4cvss',
-        formRef.current,
+        templateParams,
         'ZCvu6YfG1l3tmISDU'
       );
 
@@ -65,6 +86,10 @@ function Contact() {
         setEmail('');
         setPhone('');
         setMessage('');
+        setFloorPlanLink('');
+        setRoomsToDesign('');
+        setInvestmentStatus('');
+        setProjectDeadline('');
         setCaptcha(null);
       } else {
         setError('Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie później.');
@@ -79,7 +104,7 @@ function Contact() {
       <PageHeader title="KONTAKT" backgroundImage={topImg} />
       <ContactForm ref={formRef} onSubmit={handleSubmit}>
         <FormGroup>
-          <Label htmlFor="name">Imię i nazwisko</Label>
+          <Label htmlFor="name">Imię i nazwisko *</Label>
           <Input
             type="text"
             id="name"
@@ -111,13 +136,56 @@ function Contact() {
           />
         </FormGroup>
         <FormGroup>
+          <Label htmlFor="floorPlanLink">Link do rzutu nieruchomości (2D)</Label>
+          <Input
+            type="text"
+            id="floorPlanLink"
+            name="floorPlanLink"
+            value={floorPlanLink}
+            onChange={(e) => setFloorPlanLink(e.target.value)}
+            placeholder="Proszę dodać link do pliku (np. Google Drive, Dropbox)"
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label htmlFor="roomsToDesign">Pomieszczenia do zaprojektowania</Label>
+          <TextArea
+            id="roomsToDesign"
+            name="roomsToDesign"
+            value={roomsToDesign}
+            onChange={(e) => setRoomsToDesign(e.target.value)}
+            placeholder="Wszystkie lub kuchnia, salon, łazienka itp."
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label htmlFor="investmentStatus">Stan inwestycji</Label>
+          <Input
+            type="text"
+            id="investmentStatus"
+            name="investmentStatus"
+            value={investmentStatus}
+            onChange={(e) => setInvestmentStatus(e.target.value)}
+            placeholder="np. stan surowy, stan deweloperski, do remontu"
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label htmlFor="projectDeadline">Termin projektu</Label>
+          <Input
+            type="text"
+            id="projectDeadline"
+            name="projectDeadline"
+            value={projectDeadline}
+            onChange={(e) => setProjectDeadline(e.target.value)}
+            placeholder="Do kiedy projekt ma być wykonany"
+          />
+        </FormGroup>
+        <FormGroup>
           <Label htmlFor="message">Wiadomość</Label>
           <TextArea
             id="message"
             name="message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            required
+            placeholder="Dodatkowe informacje bądź pytania"
           />
         </FormGroup>
         <RecaptchaWrapper>
@@ -130,6 +198,9 @@ function Contact() {
         {success && <SuccessMessage>{success}</SuccessMessage>}
         <ArchitectButton name="WYŚLIJ" type="submit" />
       </ContactForm>
+      <GridLines className="line-on-very-bottom">
+        <GridLine />
+      </GridLines>
     </ContactContainer>
   );
 }

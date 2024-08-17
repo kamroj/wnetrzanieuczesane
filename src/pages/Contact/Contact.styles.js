@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-const marginBottom = '1.5rem';
-
 export const ContactContainer = styled.div`
   width: 100%;
 `;
@@ -16,7 +14,7 @@ export const ContactForm = styled.form`
 `;
 
 export const FormGroup = styled.div`
-  margin-bottom: ${marginBottom};
+  margin-bottom: 1.5rem;
 `;
 
 export const Label = styled.label`
@@ -31,6 +29,8 @@ export const Input = styled.input`
   border: 1px solid ${({ theme }) => theme.colors.golden};
   background-color: ${({ theme }) => theme.colors.white};
   box-sizing: border-box; 
+  font-family: inherit; 
+  font-size: inherit; 
 `;
 
 export const TextArea = styled.textarea`
@@ -41,6 +41,8 @@ export const TextArea = styled.textarea`
   min-height: 150px;
   box-sizing: border-box; 
   resize: vertical; 
+  font-family: inherit;
+  font-size: inherit;
 `;
 
 export const ErrorMessage = styled.div`
@@ -54,5 +56,5 @@ export const SuccessMessage = styled.div`
 `;
 
 export const RecaptchaWrapper = styled.div`
-  margin-bottom: ${marginBottom};
+  margin-bottom: 1.5rem;
 `;
