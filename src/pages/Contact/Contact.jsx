@@ -12,7 +12,8 @@ import {
   TextArea,
   ErrorMessage,
   SuccessMessage,
-  RecaptchaWrapper
+  RecaptchaWrapper,
+  Select
 } from './Contact.styles';
 import topImg from '../../assets/images/living-room.jpg';
 import { GridLine, GridLines } from '../../components/GridLines/GridLines.styles';
@@ -26,6 +27,7 @@ function Contact() {
   const [roomsToDesign, setRoomsToDesign] = useState('');
   const [investmentStatus, setInvestmentStatus] = useState('');
   const [projectDeadline, setProjectDeadline] = useState('');
+  const [offerType, setOfferType] = useState('PODSTAWOWA');
   const [captcha, setCaptcha] = useState(null);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -69,7 +71,8 @@ function Contact() {
       investmentStatus,
       projectDeadline,
       message,
-      floorPlanLink
+      floorPlanLink,
+      offerType
     };
 
     try {
@@ -90,6 +93,7 @@ function Contact() {
         setRoomsToDesign('');
         setInvestmentStatus('');
         setProjectDeadline('');
+        setOfferType('PODSTAWOWA');
         setCaptcha(null);
       } else {
         setError('Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie później.');
@@ -134,6 +138,18 @@ function Contact() {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
           />
+        </FormGroup>
+        <FormGroup>
+          <Label htmlFor="offerType">Oferta</Label>
+          <Select
+            id="offerType"
+            name="offerType"
+            value={offerType}
+            onChange={(e) => setOfferType(e.target.value)}
+          >
+            <option value="PODSTAWOWA">PODSTAWOWA</option>
+            <option value="KOMPLEKSOWA">KOMPLEKSOWA</option>
+          </Select>
         </FormGroup>
         <FormGroup>
           <Label htmlFor="floorPlanLink">Link do rzutu nieruchomości (2D)</Label>
