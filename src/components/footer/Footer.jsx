@@ -67,7 +67,6 @@ function Footer() {
             <FooterContent>
               <FooterParagraph>Tel: +48 668 108 426</FooterParagraph>
               <FooterParagraph>Email: kontakt@wnetrzanieuczesane.pl</FooterParagraph>
-              <FooterParagraph>Adres: ul. Kwiatowa 15, 00-001 Warszawa</FooterParagraph>
             </FooterContent>
           </FooterItemContent>
         </FooterItemContainer>

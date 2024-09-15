@@ -5,7 +5,7 @@ import { HeaderImage, HeaderTitle } from './PageHeader.styles';
 function PageHeader({ title, backgroundImage }) {
   return (
     <HeaderImage $backgroundImage={backgroundImage}>
-      <HeaderTitle>{title}</HeaderTitle>
+      <HeaderTitle>{title.toUpperCase()}</HeaderTitle>
     </HeaderImage>
   );
 }

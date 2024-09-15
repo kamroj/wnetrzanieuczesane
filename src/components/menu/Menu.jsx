@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { CSSTransition } from 'react-transition-group';
-import { IoCallOutline, IoMailOutline, IoNavigateOutline } from "react-icons/io5";
+import { IoCallOutline, IoMailOutline } from "react-icons/io5";
 import { PagesData } from "../../pages/PagesData";
 import MenuButton from "./MenuButton";
 import { 
@@ -18,11 +18,6 @@ export default function Menu({ menuEnabled, onLinkClick }) {
 
   const handleCall = () => {
     window.location.href = "tel:+48668108426";
-    onLinkClick();
-  };
-
-  const handleNavigate = () => {
-    window.location.href = "https://maps.google.com/?q=adres";
     onLinkClick();
   };
 
@@ -60,11 +55,6 @@ export default function Menu({ menuEnabled, onLinkClick }) {
               title="ZADZWOŃ"
               icon={<IoCallOutline />}
               action={handleCall}
-            />
-            <MenuButton
-              title="NAWIGUJ"
-              icon={<IoNavigateOutline />}
-              action={handleNavigate}
             />
             <MenuButton
               title="EMAIL"

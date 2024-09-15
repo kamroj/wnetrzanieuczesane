@@ -1,63 +1,80 @@
 import React from 'react';
-import { Fade } from "react-awesome-reveal";
+import { useQuery } from "@tanstack/react-query";
+import sanityClient from '../../SanityClient';
+import PageHeader from '../../components/PageHeader/PageHeader';
+import Loading from '../Loading/Loading';
 import {
-    ProcessContainer,
-    ProcessContent,
-    ProcessStep,
-    StepNumber,
-    StepContent,
-    StepTitle,
-    StepDescription,
-    AdditionalInfo,
-    ContactEmail
+  ProcessContainer,
+  ProcessContent,
+  ProcessStep,
+  StepDiamond,
+  StepNumber,
+  StepContent,
+  StepTitle,
+  StepDescription,
+  StepImageContainer,
+  StepImage,
+  StepDivider,
+  GridLineWrapper
 } from './ProcessDesign.styles';
 import topImg from "../../assets/images/portfolio/portfolio-header-img.jpg";
-import PageHeader from '../../components/PageHeader/PageHeader';
+import { GridLine, GridLines } from '../../components/GridLines/GridLines.styles';
 
-const steps = [
-    {
-        title: "Rzut nieruchomości (2D)",
-        description: "wraz ze spisem pomieszczeń i ich metrażem"
-    },
-    {
-        title: "Informacje o pomieszczeniach",
-        description: "które mają zostać zaprojektowane"
-    },
-    {
-        title: "Informacje o stanie inwestycji",
-        description: "w realizacji, stan deweloperski, do remontu"
-    },
-    {
-        title: "Termin projektu",
-        description: "informacje odnośnie terminu, na kiedy potrzebujesz projekt"
+const fetchDesignProcess = async () => {
+  return sanityClient.fetch(`
+    *[_type == "designProcess"][0] {
+      title,
+      steps[] {
+        stepTitle,
+        description,
+        "imageUrl": image.asset->url
+      }
     }
-];
+  `);
+};
 
 function ProcessDesign() {
-    return (
-        <ProcessContainer>
-            <PageHeader title="PROCES PROJEKTOWANI" backgroundImage={topImg} />
-            <ProcessContent>
-                <Fade cascade damping={0.3}>
-                    {steps.map((step, index) => (
-                        <ProcessStep key={index}>
-                            <StepNumber>{index + 1}</StepNumber>
-                            <StepContent>
-                                <StepTitle>{step.title}</StepTitle>
-                                <StepDescription>{step.description}</StepDescription>
-                            </StepContent>
-                        </ProcessStep>
-                    ))}
-                </Fade>
-                <AdditionalInfo>
-                    <Fade delay={500}>
-                        <p>Komplet informacji prześlij na maila</p>
-                        <ContactEmail>wnetrza.nieuczesane@gmail.com</ContactEmail>
-                    </Fade>
-                </AdditionalInfo>
-            </ProcessContent>
-        </ProcessContainer>
-    );
+  const { data: designProcess, error, isLoading } = useQuery({
+    queryKey: ["designProcess"],
+    queryFn: fetchDesignProcess,
+  });
+
+  if (isLoading) return <Loading />;
+  if (error) return <div>Error loading design process: {error.message}</div>;
+  
+  return (
+    <ProcessContainer>
+      <PageHeader title={designProcess.title || "PROCES PROJEKTOWANIA"} backgroundImage={topImg} />
+      <GridLineWrapper>
+        <GridLines>
+          <GridLine />
+        </GridLines>
+        <ProcessContent>
+          {designProcess.steps.map((step, index) => (
+            <React.Fragment key={index}>
+              <StepDivider>
+                <StepDiamond>
+                  <StepNumber>{index + 1}</StepNumber>
+                </StepDiamond>
+              </StepDivider>
+              <ProcessStep>
+                <StepContent>
+                  <StepTitle>{step.stepTitle}</StepTitle>
+                  <StepDescription>{step.description}</StepDescription>
+                </StepContent>
+                <StepImageContainer>
+                  <StepImage src={step.imageUrl} alt={step.stepTitle} />
+                </StepImageContainer>
+              </ProcessStep>
+            </React.Fragment>
+          ))}
+        </ProcessContent>
+      </GridLineWrapper>
+      <GridLines className="line-on-very-bottom">
+        <GridLine />
+      </GridLines>
+    </ProcessContainer>
+  );
 }
 
 export default ProcessDesign;
