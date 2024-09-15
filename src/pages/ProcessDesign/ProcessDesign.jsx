@@ -41,7 +41,7 @@ function ProcessDesign() {
 
   if (isLoading) return <Loading />;
   if (error) return <div>Error loading design process: {error.message}</div>;
-  
+
   return (
     <ProcessContainer>
       <PageHeader title={designProcess.title || "PROCES PROJEKTOWANIA"} backgroundImage={topImg} />

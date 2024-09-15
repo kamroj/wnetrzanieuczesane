@@ -3,20 +3,26 @@ import styled from 'styled-components';
 export const ProcessContainer = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.mainLight};
+  overflow-x: hidden;
+`;
+
+export const GridLineWrapper = styled.div`
+  position: relative;
 `;
 
 export const ProcessContent = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  padding: 4rem 1rem;
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
 `;
 
 export const ProcessStep = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 2rem;
   padding: 2rem 0;
 
@@ -55,11 +61,12 @@ export const StepNumber = styled.span`
 
 export const StepContent = styled.div`
   flex: 1;
-  padding-right: 2rem;
+  width: 50%;
+  padding-right: 1rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
-    padding-right: 0;
-    padding-bottom: 1rem;
+    width: 100%;
+    padding: 0 0 1rem 0;
   }
 `;
 
@@ -75,25 +82,27 @@ export const StepDescription = styled.p`
 `;
 
 export const StepImageContainer = styled.div`
-  display: inline-block;
-  border: ${({ theme }) => theme.borders.borderGold};
-  max-width: 300px;
-  max-height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 50%;
+  padding-left: 1rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
-    max-width: 100%;
+    width: 100%;
+    padding: 0;
   }
 `;
 
 export const StepImage = styled.img`
-  max-width: 100%;
+  max-width: 300px;
   max-height: 350px;
   width: auto;
   height: auto;
   object-fit: contain;
-  display: block;
-`;
+  border: ${({ theme }) => theme.borders.borderGold};
 
-export const GridLineWrapper = styled.div`
-  position: relative;
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
+    max-width: 100%;
+  }
 `;
