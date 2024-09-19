@@ -13,6 +13,7 @@ import Portfolio from "./pages/Portfolio/Portfolio";
 import Project from "./pages/Portfolio/Project";
 import ProcessDesign from "./pages/ProcessDesign/ProcessDesign";
 import Offer from "./pages/Offer/Offer";
+import AboutMe from "./pages/AboutMe/AboutMe";
 
 export const IsMobileContext = React.createContext();
 
@@ -32,6 +33,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/portfolio/:slug" element={<Project />} />
+            <Route path="/aboutme" element={<AboutMe />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/process" element={<ProcessDesign />} />
             <Route path="/offer" element={<Offer />} />
