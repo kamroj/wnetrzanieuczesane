@@ -15,10 +15,11 @@ import {
   StepImageContainer,
   StepImage,
   StepDivider,
-  GridLineWrapper
+  GridLineWrapper,
+  ProcessGridLines,
+  ProcessGridLine
 } from './ProcessDesign.styles';
 import topImg from "../../assets/images/portfolio/portfolio-header-img.jpg";
-import { GridLine, GridLines } from '../../components/GridLines/GridLines.styles';
 
 const fetchDesignProcess = async () => {
   return sanityClient.fetch(`
@@ -46,9 +47,9 @@ function ProcessDesign() {
     <ProcessContainer>
       <PageHeader title={designProcess.title || "PROCES PROJEKTOWANIA"} backgroundImage={topImg} />
       <GridLineWrapper>
-        <GridLines>
-          <GridLine />
-        </GridLines>
+        <ProcessGridLines>
+          <ProcessGridLine />
+        </ProcessGridLines>
         <ProcessContent>
           {designProcess.steps.map((step, index) => (
             <React.Fragment key={index}>
@@ -70,11 +71,10 @@ function ProcessDesign() {
           ))}
         </ProcessContent>
       </GridLineWrapper>
-      <GridLines className="line-on-very-bottom">
-        <GridLine />
-      </GridLines>
+      <ProcessGridLines className="line-on-very-bottom">
+        <ProcessGridLine />
+      </ProcessGridLines>
     </ProcessContainer>
   );
 }
-
 export default ProcessDesign;

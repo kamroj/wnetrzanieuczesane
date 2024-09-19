@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { GridLines, GridLine } from '../../components/GridLines/GridLines.styles';
 
 export const ProcessContainer = styled.div`
   width: 100%;
@@ -104,5 +105,17 @@ export const StepImage = styled.img`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
     max-width: 100%;
+  }
+`;
+
+export const ProcessGridLines = styled(GridLines)`
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
+    display: none;
+  }
+`;
+
+export const ProcessGridLine = styled(GridLine)`
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
+    display: none;
   }
 `;
