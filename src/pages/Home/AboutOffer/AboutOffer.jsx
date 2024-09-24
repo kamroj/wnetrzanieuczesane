@@ -9,7 +9,7 @@ import {
 } from './AboutOffer.styles';
 import parImg from '../../../assets/images/home-par2.jpg';
 
-function AboutOffer({ onNavigate }) {
+function AboutOffer({ content, onNavigate }) {
   const isMobile = useIsMobile();
 
   return (
@@ -20,7 +20,7 @@ function AboutOffer({ onNavigate }) {
     >
       <AboutOfferContainer>
         <ContentText>
-          Twoje wymarzone wnętrze w zasięgu ręki
+          {content.header}
         </ContentText>
         <ArchitectButton name="OFERTA" onClick={onNavigate} />
       </AboutOfferContainer>
@@ -29,6 +29,9 @@ function AboutOffer({ onNavigate }) {
 }
 
 AboutOffer.propTypes = {
+  content: PropTypes.shape({
+    header: PropTypes.string.isRequired,
+  }).isRequired,
   onNavigate: PropTypes.func.isRequired,
 };
 

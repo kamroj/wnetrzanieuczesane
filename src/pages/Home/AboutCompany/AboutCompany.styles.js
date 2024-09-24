@@ -106,14 +106,22 @@ export const Header = styled.div`
 
 export const Content = styled.div`
   box-sizing: border-box;
-  padding: 40px 0;
+  padding: 30px 0;
   max-width: 500px;
   color: black;
   font-size: 1rem;
 `;
 
+export const KeyPointsContainer = styled.div`
+  margin-bottom: 30px;
+`;
+
+export const KeyPoint = styled.p`
+  margin: 0;
+`;
+
 export const HighlightedText = styled.span`
-  color: rgb(218, 165, 32);
+  color: ${({ theme }) => theme.colors.golden};
 `;
 
 export const StyledFade = styled(Fade)`

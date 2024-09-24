@@ -1,5 +1,5 @@
-// Opinions.jsx
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import {
@@ -17,20 +17,7 @@ import {
   StyledSlider,
 } from "./Opinions.styles.js";
 
-const OpinionsExample = [
-  {
-    id: 1,
-    text: "Jestem bardzo zadowolony z usług tej firmy. Profesjonalizm i zaangażowanie zespołu przekroczyły moje oczekiwania. Polecam każdemu, kto szuka niezawodnego partnera w biznesie.",
-    author: "Jan Kowalski",
-  },
-  {
-    id: 2,
-    text: "Usługi tej firmy są na najwyższym poziomie. Zespół zawsze reaguje szybko i skutecznie na nasze potrzeby. Zdecydowanie polecam ich usługi każdemu, kto ceni sobie profesjonalizm i jakość.",
-    author: "Anna Nowak",
-  },
-];
-
-function Opinions() {
+function Opinions({ opinions }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const sliderRef = React.useRef(null);
 
@@ -53,11 +40,11 @@ function Opinions() {
       <OpinionsContainer>
         <OpinionsTitle>Opinie naszych Klientów</OpinionsTitle>
         <StyledSlider ref={sliderRef} {...settings}>
-          {OpinionsExample.map((opinion) => (
-            <div key={opinion.id}>
+          {opinions.map((opinion, index) => (
+            <div key={index}>
               <OpinionCard>
                 <OpinionContent>
-                  <OpinionText>{opinion.text}</OpinionText>
+                  <OpinionText>{opinion.content}</OpinionText>
                   <OpinionAuthor>{opinion.author}</OpinionAuthor>
                 </OpinionContent>
               </OpinionCard>
@@ -73,7 +60,7 @@ function Opinions() {
           </NavButton>
         </OpinionsNav>
         <DotContainer>
-          {OpinionsExample.map((_, index) => (
+          {opinions.map((_, index) => (
             <CustomDot
               key={index}
               $active={index === currentSlide}
@@ -85,5 +72,14 @@ function Opinions() {
     </OpinionsSection>
   );
 }
+
+Opinions.propTypes = {
+  opinions: PropTypes.arrayOf(
+    PropTypes.shape({
+      content: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
 
 export default Opinions;

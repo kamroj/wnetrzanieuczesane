@@ -1,6 +1,8 @@
 import React, { useState, useRef } from 'react';
+import { useQuery } from "@tanstack/react-query";
 import ReCAPTCHA from 'react-google-recaptcha';
 import emailjs from '@emailjs/browser';
+import sanityClient from '../../SanityClient';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import ArchitectButton from '../../components/button/ArchitectButton';
 import {
@@ -15,8 +17,17 @@ import {
   RecaptchaWrapper,
   Select
 } from './Contact.styles';
-import topImg from '../../assets/images/living-room.jpg';
 import { GridLine, GridLines } from '../../components/GridLines/GridLines.styles';
+import Loading from '../Loading/Loading';
+
+const fetchContactContent = async () => {
+  return sanityClient.fetch(`
+    *[_type == "contact"][0] {
+      title,
+      "topImageUrl": topImage.asset->url
+    }
+  `);
+};
 
 function Contact() {
   const [name, setName] = useState('');
@@ -32,6 +43,11 @@ function Contact() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const formRef = useRef();
+
+  const { data: contactContent, error: fetchError, isLoading } = useQuery({
+    queryKey: ["contactContent"],
+    queryFn: fetchContactContent,
+  });
 
   const validateEmail = (email) => {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -103,9 +119,12 @@ function Contact() {
     }
   };
 
+  if (isLoading) return <Loading />;
+  if (fetchError) return <div>Error loading content: {fetchError.message}</div>;
+
   return (
     <ContactContainer>
-      <PageHeader title="KONTAKT" backgroundImage={topImg} />
+      <PageHeader title={contactContent.title || "KONTAKT"} backgroundImage={contactContent.topImageUrl} />
       <ContactForm ref={formRef} onSubmit={handleSubmit}>
         <FormGroup>
           <Label htmlFor="name">Imię i nazwisko *</Label>

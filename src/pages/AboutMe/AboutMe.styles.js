@@ -15,7 +15,6 @@ export const ContentWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
     flex-direction: column;
-    align-items: center;
   }
 `;
 
@@ -27,9 +26,7 @@ export const ImageContainer = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
     margin-right: 0;
-    display: flex;
-    justify-content: center;
-    width: 100%;
+    align-self: center;
   }
 `;
 
@@ -37,23 +34,21 @@ export const StyledImage = styled.img`
   width: 100%;
   height: auto;
   max-width: 480px;
-  box-shadow: 10px 14px 0 rgb(218 165 32 / 15%);
+  box-shadow: 8px 8px 0 rgb(218 165 32 / 15%);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
     max-width: 100%;
-    /* box-shadow: 7px 9px 0 rgb(218 165 32 / 15%); */
   }
 `;
 
 export const TextContainer = styled.div`
   flex: 1;
   min-width: 300px;
+  padding: 20px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 0px;
   }
 `;
 
@@ -61,6 +56,7 @@ export const Content = styled.p`
   color: ${({ theme }) => theme.colors.black};
   line-height: 1.6;
   margin-bottom: 1.5rem;
+  text-align: left;
 `;
 
 export const ButtonContainer = styled.div`
@@ -69,6 +65,5 @@ export const ButtonContainer = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
     display: flex;
     justify-content: center;
-    width: 100%;
   }
 `;

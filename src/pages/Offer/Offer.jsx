@@ -16,12 +16,13 @@ import {
   ContactLink,
   OfferWrapper
 } from './Offer.styles';
-import topImg from '../../assets/images/offert-top-img.jpeg';
 import Loading from '../Loading/Loading';
 
 const fetchOffer = async () => {
   return sanityClient.fetch(`
     *[_type == "offer"][0] {
+      title,
+      "topImageUrl": topImage.asset->url,
       basicOffer,
       comprehensiveOffer
     }
@@ -53,7 +54,7 @@ const Offer = () => {
 
   return (
     <OfferContainer>
-      <PageHeader title="OFERTA" backgroundImage={topImg} />
+      <PageHeader title={offerData.title || "OFERTA"} backgroundImage={offerData.topImageUrl} />
       <OfferWrapper>
         <GridLines className="line-on-very-bottom" style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1}}>
           <GridLine />

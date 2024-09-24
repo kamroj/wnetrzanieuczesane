@@ -13,21 +13,12 @@ import ArchitectButton from "../../../components/button/ArchitectButton";
 import scretchImage from "../../../assets/images/scretch.png";
 import { GridLine, GridLines } from "../../../components/GridLines/GridLines.styles";
 
-function AboutProjects({ onNavigate }) {
+function AboutProjects({ content, onNavigate }) {
   return (
     <AboutProjectsContainer>
       <ContentContainer>
-        <Header>OD PROJEKTU DO REALIZACJI</Header>
-        <Content>
-          Specjalizuję się w dostarczaniu wyjątkowych i spersonalizowanych
-          projektów, które wyróżniają się dzięki mojej innowacyjności i
-          kreatywności. Współpracuję z klientami na każdym etapie – od pomysłu,
-          przez rozwijanie koncepcji, aż po finalną realizację. Dzięki mojemu
-          doświadczeniu i pasji, szybko przekształcam wizje w rzeczywistość,
-          zachowując najwyższe standardy estetyki i funkcjonalności. Zawsze
-          jestem gotowa doradzać i wspierać moich klientów, zapewniając, że
-          końcowy efekt przewyższy ich oczekiwania.
-        </Content>
+        <Header>{content.header}</Header>
+        <Content>{content.content}</Content>
         <ButtonContainer>
           <ArchitectButton name="PROJEKTY" onClick={onNavigate} />
         </ButtonContainer>
@@ -43,6 +34,10 @@ function AboutProjects({ onNavigate }) {
 }
 
 AboutProjects.propTypes = {
+  content: PropTypes.shape({
+    header: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+  }).isRequired,
   onNavigate: PropTypes.func.isRequired,
 };
 

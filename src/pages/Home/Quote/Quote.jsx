@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { 
   QuoteContainer, 
   QuoteImageContainer, 
@@ -9,7 +10,7 @@ import {
 } from './Quote.styles';
 import quoteImage from '../../../assets/images/quote-gold.png';
 
-function Quote() {
+function Quote({ content }) {
   return (
     <QuoteContainer>
       <QuoteImageContainer>
@@ -17,14 +18,10 @@ function Quote() {
       </QuoteImageContainer>
       <QuotationContainer>
         <QuotationSentence>
-          Siła dobrego projektu tkwi w nas i w naszej zdolności postrzegania
-          świata za pomocą uczucia i rozumu. <br />
-          Dobry projekt architektoniczny jest zmysłowy. <br />
-          Dobry projekt architektoniczny jest mądry.
+          {content.content}
         </QuotationSentence>
         <QuotationAuthor>
-          Peter Zumthor <br /> 
-          Myślenie architekturą
+          {content.author}
         </QuotationAuthor>
       </QuotationContainer>
       <QuoteImageContainer>
@@ -33,5 +30,12 @@ function Quote() {
     </QuoteContainer>
   );
 }
+
+Quote.propTypes = {
+  content: PropTypes.shape({
+    content: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default Quote;

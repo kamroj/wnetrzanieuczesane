@@ -19,12 +19,12 @@ import {
   ProcessGridLines,
   ProcessGridLine
 } from './ProcessDesign.styles';
-import topImg from "../../assets/images/portfolio/portfolio-header-img.jpg";
 
 const fetchDesignProcess = async () => {
   return sanityClient.fetch(`
     *[_type == "designProcess"][0] {
       title,
+      "topImageUrl": topImage.asset->url,
       steps[] {
         stepTitle,
         description,
@@ -45,7 +45,7 @@ function ProcessDesign() {
 
   return (
     <ProcessContainer>
-      <PageHeader title={designProcess.title || "PROCES PROJEKTOWANIA"} backgroundImage={topImg} />
+      <PageHeader title={designProcess.title || "PROCES PROJEKTOWANIA"} backgroundImage={designProcess.topImageUrl} />
       <GridLineWrapper>
         <ProcessGridLines>
           <ProcessGridLine />
@@ -77,4 +77,5 @@ function ProcessDesign() {
     </ProcessContainer>
   );
 }
+
 export default ProcessDesign;

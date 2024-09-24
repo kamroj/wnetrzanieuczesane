@@ -1,5 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from "@tanstack/react-query";
+import sanityClient from '../../SanityClient';
 import { 
   AboutMeContainer,
   ContentWrapper,
@@ -10,34 +12,49 @@ import {
   ButtonContainer
 } from './AboutMe.styles';
 import PageHeader from '../../components/PageHeader/PageHeader';
-import { GridLine, GridLines } from '../../components/GridLines/GridLines.styles';
 import ArchitectButton from '../../components/button/ArchitectButton';
-import topImg from '../../assets/images/living-room.jpg';
-import profileImg from '../../assets/images/aboutme/werka.jpg';
+import Loading from '../Loading/Loading';
+
+const fetchAboutMeContent = async () => {
+  return sanityClient.fetch(`
+    *[_type == "aboutMe"][0] {
+      title,
+      "topImageUrl": topImage.asset->url,
+      "profileImageUrl": profileImage.asset->url,
+      content
+    }
+  `);
+};
 
 const AboutMe = () => {
   const navigate = useNavigate();
+  const { data: aboutMeContent, error, isLoading } = useQuery({
+    queryKey: ["aboutMeContent"],
+    queryFn: fetchAboutMeContent,
+  });
 
   const handleContactClick = () => {
     navigate('/contact');
   };
 
+  if (isLoading) return <Loading />;
+  if (error) return <div>Error loading content: {error.message}</div>;
+
   return (
     <AboutMeContainer>
-      <PageHeader title="O MNIE" backgroundImage={topImg} />
+      <PageHeader title={aboutMeContent.title || "O MNIE"} backgroundImage={aboutMeContent.topImageUrl} />
       <ContentWrapper>
-        <GridLines className="line-on-very-bottom">
-          <GridLine />
-        </GridLines>
         <ImageContainer>
-          <StyledImage src={profileImg} alt="Weronika Rojek" />
+          <StyledImage src={aboutMeContent.profileImageUrl} alt="Weronika Rojek" />
         </ImageContainer>
         <TextContainer>
           <Content>
-            Zakup mieszkania czy budowa domu to jedno z ważniejszych wydarzeń w życiu, niosące ze sobą wiele radości, ale także sporo stresu. Moją ideą działania jest zostać Twoim nieocenionym pomocnikiem w procesie realizacji marzeń o idealnej przestrzeni.
-          </Content>
-          <Content>
-            Przez moje zaangażowanie, doświadczenie i pozytywne nastawienie proces projektowania i realizacji wnętrza jest płynny i bezstresowy. Nazywam się Weronika Rojek i uwielbiam tworzyć przestrzenie przytulne, przepełnione domowym ciepłem. Dzięki mojej wiedzy, doświadczeniu i kreatywności stworzę dla Ciebie przestrzeń, która jest nie tylko estetyczna, ale także komfortowa i przyjazna do codziennego życia. Jestem tu po to aby pomóc Ci zrealizować marzenia o idealnym domu!
+            {aboutMeContent.content.split('\n').map((paragraph, index) => (
+              <React.Fragment key={index}>
+                {paragraph}
+                <br />
+              </React.Fragment>
+            ))}
           </Content>
           <ButtonContainer>
             <ArchitectButton name="KONTAKT" onClick={handleContactClick} />
