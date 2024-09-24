@@ -96,16 +96,11 @@ export const OpinionContent = styled.div`
 `;
 
 export const OpinionText = styled.div`
-  font-size: 1.2rem;
   line-height: 1.4;
   color: ${({ theme }) => theme.colors.darkMain};
   margin-bottom: 20px;
   position: relative;
   z-index: 1;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.phase1}) {
-    font-size: 1rem;
-  }
 `;
 
 export const OpinionAuthor = styled.div`
