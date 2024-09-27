@@ -34,6 +34,7 @@ export const StyledImage = styled.img`
   width: 100%;
   height: auto;
   max-width: 480px;
+  border: 1px solid rgb(218,165,32);
   box-shadow: 8px 8px 0 rgb(218 165 32 / 15%);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
