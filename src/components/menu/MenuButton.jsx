@@ -1,7 +1,7 @@
 import React from "react";
-import { StyledMenuButton, MenuButtonIcon, MenuButtonTitle } from "./MenuButton.styles";
+import { StyledMenuButton, MenuButtonIcon } from "./MenuButton.styles";
 
-export default function MenuButton({ title, icon, action }) {
+export default function MenuButton({ icon, action }) {
   return (
     <StyledMenuButton onClick={action}>
       <MenuButtonIcon>{icon}</MenuButtonIcon>

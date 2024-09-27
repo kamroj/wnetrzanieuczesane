@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import { CSSTransition } from 'react-transition-group';
-import { IoCallOutline, IoMailOutline } from "react-icons/io5";
+import { IoCallOutline } from "react-icons/io5";
 import { PagesData } from "../../pages/PagesData";
 import MenuButton from "./MenuButton";
 import { 
@@ -14,15 +13,9 @@ import {
 
 export default function Menu({ menuEnabled, onLinkClick }) {
   const nodeRef = useRef(null);
-  const navigate = useNavigate();
 
   const handleCall = () => {
     window.location.href = "tel:+48668108426";
-    onLinkClick();
-  };
-
-  const handleEmail = () => {
-    navigate("/contact");
     onLinkClick();
   };
 
