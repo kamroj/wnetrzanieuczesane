@@ -5,7 +5,6 @@ export default function MenuButton({ title, icon, action }) {
   return (
     <StyledMenuButton onClick={action}>
       <MenuButtonIcon>{icon}</MenuButtonIcon>
-      <MenuButtonTitle>{title}</MenuButtonTitle>
     </StyledMenuButton>
   );
 }

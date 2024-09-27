@@ -59,7 +59,7 @@ function Home() {
       {homeContent?.quote && <Quote content={homeContent.quote} />}
       {homeContent?.aboutProjects && <AboutProjects content={homeContent.aboutProjects} onNavigate={() => navigate("/portfolio")} />}
       {homeContent?.aboutOffer && <AboutOffer content={homeContent.aboutOffer} onNavigate={() => navigate("/offer")} />}
-      {homeContent?.aboutCompany && <AboutCompany content={homeContent.aboutCompany} onNavigate={() => navigate("/about")} />}
+      {homeContent?.aboutCompany && <AboutCompany content={homeContent.aboutCompany} onNavigate={() => navigate("/aboutme")} />}
       {homeContent?.opinions && homeContent.opinions.length > 0 && <Opinions opinions={homeContent.opinions} />}
     </HomeContainer>
   );

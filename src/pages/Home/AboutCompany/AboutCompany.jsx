@@ -29,7 +29,7 @@ function AboutCompany({ content, onNavigate }) {
         </ImageSignatureWrapper>
       </PhotoContainer>
       <ContentContainer>
-        <StyledFade delay={200} duration={1500} damping={0.4} cascade triggerOnce>
+        <StyledFade delay={100} duration={1200} damping={0.3} cascade triggerOnce>
           <Header>{content.header}</Header>
           <Content>{content.content}</Content>
           <KeyPointsContainer>

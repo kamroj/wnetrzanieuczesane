@@ -42,10 +42,10 @@ export const MenuButtonsContainer = styled.div`
   align-items: center;
   display: flex;
   gap: 20px;
-  height: 200px;
+  height: 300px;
   justify-content: space-evenly;
   overflow-x: auto;
-  padding: 20px 5%;
+  padding: 20% 5% 40%;;
   width: 100%;
   box-sizing: border-box;
 

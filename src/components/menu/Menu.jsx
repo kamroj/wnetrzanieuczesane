@@ -52,14 +52,8 @@ export default function Menu({ menuEnabled, onLinkClick }) {
           </MenuPagesContainer>
           <MenuButtonsContainer>
             <MenuButton
-              title="ZADZWOŃ"
               icon={<IoCallOutline />}
               action={handleCall}
-            />
-            <MenuButton
-              title="EMAIL"
-              icon={<IoMailOutline />}
-              action={handleEmail}
             />
           </MenuButtonsContainer>
         </MenuContainer>
