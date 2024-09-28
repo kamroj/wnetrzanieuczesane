@@ -1,0 +1,76 @@
+@import "../../variables.scss";
+
+$border-color-default: #000000;
+$hover-bg-color: black;
+$hover-color: $main-color;
+$line-thin: 1px;
+$transition-duration: 0.5s;
+
+.architect-button {
+  font-weight: 600;
+  display: inline-block;
+  position: relative;
+  border: $line-thin solid $border-color-default;
+  padding: 15px 0px;
+  font-size: 0.8rem;
+  width: 180px;
+  background-color: white;
+  color: black;
+  box-sizing: border-box;
+  transition: background-color $transition-duration, color $transition-duration;
+  z-index: 20;
+
+  &.black {
+    background-color: $hover-bg-color;
+    color: $hover-color;
+    border: $line-thin solid $hover-color;
+
+    &:hover {
+      background-color: $hover-color;
+      color: $hover-bg-color;
+    }
+
+    &:hover::after,
+    &:hover::before {
+      border-color: $hover-color;
+    }
+  }
+
+  &::after,
+  &::before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    transition: $transition-duration;
+    z-index: 1;
+  }
+
+  &::after {
+    top: -1px;
+    left: -1px;
+    border-top: $line-thin solid transparent;
+    border-left: $line-thin solid transparent;
+  }
+
+  &::before {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: $line-thin solid transparent;
+    border-right: $line-thin solid transparent;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: $hover-bg-color;
+    color: $hover-color;
+    border-color: transparent;
+  }
+
+  &:hover::after,
+  &:hover::before {
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    border-color: $border-color-default;
+  }
+}

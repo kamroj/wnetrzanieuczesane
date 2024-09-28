@@ -4,11 +4,14 @@
 logs
 **/*.backup.*
 **/*.back.*
+ignored
 
 sanitynieuczesane/
 
 node_modules
 bower_components
+
+sanitynieuczesane
 
 *.sublime*
 
