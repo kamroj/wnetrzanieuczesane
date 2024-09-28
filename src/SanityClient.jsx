@@ -3,7 +3,7 @@ import imageUrlBuilder from '@sanity/image-url';
 
 const sanityClient = createClient({
   projectId: 'ewrouwj5',
-  dataset: process.env.SANITY_STUDIO_DATASET || 'production',
+  dataset: process.env.REACT_APP_SANITY_DATASET || 'development',
   useCdn: false, 
   apiVersion: '2024-07-30'
 });
