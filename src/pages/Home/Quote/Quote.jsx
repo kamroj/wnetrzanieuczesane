@@ -18,7 +18,12 @@ function Quote({ content }) {
       </QuoteImageContainer>
       <QuotationContainer>
         <QuotationSentence>
-          {content.content}
+          {content.content.split('\n').map((line, index) => (
+            <React.Fragment key={index}>
+              {line}
+              {index < content.content.split('\n').length - 1 && <br />}
+            </React.Fragment>
+          ))}
         </QuotationSentence>
         <QuotationAuthor>
           {content.author}
