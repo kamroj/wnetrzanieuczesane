@@ -74,6 +74,9 @@ function Project() {
                             showNav={true}
                             slideDuration={isMobile(750) ? 300 : 800}
                             slideInterval={5000}
+                            thumbnailPosition="bottom"
+                            useBrowserFullscreen={true}
+                            additionalClass="custom-image-gallery"
                         />
                     </GalleryContainer>
                 )}

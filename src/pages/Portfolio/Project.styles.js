@@ -45,21 +45,16 @@ export const ProjectDescription = styled.pre`
 export const GalleryContainer = styled.div`
   .image-gallery-slide img {
     height: 60vh;
-    object-fit: cover;
-  }
 
-  .fullscreen .image-gallery-slide img {
-    height: 100vh;
-}
-
-  .image-gallery-thumbnail {
-    width: 80px;
-    height: 60px;
-
-    img {
-      object-fit: cover;
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase2}) {
+      height: 40vh;
     }
   }
+
+
+  .fullscreen .image-gallery-slide img {
+    height: 85vh;
+}
 
   .image-gallery-swipe {
     border: ${({ theme }) => theme.borders.borderGold};
