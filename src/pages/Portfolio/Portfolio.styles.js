@@ -1,4 +1,3 @@
-// src/pages/Portfolio/Portfolio.styles.js
 import styled from 'styled-components';
 
 export const PortfolioContainer = styled.div`
@@ -50,7 +49,7 @@ export const ProjectImage = styled.img`
 `;
 
 export const ProjectDetails = styled.div`
-  padding: 1rem;
+  padding: 1.5rem;
   width: 60%;
   display: flex;
   flex-direction: column;
@@ -63,10 +62,9 @@ export const ProjectDetails = styled.div`
 
 export const ProjectTitle = styled.h2`
   color: ${({ theme }) => theme.colors.black};
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 1.5rem 0;
   font-size: 1.5rem;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
+  font-weight: 600;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.phase4}) {
     font-size: 1.3rem;
@@ -81,13 +79,49 @@ export const ProjectTitle = styled.h2`
   }
 `;
 
+export const ProjectKeyInfo = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase2}) {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+`;
+
+export const KeyInfoItem = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.goldenLight};
+  font-size: 0.9rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase4}) {
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase2}) {
+    font-size: 0.8rem;
+  }
+`;
+
+export const KeyInfoLabel = styled.span`
+  color: ${({ theme }) => theme.colors.golden};
+`;
+
+export const KeyInfoValue = styled.span`
+  color: ${({ theme }) => theme.colors.black};
+  text-align: right;
+`;
+
 export const ProjectDescription = styled.p`
   color: ${({ theme }) => theme.colors.black};
-  font-size: 1rem;
+  font-size: 0.95rem;
   margin: 0;
   line-height: 1.5;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.phase4}) {
     font-size: 0.9rem;
@@ -101,7 +135,6 @@ export const ProjectDescription = styled.p`
     font-size: 0.8rem;
   }
 `;
-
 export const PaginationContainer = styled.nav`
   display: flex;
   justify-content: center;
@@ -130,3 +163,4 @@ export const PaginationButton = styled.button`
 export const PaginationEllipsis = styled.span`
   margin: 0 0.5rem;
 `;
+

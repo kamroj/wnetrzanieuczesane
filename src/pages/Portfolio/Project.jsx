@@ -14,16 +14,20 @@ import {
 } from './Project.styles';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import { useIsMobile } from '../../hooks/useIsMobile';
+import ProjectKeyInfo from './ProjectKeyInfo';
 
 const fetchProject = async ({ queryKey }) => {
-    // eslint-disable-next-line no-unused-vars
     const [_, slug] = queryKey;
     return sanityClient.fetch(`
     *[_type == "portfolio" && slug.current == $slug][0] {
       title,
       fullDescription,
       category,
-      "galleryImages": galleryImages[].asset->{ url, metadata }
+      "galleryImages": galleryImages[].asset->{ url, metadata },
+      area,
+      buildingType,
+      roomCount,
+      purpose
     }
   `, { slug });
 };
@@ -43,7 +47,7 @@ function Project() {
     });
 
     if (isLoading) return <Loading />;
-    if (error) return <div>Error loading project: {error.message}</div>;
+    if (error) return <div>Błąd podczas ładowania projektu: {error.message}</div>;
 
     const mainImage = project.galleryImages?.[0]?.url;
     const galleryItems = getGalleryItems(project.galleryImages);
@@ -52,7 +56,14 @@ function Project() {
         <ProjectContainer>
             <PageHeader title={project.title.toUpperCase()} backgroundImage={mainImage} />
             <ProjectContent>
-                <ProjectTitle>{project.title}</ProjectTitle>
+                <ProjectKeyInfo
+                    projectDetails={{
+                        area: project.area,
+                        buildingType: project.buildingType,
+                        roomCount: project.roomCount,
+                        purpose: project.purpose
+                    }}
+                />
                 <ProjectDescription>{project.fullDescription}</ProjectDescription>
                 {galleryItems.length > 0 && (
                     <GalleryContainer>

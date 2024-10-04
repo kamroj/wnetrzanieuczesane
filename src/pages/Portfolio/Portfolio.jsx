@@ -1,4 +1,3 @@
-// src/pages/Portfolio/Portfolio.jsx
 import React from 'react';
 import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -13,7 +12,11 @@ import {
   ProjectDescription,
   PaginationContainer,
   PaginationButton,
-  PaginationEllipsis
+  PaginationEllipsis,
+  ProjectKeyInfo,
+  KeyInfoItem,
+  KeyInfoLabel,
+  KeyInfoValue
 } from './Portfolio.styles';
 import Loading from '../Loading/Loading';
 import { GridLine, GridLines } from '../../components/GridLines/GridLines.styles';
@@ -37,7 +40,7 @@ function Portfolio() {
   });
 
   if (isLoading) return <Loading />;
-  if (error) return <div>Error loading projects: {error.message}</div>;
+  if (error) return <div>Błąd podczas ładowania projektów: {error.message}</div>;
 
   const { currentProjects, totalPages } = getPaginatedProjects(projects, currentPage);
   const paginate = (pageNumber) => navigate(`/portfolio?page=${pageNumber}`);
@@ -51,7 +54,7 @@ function Portfolio() {
         </GridLines>
         {renderProjects(currentProjects)}
       </ProjectsContainer>
-      <PaginationContainer aria-label="Pagination">
+      <PaginationContainer aria-label="Paginacja">
         {renderPaginationButtons(currentPage, totalPages, paginate)}
       </PaginationContainer>
     </PortfolioContainer>
@@ -63,15 +66,14 @@ function fetchProjects() {
     *[_type == "portfolio"] | order(order asc, createdAt desc) {
       title,
       slug,
-      mainImage {
-        asset-> {
-          _id,
-          url
-        }
-      },
+      "mainImage": galleryImages[0].asset->,
       shortDescription,
       order,
-      createdAt
+      createdAt,
+      area,
+      buildingType,
+      roomCount,
+      purpose
     }
   `);
 }
@@ -88,13 +90,45 @@ function renderProjects(projects) {
   return projects.map((project) => (
     <ProjectItem key={project.slug.current}>
       <Link to={`/portfolio/${project.slug.current}`}>
-        <ProjectImage src={project.mainImage.asset.url} alt={project.title} />
+        <ProjectImage 
+          src={project.mainImage?.url || topImg} 
+          alt={project.title} 
+        />
         <ProjectDetails>
           <ProjectTitle>{project.title}</ProjectTitle>
-          <ProjectDescription>{project.shortDescription}</ProjectDescription>
+          <ProjectKeyInfo>
+            <KeyInfoItem>
+              <KeyInfoLabel>Powierzchnia:</KeyInfoLabel>
+              <KeyInfoValue>{project.area}</KeyInfoValue>
+            </KeyInfoItem>
+            <KeyInfoItem>
+              <KeyInfoLabel>Budownictwo:</KeyInfoLabel>
+              <KeyInfoValue>{project.buildingType}</KeyInfoValue>
+            </KeyInfoItem>
+            <KeyInfoItem>
+              <KeyInfoLabel>Liczba pokoi:</KeyInfoLabel>
+              <KeyInfoValue>{project.roomCount}</KeyInfoValue>
+            </KeyInfoItem>
+            <KeyInfoItem>
+              <KeyInfoLabel>Przeznaczenie:</KeyInfoLabel>
+              <KeyInfoValue>{project.purpose}</KeyInfoValue>
+            </KeyInfoItem>
+          </ProjectKeyInfo>
+          <ProjectDescription>
+            {renderDescription(project.shortDescription)}
+          </ProjectDescription>
         </ProjectDetails>
       </Link>
     </ProjectItem>
+  ));
+}
+
+function renderDescription(description) {
+  return description?.split('\n').map((line, index) => (
+    <React.Fragment key={index}>
+      {line}
+      {index < description.split('\n').length - 1 && <br />}
+    </React.Fragment>
   ));
 }
 
