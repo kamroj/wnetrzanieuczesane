@@ -8,7 +8,6 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import {
     ProjectContainer,
     ProjectContent,
-    ProjectTitle,
     ProjectDescription,
     GalleryContainer
 } from './Project.styles';
@@ -17,6 +16,7 @@ import { useIsMobile } from '../../hooks/useIsMobile';
 import ProjectKeyInfo from './ProjectKeyInfo';
 
 const fetchProject = async ({ queryKey }) => {
+    // eslint-disable-next-line
     const [_, slug] = queryKey;
     return sanityClient.fetch(`
     *[_type == "portfolio" && slug.current == $slug][0] {
