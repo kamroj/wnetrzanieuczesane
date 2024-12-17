@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const PortfolioContainer = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const ProjectsContainer = styled.div`
@@ -31,16 +33,23 @@ export const ProjectItem = styled.div`
     text-decoration: none;
     color: inherit;
     cursor: pointer;
+    min-height: 300px;
+    max-height: 305px;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
       flex-direction: column;
+      height: auto;
+      min-height: unset;
+      max-height: unset;
     }
   }
 `;
 
 export const ProjectImage = styled.img`
   width: 40%;
+  /* height: 100%; */
   object-fit: cover;
+  object-position: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
     width: 100%;
@@ -54,9 +63,12 @@ export const ProjectDetails = styled.div`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  height: 100%;
+  overflow-y: auto;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
     width: 100%;
+    height: auto;
   }
 `;
 
@@ -65,6 +77,8 @@ export const ProjectTitle = styled.h2`
   margin: 0 0 1.5rem 0;
   font-size: 1.5rem;
   font-weight: 600;
+  white-space: normal;
+  word-break: break-word;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.phase4}) {
     font-size: 1.3rem;
@@ -81,9 +95,7 @@ export const ProjectTitle = styled.h2`
 
 export const ProjectKeyInfo = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
-  margin-bottom: 1.5rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.phase2}) {
     grid-template-columns: 1fr;
@@ -117,24 +129,6 @@ export const KeyInfoValue = styled.span`
   text-align: right;
 `;
 
-export const ProjectDescription = styled.p`
-  color: ${({ theme }) => theme.colors.black};
-  font-size: 0.95rem;
-  margin: 0;
-  line-height: 1.5;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.phase4}) {
-    font-size: 0.9rem;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
-    font-size: 0.85rem;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.phase2}) {
-    font-size: 0.8rem;
-  }
-`;
 export const PaginationContainer = styled.nav`
   display: flex;
   justify-content: center;
@@ -163,4 +157,3 @@ export const PaginationButton = styled.button`
 export const PaginationEllipsis = styled.span`
   margin: 0 0.5rem;
 `;
-

@@ -1,27 +1,26 @@
-import React from 'react';
 import { useQuery } from "@tanstack/react-query";
+import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import sanityClient from '../../SanityClient';
-import {
-  PortfolioContainer,
-  ProjectsContainer,
-  ProjectItem,
-  ProjectImage,
-  ProjectDetails,
-  ProjectTitle,
-  ProjectDescription,
-  PaginationContainer,
-  PaginationButton,
-  PaginationEllipsis,
-  ProjectKeyInfo,
-  KeyInfoItem,
-  KeyInfoLabel,
-  KeyInfoValue
-} from './Portfolio.styles';
-import Loading from '../Loading/Loading';
+import topImg from "../../assets/images/portfolio/portfolio-header-img.jpg";
 import { GridLine, GridLines } from '../../components/GridLines/GridLines.styles';
 import PageHeader from '../../components/PageHeader/PageHeader';
-import topImg from "../../assets/images/portfolio/portfolio-header-img.jpg";
+import sanityClient from '../../SanityClient';
+import Loading from '../Loading/Loading';
+import {
+  KeyInfoItem,
+  KeyInfoLabel,
+  KeyInfoValue,
+  PaginationButton,
+  PaginationContainer,
+  PaginationEllipsis,
+  PortfolioContainer,
+  ProjectDetails,
+  ProjectImage,
+  ProjectItem,
+  ProjectKeyInfo,
+  ProjectsContainer,
+  ProjectTitle
+} from './Portfolio.styles';
 
 const PROJECTS_PER_PAGE = 5;
 const MIN_PAGE_NUMBER = 1;
@@ -43,7 +42,7 @@ function Portfolio() {
   if (error) return <div>Błąd podczas ładowania projektów: {error.message}</div>;
 
   const { currentProjects, totalPages } = getPaginatedProjects(projects, currentPage);
-  const paginate = (pageNumber) => navigate(`/portfolio?page=${pageNumber}`);
+  const paginate = (pageNumber: number) => navigate(`/portfolio?page=${pageNumber}`);
 
   return (
     <PortfolioContainer>
@@ -62,8 +61,8 @@ function Portfolio() {
 }
 
 function fetchProjects() {
-  return sanityClient.fetch(`
-    *[_type == "portfolio"] | order(order asc, createdAt desc) {
+  return sanityClient.fetch(
+    `*[_type == "portfolio"] | order(order asc, createdAt desc) {
       title,
       slug,
       "mainImage": galleryImages[0].asset->,
@@ -74,11 +73,11 @@ function fetchProjects() {
       buildingType,
       roomCount,
       purpose
-    }
-  `);
+    }`
+  );
 }
 
-function getPaginatedProjects(projects, currentPage) {
+function getPaginatedProjects(projects: any[], currentPage: number) {
   const indexOfLastProject = currentPage * PROJECTS_PER_PAGE;
   const indexOfFirstProject = indexOfLastProject - PROJECTS_PER_PAGE;
   const currentProjects = projects.slice(indexOfFirstProject, indexOfLastProject);
@@ -86,7 +85,7 @@ function getPaginatedProjects(projects, currentPage) {
   return { currentProjects, totalPages };
 }
 
-function renderProjects(projects) {
+function renderProjects(projects: any[]) {
   return projects.map((project) => (
     <ProjectItem key={project.slug.current}>
       <Link to={`/portfolio/${project.slug.current}`}>
@@ -114,26 +113,14 @@ function renderProjects(projects) {
               <KeyInfoValue>{project.purpose}</KeyInfoValue>
             </KeyInfoItem>
           </ProjectKeyInfo>
-          <ProjectDescription>
-            {renderDescription(project.shortDescription)}
-          </ProjectDescription>
         </ProjectDetails>
       </Link>
     </ProjectItem>
   ));
 }
 
-function renderDescription(description) {
-  return description?.split('\n').map((line, index) => (
-    <React.Fragment key={index}>
-      {line}
-      {index < description.split('\n').length - 1 && <br />}
-    </React.Fragment>
-  ));
-}
-
-function renderPaginationButtons(currentPage, totalPages, paginate) {
-  const buttons = [];
+function renderPaginationButtons(currentPage: number, totalPages: number, paginate: (page: number) => void) {
+  const buttons: React.ReactNode[] = [];
 
   buttons.push(renderNavigationButton('prev', currentPage, totalPages, paginate));
   buttons.push(...renderPageButtons(currentPage, totalPages, paginate));
@@ -142,10 +129,19 @@ function renderPaginationButtons(currentPage, totalPages, paginate) {
   return buttons;
 }
 
-function renderNavigationButton(type, currentPage, totalPages, paginate) {
+function renderNavigationButton(
+  type: 'prev' | 'next', 
+  currentPage: number, 
+  totalPages: number, 
+  paginate: (page: number) => void
+) {
   const isPrev = type === 'prev';
-  const pageNumber = isPrev ? Math.max(MIN_PAGE_NUMBER, currentPage - 1) : Math.min(totalPages, currentPage + 1);
-  const isDisabled = isPrev ? currentPage === MIN_PAGE_NUMBER : currentPage === totalPages;
+  const pageNumber = isPrev 
+    ? Math.max(MIN_PAGE_NUMBER, currentPage - 1) 
+    : Math.min(totalPages, currentPage + 1);
+  const isDisabled = isPrev 
+    ? currentPage === MIN_PAGE_NUMBER 
+    : currentPage === totalPages;
 
   return (
     <PaginationButton
@@ -159,8 +155,12 @@ function renderNavigationButton(type, currentPage, totalPages, paginate) {
   );
 }
 
-function renderPageButtons(currentPage, totalPages, paginate) {
-  const buttons = [];
+function renderPageButtons(
+  currentPage: number, 
+  totalPages: number, 
+  paginate: (page: number) => void
+) {
+  const buttons: React.ReactNode[] = [];
 
   if (totalPages <= MAX_VISIBLE_BUTTONS + 2) {
     for (let i = MIN_PAGE_NUMBER; i <= totalPages; i++) {
@@ -192,7 +192,11 @@ function renderPageButtons(currentPage, totalPages, paginate) {
   return buttons;
 }
 
-function renderPageButton(pageNumber, currentPage, paginate) {
+function renderPageButton(
+  pageNumber: number, 
+  currentPage: number, 
+  paginate: (page: number) => void
+) {
   return (
     <PaginationButton
       key={pageNumber}
