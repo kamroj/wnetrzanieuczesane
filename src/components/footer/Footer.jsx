@@ -1,7 +1,7 @@
 // src/components/footer/Footer.jsx
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 import sanityClient from '../../SanityClient';
 import {
   FooterWrapper,
@@ -36,9 +36,6 @@ function Footer() {
           <FooterItemContent>
             <FooterHeader>Media</FooterHeader>
             <SocialIconsContainer>
-              <SocialIcon href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                <FaFacebookF />
-              </SocialIcon>
               <SocialIcon href="https://www.instagram.com/wnetrza_nieuczesane/" target="_blank" rel="noopener noreferrer">
                 <FaInstagram />
               </SocialIcon>

@@ -16,19 +16,19 @@ export const HeaderImage = styled.div`
 `;
 
 export const HeaderTitle = styled.div`
-  font-size: 3rem;
+  font-size: 2.2rem;
   color: ${({ theme }) => theme.colors.golden};
   text-align: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.phase4}) {
-    font-size: 2.5rem;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
     font-size: 2rem;
   }
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
+    font-size: 1.8rem;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.phase2}) {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 `;

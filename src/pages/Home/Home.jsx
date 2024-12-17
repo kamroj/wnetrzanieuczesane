@@ -1,13 +1,12 @@
-import React from 'react';
 import { useQuery } from "@tanstack/react-query";
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import sanityClient from '../../SanityClient';
 import Loading from '../Loading/Loading';
-import Gallery from './Gallery/Gallery';
-import Quote from './Quote/Quote';
-import AboutProjects from './AboutProjects/AboutProjects';
-import AboutOffer from './AboutOffer/AboutOffer';
 import AboutCompany from './AboutCompany/AboutCompany';
+import AboutOffer from './AboutOffer/AboutOffer';
+import AboutProjects from './AboutProjects/AboutProjects';
+import Gallery from './Gallery/Gallery';
 import { HomeContainer } from './Home.styles';
 import Opinions from './Opinions/Opinions';
 
@@ -56,7 +55,7 @@ function Home() {
   return (
     <HomeContainer>
       {images.length > 0 && <Gallery images={images} />}
-      {homeContent?.quote && <Quote content={homeContent.quote} />}
+      {/* {homeContent?.quote && <Quote content={homeContent.quote} />} */}
       {homeContent?.aboutProjects && <AboutProjects content={homeContent.aboutProjects} onNavigate={() => navigate("/portfolio")} />}
       {homeContent?.aboutOffer && <AboutOffer content={homeContent.aboutOffer} onNavigate={() => navigate("/offer")} />}
       {homeContent?.aboutCompany && <AboutCompany content={homeContent.aboutCompany} onNavigate={() => navigate("/aboutme")} />}
