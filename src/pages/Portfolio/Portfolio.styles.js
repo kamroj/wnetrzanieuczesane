@@ -130,6 +130,7 @@ export const KeyInfoValue = styled.span`
 `;
 
 export const PaginationContainer = styled.nav`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;

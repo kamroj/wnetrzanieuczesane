@@ -29,7 +29,7 @@ export const OpinionsSection = styled.section`
     url(${backgroundImage});
   background-size: cover;
   background-position: center;
-  height: 70vh;
+  height: 100%;
   width: 100%;
   padding: 20px 0;
   display: flex;

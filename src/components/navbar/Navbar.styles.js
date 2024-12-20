@@ -40,6 +40,7 @@ export const NavbarSideContainer = styled.div`
 
 export const NavbarLogo = styled.img`
   height: 100%;
+  cursor: pointer;
 `;
 
 export const NavbarCenterContainer = styled.div`

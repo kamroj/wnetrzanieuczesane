@@ -21,6 +21,7 @@ import {
   ProjectsContainer,
   ProjectTitle
 } from './Portfolio.styles';
+import { useRef } from "react";
 
 const PROJECTS_PER_PAGE = 5;
 const MIN_PAGE_NUMBER = 1;
@@ -28,6 +29,7 @@ const MAX_VISIBLE_BUTTONS = 2;
 const ELLIPSIS_THRESHOLD = 2;
 
 function Portfolio() {
+  const projectsContainerRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
@@ -42,18 +44,25 @@ function Portfolio() {
   if (error) return <div>Błąd podczas ładowania projektów: {error.message}</div>;
 
   const { currentProjects, totalPages } = getPaginatedProjects(projects, currentPage);
-  const paginate = (pageNumber: number) => navigate(`/portfolio?page=${pageNumber}`);
+  const paginate = (pageNumber) => {
+    projectsContainerRef.current?.scrollIntoView({ block: 'start', inline: 'nearest' });
+    window.scrollBy(0, -50);
+    navigate(`/portfolio?page=${pageNumber}`);
+  }
 
   return (
     <PortfolioContainer>
       <PageHeader title="PROJEKTY" backgroundImage={topImg} />
-      <ProjectsContainer>
+      <ProjectsContainer ref={projectsContainerRef}>
         <GridLines className="line-on-very-bottom">
           <GridLine />
         </GridLines>
         {renderProjects(currentProjects)}
       </ProjectsContainer>
       <PaginationContainer aria-label="Paginacja">
+        <GridLines className="line-on-very-bottom">
+          <GridLine />
+        </GridLines>
         {renderPaginationButtons(currentPage, totalPages, paginate)}
       </PaginationContainer>
     </PortfolioContainer>
@@ -77,7 +86,7 @@ function fetchProjects() {
   );
 }
 
-function getPaginatedProjects(projects: any[], currentPage: number) {
+function getPaginatedProjects(projects, currentPage) {
   const indexOfLastProject = currentPage * PROJECTS_PER_PAGE;
   const indexOfFirstProject = indexOfLastProject - PROJECTS_PER_PAGE;
   const currentProjects = projects.slice(indexOfFirstProject, indexOfLastProject);
@@ -85,13 +94,13 @@ function getPaginatedProjects(projects: any[], currentPage: number) {
   return { currentProjects, totalPages };
 }
 
-function renderProjects(projects: any[]) {
+function renderProjects(projects) {
   return projects.map((project) => (
     <ProjectItem key={project.slug.current}>
       <Link to={`/portfolio/${project.slug.current}`}>
-        <ProjectImage 
-          src={project.mainImage?.url || topImg} 
-          alt={project.title} 
+        <ProjectImage
+          src={project.mainImage?.url || topImg}
+          alt={project.title}
         />
         <ProjectDetails>
           <ProjectTitle>{project.title}</ProjectTitle>
@@ -119,8 +128,8 @@ function renderProjects(projects: any[]) {
   ));
 }
 
-function renderPaginationButtons(currentPage: number, totalPages: number, paginate: (page: number) => void) {
-  const buttons: React.ReactNode[] = [];
+function renderPaginationButtons(currentPage, totalPages, paginate) {
+  const buttons = [];
 
   buttons.push(renderNavigationButton('prev', currentPage, totalPages, paginate));
   buttons.push(...renderPageButtons(currentPage, totalPages, paginate));
@@ -130,23 +139,25 @@ function renderPaginationButtons(currentPage: number, totalPages: number, pagina
 }
 
 function renderNavigationButton(
-  type: 'prev' | 'next', 
-  currentPage: number, 
-  totalPages: number, 
-  paginate: (page: number) => void
+  type,
+  currentPage,
+  totalPages,
+  paginate
 ) {
   const isPrev = type === 'prev';
-  const pageNumber = isPrev 
-    ? Math.max(MIN_PAGE_NUMBER, currentPage - 1) 
+  const pageNumber = isPrev
+    ? Math.max(MIN_PAGE_NUMBER, currentPage - 1)
     : Math.min(totalPages, currentPage + 1);
-  const isDisabled = isPrev 
-    ? currentPage === MIN_PAGE_NUMBER 
+  const isDisabled = isPrev
+    ? currentPage === MIN_PAGE_NUMBER
     : currentPage === totalPages;
 
   return (
     <PaginationButton
       key={type}
-      onClick={() => paginate(pageNumber)}
+      onClick={() => {
+        paginate(pageNumber)}
+      }
       disabled={isDisabled}
       aria-label={isPrev ? "Previous page" : "Next page"}
     >
@@ -156,11 +167,11 @@ function renderNavigationButton(
 }
 
 function renderPageButtons(
-  currentPage: number, 
-  totalPages: number, 
-  paginate: (page: number) => void
+  currentPage,
+  totalPages,
+  paginate
 ) {
-  const buttons: React.ReactNode[] = [];
+  const buttons = [];
 
   if (totalPages <= MAX_VISIBLE_BUTTONS + 2) {
     for (let i = MIN_PAGE_NUMBER; i <= totalPages; i++) {
@@ -193,9 +204,9 @@ function renderPageButtons(
 }
 
 function renderPageButton(
-  pageNumber: number, 
-  currentPage: number, 
-  paginate: (page: number) => void
+  pageNumber,
+  currentPage,
+  paginate
 ) {
   return (
     <PaginationButton

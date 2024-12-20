@@ -17,12 +17,14 @@ import {
   MenuButtonContainer,
   NavbarMenuRefContainer
 } from "./Navbar.styles";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [menuEnabled, setMenuEnabled] = useState(false);
   const isMobile = useContext(IsMobileContext);
   const isScrolled = useScroll();
   const nodeRef = useRef(null);
+  const navigate = useNavigate();
 
   function showMenu(enabled) {
     setMenuEnabled(enabled);
@@ -32,7 +34,7 @@ export default function Navbar() {
   return (
     <NavbarContainer $isScrolled={isScrolled} $menuEnabled={menuEnabled}>
       <NavbarSideContainer>
-        <NavbarLogo src={logo} alt="logo" />
+        <NavbarLogo src={logo} alt="logo" onClick={() => navigate("/")} />
       </NavbarSideContainer>
 
       <NavbarCenterContainer>
