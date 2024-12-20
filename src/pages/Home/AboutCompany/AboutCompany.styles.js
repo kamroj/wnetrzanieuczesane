@@ -83,7 +83,7 @@ export const SignatureContainer = styled.div`
 
 export const ContentContainer = styled.div`
   box-sizing: border-box;
-  padding: 0 40px;
+  padding: 0 60px;
   width: 50%;
   display: flex;
   justify-content: space-between;
@@ -93,7 +93,8 @@ export const ContentContainer = styled.div`
     width: 100%;
     align-items: center;
     text-align: center;
-  }
+    padding: 0 40px;
+    }
 `;
 
 export const Header = styled.div`
