@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledMenuButton = styled.button`
+  position: relative;
+  top: 20%;
   height: 50px;
   width: 50px;
   background-color: rgb(241 235 235);

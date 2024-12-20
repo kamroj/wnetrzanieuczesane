@@ -39,7 +39,6 @@ export const MenuLink = styled(Link)`
 `;
 
 export const MenuButtonsContainer = styled.div`
-  align-items: center;
   display: flex;
   gap: 20px;
   height: 300px;
