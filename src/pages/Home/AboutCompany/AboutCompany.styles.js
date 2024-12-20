@@ -83,7 +83,7 @@ export const SignatureContainer = styled.div`
 
 export const ContentContainer = styled.div`
   box-sizing: border-box;
-  padding: 0 60px;
+  padding: 0 40px;
   width: 50%;
   display: flex;
   justify-content: space-between;
@@ -102,6 +102,10 @@ export const Header = styled.div`
   max-width: 500px;
   color: black;
   font-size: 2rem;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase2}) {
+    font-size: 1.6rem;
+  }
 `;
 
 export const Content = styled.div`
