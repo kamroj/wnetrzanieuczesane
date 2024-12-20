@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 export const MenuContainer = styled.div`
   align-items: center;
   background: ${props => props.theme.colors.main};
-  border-top: ${({theme}) => theme.borders.borderGold};
   display: flex;
   flex-direction: column;
   height: calc(100vh - ${props => props.theme.sizes.navbarHeight});
@@ -28,6 +27,7 @@ export const MenuPagesContainer = styled.div`
   justify-content: center;
   width: 100%;
   padding: 0 5%;
+  overflow: auto;
   box-sizing: border-box;
 `;
 
@@ -45,12 +45,15 @@ export const MenuButtonsContainer = styled.div`
   height: 300px;
   justify-content: space-evenly;
   overflow-x: auto;
-  padding: 20% 5% 40%;;
   width: 100%;
   box-sizing: border-box;
 
   &::-webkit-scrollbar {
     display: none;
+  }
+  
+  @media (orientation: landscape) and (max-width: 768px) {
+    display: none; 
   }
 `;
 
