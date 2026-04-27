@@ -14,7 +14,7 @@ function PageHeader({ title, backgroundImage }) {
   const placeholder = backgroundImage?.metadata?.lqip || backgroundImage?.asset?.metadata?.lqip;
 
   return (
-    <HeaderImage image={image} placeholder={placeholder}>
+    <HeaderImage image={image} placeholder={placeholder} showSpinner={false}>
       <HeaderTitle>{title.toUpperCase()}</HeaderTitle>
     </HeaderImage>
   );

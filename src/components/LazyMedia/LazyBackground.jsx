@@ -13,6 +13,7 @@ function LazyBackground({
   overlay = 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7))',
   children,
   className,
+  showSpinner = true,
 }) {
   const [isLoaded, setIsLoaded] = useState(!image);
 
@@ -53,7 +54,7 @@ function LazyBackground({
           $isLoaded={isLoaded}
         />
       )}
-      {!isLoaded && <BackgroundSpinner aria-hidden="true" />}
+      {showSpinner && !isLoaded && <BackgroundSpinner aria-hidden="true" />}
       <BackgroundLayer aria-hidden="true" $background={background} $isLoaded={isLoaded} />
       {children}
     </BackgroundFrame>
@@ -66,6 +67,7 @@ LazyBackground.propTypes = {
   overlay: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
+  showSpinner: PropTypes.bool,
 };
 
 export default LazyBackground;
