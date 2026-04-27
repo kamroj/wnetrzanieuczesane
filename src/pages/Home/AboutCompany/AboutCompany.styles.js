@@ -1,5 +1,6 @@
 import { Fade } from "react-awesome-reveal";
 import styled from "styled-components";
+import LazyImage from "../../../components/LazyMedia/LazyImage";
 
 export const AboutCompanyContainer = styled.section`
   display: flex;
@@ -37,10 +38,9 @@ export const ImageSignatureWrapper = styled.div`
   align-items: center;
 `;
 
-export const CompanyImage = styled.img`
+export const CompanyImage = styled(LazyImage)`
   width: 400px;
   height: 400px;
-  object-fit: cover;
   border-radius: 50%;
   border: 1px solid ${({ theme }) => theme.colors.golden};
   z-index: 50;

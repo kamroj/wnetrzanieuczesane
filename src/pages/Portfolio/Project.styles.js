@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import 'react-image-gallery/styles/css/image-gallery.css';
+import 'react-image-gallery/styles/image-gallery.css';
 
 export const ProjectContainer = styled.div`
   width: 100%;

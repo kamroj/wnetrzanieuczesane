@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import topImg from "../../assets/images/portfolio/portfolio-header-img.jpg";
 import { GridLine, GridLines } from '../../components/GridLines/GridLines.styles';
 import PageHeader from '../../components/PageHeader/PageHeader';
-import sanityClient from '../../SanityClient';
+import sanityClient, { getOptimizedImageUrl } from '../../SanityClient';
 import Loading from '../Loading/Loading';
 import {
   KeyInfoItem,
@@ -74,7 +74,7 @@ function fetchProjects() {
     `*[_type == "portfolio"] | order(order asc, createdAt desc) {
       title,
       slug,
-      "mainImage": galleryImages[0].asset->,
+      "mainImage": galleryImages[0].asset->{url, metadata { lqip, dimensions }},
       shortDescription,
       order,
       createdAt,
@@ -99,7 +99,8 @@ function renderProjects(projects) {
     <ProjectItem key={project.slug.current}>
       <Link to={`/portfolio/${project.slug.current}`}>
         <ProjectImage
-          src={project.mainImage?.url || topImg}
+          src={getOptimizedImageUrl(project.mainImage, { width: 700 }) || project.mainImage?.url || topImg}
+          placeholderSrc={project.mainImage?.metadata?.lqip}
           alt={project.title}
         />
         <ProjectDetails>

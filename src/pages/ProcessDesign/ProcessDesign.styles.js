@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { GridLines, GridLine } from '../../components/GridLines/GridLines.styles';
+import LazyImage from '../../components/LazyMedia/LazyImage';
 
 export const ProcessContainer = styled.div`
   width: 100%;
@@ -95,12 +96,10 @@ export const StepImageContainer = styled.div`
   }
 `;
 
-export const StepImage = styled.img`
+export const StepImage = styled(LazyImage)`
   max-width: 300px;
-  max-height: 350px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
+  width: 100%;
+  height: 350px;
   border: ${({ theme }) => theme.borders.borderGold};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {

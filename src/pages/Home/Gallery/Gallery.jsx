@@ -17,13 +17,18 @@ function Gallery({ images }) {
       <ImageWrapper>
         <FadingImage 
           src={images[currentIndex].original} 
+          placeholderSrc={images[currentIndex].placeholder}
           alt="" 
+          eager
+          showSpinner={false}
           $active={true} 
           $transitioning={isTransitioning} 
         />
         <FadingImage 
           src={images[nextIndex].original} 
+          placeholderSrc={images[nextIndex].placeholder}
           alt="" 
+          showSpinner={false}
           $active={false} 
           $transitioning={isTransitioning} 
         />
@@ -38,6 +43,7 @@ Gallery.propTypes = {
     PropTypes.shape({
       original: PropTypes.string.isRequired,
       thumbnail: PropTypes.string.isRequired,
+        placeholder: PropTypes.string,
     })
   ).isRequired,
 };

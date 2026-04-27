@@ -1,10 +1,10 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from "@tanstack/react-query";
-import sanityClient from '../../SanityClient';
+import sanityClient, { getOptimizedImageUrl } from '../../SanityClient';
 import Loading from '../Loading/Loading';
 import ImageGallery from 'react-image-gallery';
-import "react-image-gallery/styles/css/image-gallery.css";
+import "react-image-gallery/styles/image-gallery.css";
 import {
     ProjectContainer,
     ProjectContent,
@@ -23,7 +23,7 @@ const fetchProject = async ({ queryKey }) => {
       title,
       fullDescription,
       category,
-      "galleryImages": galleryImages[].asset->{ url, metadata },
+      "galleryImages": galleryImages[].asset->{ url, metadata { lqip, dimensions } },
       area,
       buildingType,
       roomCount,
@@ -34,8 +34,10 @@ const fetchProject = async ({ queryKey }) => {
 
 const getGalleryItems = (images) =>
     images?.map(image => ({
-        original: image.url,
-        thumbnail: image.url,
+        original: getOptimizedImageUrl(image, { width: 1600 }) || image.url,
+        thumbnail: getOptimizedImageUrl(image, { width: 320, quality: 65 }) || image.url,
+        originalAlt: '',
+        thumbnailAlt: '',
     })) ?? [];
 
 function Project() {
@@ -49,7 +51,7 @@ function Project() {
     if (isLoading) return <Loading />;
     if (error) return <div>Błąd podczas ładowania projektu: {error.message}</div>;
 
-    const mainImage = project.galleryImages?.[0]?.url;
+    const mainImage = project.galleryImages?.[0];
     const galleryItems = getGalleryItems(project.galleryImages);
 
     return (

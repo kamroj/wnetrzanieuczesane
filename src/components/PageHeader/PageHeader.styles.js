@@ -1,14 +1,9 @@
 import styled from 'styled-components';
+import LazyBackground from '../LazyMedia/LazyBackground';
 
-export const HeaderImage = styled.div`
+export const HeaderImage = styled(LazyBackground)`
   width: 100%;
   height: 30vh;
-  background-image: ${props => props.$backgroundImage ? 
-    `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url(${props.$backgroundImage})` : 
-    'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7))'
-  };
-  background-size: cover;
-  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,6 +14,8 @@ export const HeaderTitle = styled.div`
   font-size: 2.2rem;
   color: ${({ theme }) => theme.colors.golden};
   text-align: center;
+  position: relative;
+  z-index: 3;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.phase4}) {
     font-size: 2rem;

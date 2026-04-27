@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from "@tanstack/react-query";
-import sanityClient from '../../SanityClient';
+import sanityClient, { getOptimizedImageUrl } from '../../SanityClient';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import Loading from '../Loading/Loading';
 import {
@@ -24,11 +24,11 @@ const fetchDesignProcess = async () => {
   return sanityClient.fetch(`
     *[_type == "designProcess"][0] {
       title,
-      "topImageUrl": topImage.asset->url,
+      "topImage": topImage.asset->{url, metadata { lqip, dimensions }},
       steps[] {
         stepTitle,
         description,
-        "imageUrl": image.asset->url
+        "image": image.asset->{url, metadata { lqip, dimensions }}
       }
     }
   `);
@@ -45,7 +45,7 @@ function ProcessDesign() {
 
   return (
     <ProcessContainer>
-      <PageHeader title={designProcess.title || "PROCES PROJEKTOWANIA"} backgroundImage={designProcess.topImageUrl} />
+      <PageHeader title={designProcess.title || "PROCES PROJEKTOWANIA"} backgroundImage={designProcess.topImage} />
       <GridLineWrapper>
         <ProcessGridLines>
           <ProcessGridLine />
@@ -64,7 +64,12 @@ function ProcessDesign() {
                   <StepDescription>{step.description}</StepDescription>
                 </StepContent>
                 <StepImageContainer>
-                  <StepImage src={step.imageUrl} alt={step.stepTitle} />
+                  <StepImage
+                    src={getOptimizedImageUrl(step.image, { width: 520 }) || step.image?.url}
+                    placeholderSrc={step.image?.metadata?.lqip}
+                    alt={step.stepTitle}
+                    objectFit="contain"
+                  />
                 </StepImageContainer>
               </ProcessStep>
             </React.Fragment>

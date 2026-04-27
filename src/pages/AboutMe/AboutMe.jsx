@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from "@tanstack/react-query";
-import sanityClient from '../../SanityClient';
+import sanityClient, { getOptimizedImageUrl } from '../../SanityClient';
 import { 
   AboutMeContainer,
   ContentWrapper,
@@ -19,8 +19,8 @@ const fetchAboutMeContent = async () => {
   return sanityClient.fetch(`
     *[_type == "aboutMe"][0] {
       title,
-      "topImageUrl": topImage.asset->url,
-      "profileImageUrl": profileImage.asset->url,
+      "topImage": topImage.asset->{url, metadata { lqip, dimensions }},
+      "profileImage": profileImage.asset->{url, metadata { lqip, dimensions }},
       content
     }
   `);
@@ -42,10 +42,14 @@ const AboutMe = () => {
 
   return (
     <AboutMeContainer>
-      <PageHeader title={aboutMeContent.title || "O MNIE"} backgroundImage={aboutMeContent.topImageUrl} />
+      <PageHeader title={aboutMeContent.title || "O MNIE"} backgroundImage={aboutMeContent.topImage} />
       <ContentWrapper>
         <ImageContainer>
-          <StyledImage src={aboutMeContent.profileImageUrl} alt="Weronika Rojek" />
+          <StyledImage
+            src={getOptimizedImageUrl(aboutMeContent.profileImage, { width: 700 }) || aboutMeContent.profileImage?.url}
+            placeholderSrc={aboutMeContent.profileImage?.metadata?.lqip}
+            alt="Weronika Rojek"
+          />
         </ImageContainer>
         <TextContainer>
           <Content>

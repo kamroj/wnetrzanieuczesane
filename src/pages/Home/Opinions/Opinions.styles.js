@@ -2,6 +2,8 @@ import Slider from "react-slick";
 import styled, { keyframes } from "styled-components";
 import backgroundImage from "../../../assets/images/living-room.jpg";
 
+const SlickSlider = Slider.default ?? Slider;
+
 const fadeInUp = keyframes`
   from {
     opacity: 0;
@@ -110,7 +112,7 @@ export const OpinionAuthor = styled.div`
   font-weight: bold;
 `;
 
-export const StyledSlider = styled(Slider)`
+export const StyledSlider = styled(SlickSlider)`
   .slick-dots {
     display: none !important;
   }

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import LazyImage from '../../components/LazyMedia/LazyImage';
 
 export const AboutMeContainer = styled.div`
   width: 100%;
@@ -30,9 +31,9 @@ export const ImageContainer = styled.div`
   }
 `;
 
-export const StyledImage = styled.img`
+export const StyledImage = styled(LazyImage)`
   width: 100%;
-  height: auto;
+  aspect-ratio: 4 / 5;
   max-width: 480px;
   border: 1px solid rgb(218,165,32);
   box-shadow: 8px 8px 0 rgb(218 165 32 / 15%);

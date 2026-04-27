@@ -24,7 +24,7 @@ const fetchContactContent = async () => {
   return sanityClient.fetch(`
     *[_type == "contact"][0] {
       title,
-      "topImageUrl": topImage.asset->url
+      "topImage": topImage.asset->{url, metadata { lqip, dimensions }}
     }
   `);
 };
@@ -124,7 +124,7 @@ function Contact() {
 
   return (
     <ContactContainer>
-      <PageHeader title={contactContent.title || "KONTAKT"} backgroundImage={contactContent.topImageUrl} />
+      <PageHeader title={contactContent.title || "KONTAKT"} backgroundImage={contactContent.topImage} />
       <ContactForm ref={formRef} onSubmit={handleSubmit}>
         <FormGroup>
           <Label htmlFor="name">Imię i nazwisko *</Label>

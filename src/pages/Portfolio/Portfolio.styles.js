@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import LazyImage from '../../components/LazyMedia/LazyImage';
 
 export const PortfolioContainer = styled.div`
   width: 100%;
@@ -45,11 +46,9 @@ export const ProjectItem = styled.div`
   }
 `;
 
-export const ProjectImage = styled.img`
+export const ProjectImage = styled(LazyImage)`
   width: 40%;
-  /* height: 100%; */
-  object-fit: cover;
-  object-position: center;
+  height: auto;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
     width: 100%;

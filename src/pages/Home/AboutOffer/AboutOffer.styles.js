@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-import { Parallax } from 'react-parallax';
+import ReactParallax from 'react-parallax';
+
+const { Parallax } = ReactParallax;
 
 export const StyledParallax = styled(Parallax)`
   width: 100%;

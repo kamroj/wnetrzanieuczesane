@@ -16,6 +16,7 @@ import {
   StyledFade,
 } from "./AboutCompany.styles";
 import { GridLine, GridLines } from "../../../components/GridLines/GridLines.styles";
+import { getOptimizedImageUrl } from "../../../SanityClient";
 
 function AboutCompany({ content, onNavigate }) {
   return (
@@ -23,7 +24,11 @@ function AboutCompany({ content, onNavigate }) {
       <PhotoContainer>
         <ImageSignatureWrapper>
           {content.image && content.image.asset && (
-            <CompanyImage src={content.image.asset.url} alt="Company" />
+            <CompanyImage
+              src={getOptimizedImageUrl(content.image.asset, { width: 650 }) || content.image.asset.url}
+              placeholderSrc={content.image.asset.metadata?.lqip}
+              alt="Company"
+            />
           )}
           <SignatureContainer>Weronika Rojek</SignatureContainer>
         </ImageSignatureWrapper>

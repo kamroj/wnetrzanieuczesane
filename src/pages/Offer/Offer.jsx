@@ -22,7 +22,7 @@ const fetchOffer = async () => {
   return sanityClient.fetch(`
     *[_type == "offer"][0] {
       title,
-      "topImageUrl": topImage.asset->url,
+      "topImage": topImage.asset->{url, metadata { lqip, dimensions }},
       basicOffer,
       comprehensiveOffer
     }
@@ -54,7 +54,7 @@ const Offer = () => {
 
   return (
     <OfferContainer>
-      <PageHeader title={offerData.title || "OFERTA"} backgroundImage={offerData.topImageUrl} />
+      <PageHeader title={offerData.title || "OFERTA"} backgroundImage={offerData.topImage} />
       <OfferWrapper>
         <GridLines className="line-on-very-bottom" style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1}}>
           <GridLine />

@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import LazyImage from '../../../components/LazyMedia/LazyImage';
 
 export const GalleryContainer = styled.div`
   position: relative;
@@ -14,17 +15,19 @@ export const ImageWrapper = styled.div`
   height: 100%;
 `;
 
-export const FadingImage = styled.img`
+export const FadingImage = styled(LazyImage)`
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
   transition: opacity 1s ease-in-out;
   opacity: ${props => props.$active ? 1 : 0};
-  filter: brightness(40%);
   z-index: ${props => props.$active ? 2 : 1};
+
+  img {
+    filter: brightness(40%);
+  }
 
   ${props => props.$transitioning && !props.$active && css`
     opacity: 1;

@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import sanityClient from '../../SanityClient';
+import sanityClient, { getOptimizedImageUrl } from '../../SanityClient';
 import Loading from '../Loading/Loading';
 import AboutCompany from './AboutCompany/AboutCompany';
 import AboutOffer from './AboutOffer/AboutOffer';
@@ -14,14 +14,17 @@ const fetchHomeContent = async () => {
   return sanityClient.fetch(`
     *[_type == "home"][0] {
       slides[]{
-        "url": asset->url
+        asset,
+        "url": asset->url,
+        "lqip": asset->metadata.lqip
       },
       aboutProjects,
       aboutCompany{
         ...,
         image{
           asset->{
-            url
+            url,
+            metadata { lqip, dimensions }
           }
         }
       },
@@ -48,8 +51,9 @@ function Home() {
   if (error) return <div>Error loading content: {error.message}</div>;
 
   const images = homeContent?.slides?.filter(slide => slide.url).map(slide => ({
-    original: slide.url,
-    thumbnail: slide.url,
+    original: getOptimizedImageUrl(slide.asset, { width: 1800, quality: 82 }) || slide.url,
+    thumbnail: getOptimizedImageUrl(slide.asset, { width: 480, quality: 65 }) || slide.url,
+    placeholder: slide.lqip,
   })) || [];
 
   return (
