@@ -22,7 +22,7 @@ function AboutOffer({ content, onNavigate }) {
         <ContentText>
           {content.header}
         </ContentText>
-        <ArchitectButton name="OFERTA" onClick={onNavigate} />
+        <ArchitectButton name="OFERTA" onClick={onNavigate} variant="goldGlass" />
       </AboutOfferContainer>
     </StyledParallax>
   );

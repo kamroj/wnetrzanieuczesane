@@ -4,14 +4,16 @@ const buttonStyles = css`
   font-weight: 600;
   display: inline-block;
   position: relative;
-  border: 1px solid ${({ theme }) => theme.colors.golden};
+  border: ${({ $variant, theme }) => $variant === 'goldGlass' ? '1px solid rgb(218 165 32 / 57%)' : `1px solid ${theme.colors.golden}`};
   padding: 15px 0;
   font-size: 0.8rem;
   width: 180px;
-  background-color: ${props => props.isBlack ? props.theme.colors.black : props.theme.colors.white};
-  color: ${props => props.isBlack ? props.theme.colors.white : props.theme.colors.black};
+  background-color: ${props => props.$variant === 'goldGlass' ? 'rgb(218 165 32 / 7%)' : props.$isBlack ? props.theme.colors.black : props.theme.colors.white};
+  color: ${props => props.$variant === 'goldGlass' ? props.theme.colors.white : props.$isBlack ? props.theme.colors.white : props.theme.colors.black};
   box-sizing: border-box;
-  transition: background-color 0.5s, color 0.5s;
+  -webkit-backdrop-filter: ${props => props.$variant === 'goldGlass' ? 'blur(3px)' : 'none'};
+  backdrop-filter: ${props => props.$variant === 'goldGlass' ? 'blur(3px)' : 'none'};
+  transition: ${props => props.$variant === 'goldGlass' ? 'background-color 0.5s' : 'background-color 0.5s, color 0.5s'};
   z-index: 30;
   cursor: pointer;
 
@@ -39,7 +41,7 @@ const buttonStyles = css`
   }
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.mainLight};
+    background-color: ${props => props.$variant === 'goldGlass' ? 'rgb(218 165 32 / 12%)' : props.theme.colors.mainLight};
     /* background-color: ${props => props.isBlack ? props.theme.colors.white : props.theme.colors.black}; */
     /* color: ${({ theme }) => theme.colors.golden}; */
     /* border-color: transparent; */
@@ -49,7 +51,7 @@ const buttonStyles = css`
   &:hover::before {
     width: calc(100% + 10px);
     height: calc(100% + 10px);
-    border-color: ${({ theme }) => theme.colors.golden};
+    border-color: ${props => props.$variant === 'goldGlass' ? 'rgb(218 165 32 / 57%)' : props.theme.colors.golden};
   }
 `;
 
