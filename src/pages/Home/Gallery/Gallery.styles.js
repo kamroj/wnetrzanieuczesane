@@ -35,19 +35,14 @@ export const FadingImage = styled(LazyImage)`
   `}
 `;
 
-export const Logo = styled.img`
+export const LogoPlacement = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 30vh;
-  object-fit: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   pointer-events: none;
   z-index: 4;
-  opacity: 0.6;
-
-  @media (max-width: ${props => props.theme.breakpoints.phase2}) {
-    height: 60vh;
-    width: 60%;
-  }
 `;

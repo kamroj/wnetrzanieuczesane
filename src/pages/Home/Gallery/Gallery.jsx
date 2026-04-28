@@ -1,8 +1,8 @@
 // src/components/Home/Gallery/Gallery.jsx
 import React from "react";
 import PropTypes from "prop-types";
-import { GalleryContainer, Logo, ImageWrapper, FadingImage } from "./Gallery.styles";
-import logo from "../../../assets/images/logo-gold.png";
+import AnimatedGoldLogo from "./AnimatedGoldLogo";
+import { GalleryContainer, LogoPlacement, ImageWrapper, FadingImage } from "./Gallery.styles";
 import { GridLine, GridLines } from "../../../components/GridLines/GridLines.styles";
 import { useImageTransition } from "../../../hooks/useImageTransition";
 
@@ -33,7 +33,9 @@ function Gallery({ images }) {
           $transitioning={isTransitioning} 
         />
       </ImageWrapper>
-      <Logo src={logo} alt="dimensions" />
+      <LogoPlacement>
+        <AnimatedGoldLogo />
+      </LogoPlacement>
     </GalleryContainer>
   );
 }
