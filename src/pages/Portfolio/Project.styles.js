@@ -14,12 +14,13 @@ export const HeaderImage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: ${({ theme }) => theme.borders.borderGold};
+  border-bottom: 1px solid rgba(201, 146, 8, 0.45);
 `;
 
 export const HeaderTitle = styled.div`
-  color: ${({ theme }) => theme.colors.golden};
+  color: rgb(201 146 8);
   font-size: 3rem;
+  font-weight: 600;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
@@ -70,7 +71,8 @@ export const GalleryContainer = styled.div`
   .image-gallery-play-button,
   .image-gallery-left-nav,
   .image-gallery-right-nav {
-    color: ${({ theme }) => theme.colors.golden};
+    color: rgb(201 146 8);
+    font-weight: 600;
   }
 
   .image-gallery-thumbnail.active,
