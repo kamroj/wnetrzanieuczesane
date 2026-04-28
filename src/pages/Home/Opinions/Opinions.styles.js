@@ -27,59 +27,141 @@ const fadeOutDown = keyframes`
 `;
 
 export const OpinionsSection = styled.section`
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.74)),
     url(${backgroundImage});
   background-size: cover;
   background-position: center;
-  height: 100%;
+  min-height: 520px;
   width: 100%;
-  padding: 20px 0;
+  padding: 80px 0;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase2}) {
+    min-height: auto;
+    padding: 60px 0;
+  }
 `;
 
 export const OpinionsContainer = styled.div`
   position: relative;
-  max-width: 500px;
+  max-width: 760px;
   width: 100%;
-  padding: 40px;
+  padding: 0 40px;
   z-index: 30;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.phase1}) {
-    padding: 40px 15px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase2}) {
+    padding: 0 24px;
   }
 `;
 
-export const OpinionsTitle = styled.div`
-  font-size: 2.5rem;
+export const OpinionsTitle = styled.h2`
+  font-size: 2.45rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
   text-align: center;
-  margin-bottom: 50px;
+  margin: 0 0 42px;
   color: ${({ theme }) => theme.colors.mainLight};
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.phase1}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase2}) {
     font-size: 2rem;
+    margin-bottom: 32px;
   }
 `;
 
 export const OpinionCard = styled.div`
-  background-color: ${({ theme }) => `${theme.colors.mainLight}CC`};
-  border-radius: 20px;
-  padding: 40px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background: #ffffffb5;
+  backdrop-filter: blur(3px);
+  border-radius: 12px;
+  padding: 52px 58px 44px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28),
+    inset 0 0 0 1px rgba(218, 165, 32, 0.24);
   transition: all 0.3s ease;
-  border: 2px solid rgb(218, 165, 32);
+  border: 1px solid rgba(218, 165, 32, 0.65);
   position: relative;
-  min-height: 200px;
+  min-height: 250px;
   display: flex;
   align-items: center;
   overflow: hidden;
 
+  &::before {
+    content: "“";
+    position: absolute;
+    left: 28px;
+    bottom: 16px;
+    color: rgba(174, 125, 16, 0.36);
+    font-family: Georgia, serif;
+    font-size: 4.8rem;
+    line-height: 1;
+    z-index: 0;
+  }
+
+  &::after {
+    content: "”";
+    position: absolute;
+    top: 16px;
+    right: 28px;
+    color: rgba(174, 125, 16, 0.36);
+    font-family: Georgia, serif;
+    font-size: 4.8rem;
+    line-height: 1;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase2}) {
+    &::before,
+    &::after {
+      font-size: 4rem;
+    }
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.phase1}) {
-    padding: 20px;
+    &::before {
+      left: 20px;
+      bottom: 12px;
+    }
+
+    &::after {
+      top: 12px;
+      right: 20px;
+    }
+  }
+
+  & > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  @media print {
+    box-shadow: none;
+  }
+
+  @media (forced-colors: active) {
+    border-color: CanvasText;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase2}) {
+    min-height: 220px;
+    padding: 38px 30px 34px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase1}) {
+    padding: 34px 24px 30px;
   }
 `;
 
@@ -97,19 +179,32 @@ export const OpinionContent = styled.div`
   }
 `;
 
-export const OpinionText = styled.div`
-  line-height: 1.4;
-  color: ${({ theme }) => theme.colors.darkMain};
-  margin-bottom: 20px;
+export const OpinionText = styled.blockquote`
+  line-height: 1.65;
+  color: ${({ theme }) => theme.colors.black};
+  margin: 0 0 28px;
+  font-size: 1.08rem;
   position: relative;
   z-index: 1;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase1}) {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
 `;
 
-export const OpinionAuthor = styled.div`
+export const OpinionAuthor = styled.p`
   font-size: 1.1rem;
-  color: ${({ theme }) => theme.colors.mediumMain};
+  color: ${({ theme }) => theme.colors.black};
   text-align: right;
-  font-weight: bold;
+  font-weight: 600;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+
+  &::before {
+    content: "— ";
+  }
 `;
 
 export const StyledSlider = styled(SlickSlider)`
@@ -125,44 +220,60 @@ export const StyledSlider = styled(SlickSlider)`
 export const OpinionsNav = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 30px;
+  gap: 12px;
+  margin-top: 28px;
 `;
 
 export const NavButton = styled.button`
-  background-color: transparent;
-  border: 1px solid #e0b54f91;
+  width: 42px;
+  height: 42px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(224, 181, 79, 0.57);
+  border-radius: 50%;
   color: ${({ theme }) => theme.colors.golden};
   font-size: 1.2rem;
-  padding: 5px 10px;
-  margin: 0 5px;
+  line-height: 1;
   cursor: pointer;
   transition: all 0.3s ease;
 
   &:hover {
     border: 1px solid ${({ theme }) => theme.colors.golden};
+    background-color: rgba(218, 165, 32, 0.12);
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors.golden};
+    outline-offset: 3px;
   }
 `;
 
 export const DotContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  gap: 10px;
+  margin-top: 22px;
 `;
 
 export const CustomDot = styled.button`
-  width: 3px;
-  height: 3px;
+  width: ${({ $active }) => ($active ? "24px" : "8px")};
+  height: 8px;
   border-radius: 50%;
   background-color: ${({ $active, theme }) =>
     $active ? theme.colors.golden : theme.colors.goldenLight};
   border: none;
-  margin: 0 5px;
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 0;
+  border-radius: 999px;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.golden};
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors.golden};
+    outline-offset: 4px;
   }
 
   &::after {
