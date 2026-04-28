@@ -15,6 +15,18 @@ export const AboutCompanyContainer = styled.section`
   }
 `;
 
+export const AboutCompanyInner = styled.div`
+  display: flex;
+  width: 100%;
+  max-width: ${({ theme }) => theme.layout.contentMaxWidth};
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase2}) {
+    flex-direction: column;
+  }
+`;
+
 export const PhotoContainer = styled.div`
   box-sizing: border-box;
   padding-right: 60px;

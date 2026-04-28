@@ -29,6 +29,17 @@ export const NavbarContainer = styled.div`
   box-sizing: border-box;
 `;
 
+export const NavbarInner = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: ${({ theme }) => theme.layout.contentMaxWidth};
+  height: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+`;
+
 export const NavbarSideContainer = styled.div`
   display: flex;
   align-items: center;

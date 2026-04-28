@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import ArchitectButton from "../../../components/button/ArchitectButton";
 import {
   AboutCompanyContainer,
+  AboutCompanyInner,
   PhotoContainer,
   ImageSignatureWrapper,
   CompanyImage,
@@ -21,32 +22,34 @@ import { getOptimizedImageUrl } from "../../../SanityClient";
 function AboutCompany({ content, onNavigate }) {
   return (
     <AboutCompanyContainer>
-      <PhotoContainer>
-        <ImageSignatureWrapper>
-          {content.image && content.image.asset && (
-            <CompanyImage
-              src={getOptimizedImageUrl(content.image.asset, { width: 650 }) || content.image.asset.url}
-              placeholderSrc={content.image.asset.metadata?.lqip}
-              alt="Company"
-            />
-          )}
-          <SignatureContainer>Weronika Rojek</SignatureContainer>
-        </ImageSignatureWrapper>
-      </PhotoContainer>
-      <ContentContainer>
-        <StyledFade delay={100} duration={1200} damping={0.3} cascade triggerOnce>
-          <Header>{content.header}</Header>
-          <Content>{content.content}</Content>
-          <KeyPointsContainer>
-            {content.keyPoints && content.keyPoints.map((point, index) => (
-              <KeyPoint key={index}>
-                <HighlightedText>{point.key}</HighlightedText>: {point.value}
-              </KeyPoint>
-            ))}
-          </KeyPointsContainer>
-          <ArchitectButton name="O MNIE" onClick={onNavigate} />
-        </StyledFade>
-      </ContentContainer>
+      <AboutCompanyInner>
+        <PhotoContainer>
+          <ImageSignatureWrapper>
+            {content.image && content.image.asset && (
+              <CompanyImage
+                src={getOptimizedImageUrl(content.image.asset, { width: 650 }) || content.image.asset.url}
+                placeholderSrc={content.image.asset.metadata?.lqip}
+                alt="Company"
+              />
+            )}
+            <SignatureContainer>Weronika Rojek</SignatureContainer>
+          </ImageSignatureWrapper>
+        </PhotoContainer>
+        <ContentContainer>
+          <StyledFade delay={100} duration={1200} damping={0.3} cascade triggerOnce>
+            <Header>{content.header}</Header>
+            <Content>{content.content}</Content>
+            <KeyPointsContainer>
+              {content.keyPoints && content.keyPoints.map((point, index) => (
+                <KeyPoint key={index}>
+                  <HighlightedText>{point.key}</HighlightedText>: {point.value}
+                </KeyPoint>
+              ))}
+            </KeyPointsContainer>
+            <ArchitectButton name="O MNIE" onClick={onNavigate} />
+          </StyledFade>
+        </ContentContainer>
+      </AboutCompanyInner>
       <GridLines>
         <GridLine/>
       </GridLines>

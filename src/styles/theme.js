@@ -19,6 +19,11 @@ export const theme = {
   sizes: {
     navbarHeight: '60px', 
   },
+  layout: {
+    contentMaxWidth: '1440px',
+    narrowContentMaxWidth: '1200px',
+    pagePadding: 'clamp(24px, 4vw, 64px)',
+  },
   breakpoints: {
     phase1: '480px',
     phase2: '768px',

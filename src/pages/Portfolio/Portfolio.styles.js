@@ -13,6 +13,10 @@ export const ProjectsContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 3rem 2rem;
+  width: 100%;
+  max-width: ${({ theme }) => theme.layout.contentMaxWidth};
+  margin: 0 auto;
+  box-sizing: border-box;
 `;
 
 export const ProjectItem = styled.div`

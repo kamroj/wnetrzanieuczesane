@@ -19,6 +19,22 @@ export const AboutProjectsContainer = styled.section`
   }
 `;
 
+export const AboutProjectsInner = styled.div`
+  display: flex;
+  position: relative;
+  width: 100%;
+  max-width: ${({ theme }) => theme.layout.contentMaxWidth};
+  height: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phase3}) {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
 export const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;

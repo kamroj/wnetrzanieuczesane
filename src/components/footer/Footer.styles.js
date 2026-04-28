@@ -10,7 +10,7 @@ export const FooterWrapper = styled.footer`
 `;
 
 export const FooterContainer = styled.div`
-  max-width: ${({ theme }) => theme.breakpoints.phase4};
+  max-width: ${({ theme }) => theme.layout.contentMaxWidth};
   margin: 0 auto;
   display: flex;
   justify-content: space-between;

@@ -10,6 +10,7 @@ import logo from "../../assets/images/logo.png";
 import AnimatedMenuIcon from "./AnimatedMenuIcon";
 import {
   NavbarContainer,
+  NavbarInner,
   NavbarSideContainer,
   NavbarLogo,
   NavbarCenterContainer,
@@ -33,28 +34,30 @@ export default function Navbar() {
 
   return (
     <NavbarContainer $isScrolled={isScrolled} $menuEnabled={menuEnabled}>
-      <NavbarSideContainer>
-        <NavbarLogo src={logo} alt="logo" onClick={() => navigate("/")} />
-      </NavbarSideContainer>
+      <NavbarInner>
+        <NavbarSideContainer>
+          <NavbarLogo src={logo} alt="logo" onClick={() => navigate("/")} />
+        </NavbarSideContainer>
 
-      <NavbarCenterContainer>
-        {!isMobile() &&
-          PagesData.map((page, index) => (
-            <NavbarLink
-              key={index}
-              to={page.path || page.element}
-            >
-              {page.title}
-            </NavbarLink>
-          ))}
-      </NavbarCenterContainer>
-      <NavbarSideContainer $right>
-        {isMobile() && (
-          <MenuButtonContainer>
-            <AnimatedMenuIcon isOpen={menuEnabled} onClick={() => showMenu(!menuEnabled)} />
-          </MenuButtonContainer>
-        )}
-      </NavbarSideContainer>
+        <NavbarCenterContainer>
+          {!isMobile() &&
+            PagesData.map((page, index) => (
+              <NavbarLink
+                key={index}
+                to={page.path || page.element}
+              >
+                {page.title}
+              </NavbarLink>
+            ))}
+        </NavbarCenterContainer>
+        <NavbarSideContainer $right>
+          {isMobile() && (
+            <MenuButtonContainer>
+              <AnimatedMenuIcon isOpen={menuEnabled} onClick={() => showMenu(!menuEnabled)} />
+            </MenuButtonContainer>
+          )}
+        </NavbarSideContainer>
+      </NavbarInner>
       {isMobile() && (
         <CSSTransition
           in={menuEnabled}

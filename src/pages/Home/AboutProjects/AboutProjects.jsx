@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {
   AboutProjectsContainer,
+  AboutProjectsInner,
   ContentContainer,
   Header,
   Content,
@@ -16,16 +17,18 @@ import { GridLine, GridLines } from "../../../components/GridLines/GridLines.sty
 function AboutProjects({ content, onNavigate }) {
   return (
     <AboutProjectsContainer>
-      <ContentContainer>
-        <Header>{content.header}</Header>
-        <Content>{content.content}</Content>
-        <ButtonContainer>
-          <ArchitectButton name="PROJEKTY" onClick={onNavigate} />
-        </ButtonContainer>
-      </ContentContainer>
-      <ScretchContainer>
-        <ScretchImage src={scretchImage} alt="quote-background" />
-      </ScretchContainer>
+      <AboutProjectsInner>
+        <ContentContainer>
+          <Header>{content.header}</Header>
+          <Content>{content.content}</Content>
+          <ButtonContainer>
+            <ArchitectButton name="PROJEKTY" onClick={onNavigate} />
+          </ButtonContainer>
+        </ContentContainer>
+        <ScretchContainer>
+          <ScretchImage src={scretchImage} alt="quote-background" />
+        </ScretchContainer>
+      </AboutProjectsInner>
       <GridLines>
         <GridLine/>
       </GridLines>

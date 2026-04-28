@@ -16,6 +16,10 @@ export const HeaderTitle = styled.div`
   text-align: center;
   position: relative;
   z-index: 3;
+  width: 100%;
+  max-width: ${({ theme }) => theme.layout.contentMaxWidth};
+  padding: 0 ${({ theme }) => theme.layout.pagePadding};
+  box-sizing: border-box;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.phase4}) {
     font-size: 2rem;

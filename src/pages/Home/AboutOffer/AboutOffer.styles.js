@@ -16,6 +16,9 @@ export const AboutOfferContainer = styled.section`
   padding: 150px 0px;
   height: 100%;
   width: 100%;
+  max-width: ${({ theme }) => theme.layout.contentMaxWidth};
+  margin: 0 auto;
+  box-sizing: border-box;
 `;
 
 export const ContentText = styled.div`
